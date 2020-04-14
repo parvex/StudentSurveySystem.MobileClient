@@ -1,4 +1,6 @@
 ﻿using Foundation;
+using Syncfusion.ListView.XForms.iOS;
+using Syncfusion.XForms.iOS.EffectsView;
 using UIKit;
 
 namespace MobileClient.iOS
@@ -20,7 +22,8 @@ namespace MobileClient.iOS
         {
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());
-
+            SfListViewRenderer.Init();
+            SfEffectsViewRenderer.Init();  //Initialize only when effects view is added to Listview.
             return base.FinishedLaunching(app, options);
         }
     }

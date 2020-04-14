@@ -6,7 +6,7 @@
              mc:Ignorable="d"
              xmlns:extensions="clr-namespace:MobileClient.Extensions;assembly=MobileClient"
              x:Class="MobileClient.Views.SurveyListPage"
-             Title="Survey list">
+             Title="Fill surveys">
     <ContentPage.Content>
         <StackLayout>
             <ListView x:Name="ListView"

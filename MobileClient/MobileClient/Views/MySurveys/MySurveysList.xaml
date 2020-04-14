@@ -3,17 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
              mc:Ignorable="d"
-             x:Class="MobileClient.Views.CreateSurvey"
-             Title="Create new survey form">
-    <ContentPage.Content>
-        <ScrollView>
-            <StackLayout>
-                <Entry Placeholder="Title" Text="{Binding Survey.Name}"/>
-                <ListView ItemsSource="{Binding Survey.Questions}">
+             x:Class="MobileClient.Views.MySurveys.MySurveysList"
+             Title="My surveys">
 
-                </ListView>
-            </StackLayout>
-        </ScrollView>
+    <ContentPage.Content>
+        <StackLayout>
+            <syncfusion:SfListView x:Name="listView" />
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

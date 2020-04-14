@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Acr.UserDialogs;
 using Core.Models.Auth;
 using MobileClient.Services;
@@ -28,10 +29,15 @@ namespace MobileClient.Views
                 usosAuth = await SystemApi.GetUsosAuthData();
                 await Launcher.OpenAsync(new Uri(usosAuth.UsosAuthUrl));
             }
+
+            UsosPin.IsVisible = true;
+            ConfirmPinButton.IsVisible = true;
         }
 
         public async void UsosLogin(string oAuthVerifier)
         {
+            UsosPin.Text = oAuthVerifier;
+
             using (UserDialogs.Instance.Loading("Loading"))
             {
                 usosAuth.OAuthVerifier = oAuthVerifier;
@@ -39,7 +45,6 @@ namespace MobileClient.Views
                 if (result != null)
                 {
                     Application.Current.MainPage = new MainPage();
-                    await Navigation.PopToRootAsync();
                 }
                 else
                     AuthErrorLabel.IsVisible = true;
@@ -59,12 +64,27 @@ namespace MobileClient.Views
                 if (result != null)
                 {
                     Application.Current.MainPage = new MainPage();
-                    await Navigation.PopToRootAsync();
                 }
                 else
                 {
                     AuthErrorLabel.IsVisible = true;
                 }
+            }
+        }
+
+        private async void Button_UsosPinAuth(object sender, EventArgs e)
+        {
+            var oAuthVerifier = UsosPin.Text;
+            using (UserDialogs.Instance.Loading("Loading"))
+            {
+                usosAuth.OAuthVerifier = oAuthVerifier;
+                var result = await SystemApi.UsosPinAuth(usosAuth);
+                if (result != null)
+                {
+                    Application.Current.MainPage = new MainPage();
+                }
+                else
+                    AuthErrorLabel.IsVisible = true;
             }
         }
     }
