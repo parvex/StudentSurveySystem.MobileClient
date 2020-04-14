@@ -38,7 +38,7 @@ namespace MobileClient.Views
                 var result = await SystemApi.UsosPinAuth(usosAuth);
                 if (result != null)
                 {
-                    ((MenuPage)Navigation.NavigationStack[0]).SetData();
+                    Application.Current.MainPage = new MainPage();
                     await Navigation.PopToRootAsync();
                 }
                 else
@@ -46,14 +46,26 @@ namespace MobileClient.Views
             }
         }
 
-        private void Button_LocalAccountLogin(object sender, EventArgs e)
-        {
-            Navigation.PushAsync(new LocalAccountLogin());
-        }
-
         protected override bool OnBackButtonPressed()
         {
             return true;
+        }
+
+        private async void Button_Login(object sender, EventArgs e)
+        {
+            using (UserDialogs.Instance.Loading("Loading"))
+            {
+                var result = await SystemApi.Authenticate(Username.Text, Password.Text);
+                if (result != null)
+                {
+                    Application.Current.MainPage = new MainPage();
+                    await Navigation.PopToRootAsync();
+                }
+                else
+                {
+                    AuthErrorLabel.IsVisible = true;
+                }
+            }
         }
     }
 }

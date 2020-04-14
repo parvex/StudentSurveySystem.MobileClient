@@ -1,17 +1,18 @@
 ﻿using System;
 using MobileClient.Views;
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration;
 
 namespace MobileClient
 {
     public partial class App : Application
     {
+
         public App()
         {
             InitializeComponent();
-            var navPage = new NavigationPage(new MenuPage());
-            navPage.PushAsync(new AuthPage());
-            MainPage = navPage;
+            var navAuthPage = new AuthPage();
+            MainPage = navAuthPage;
         }
 
         protected override void OnStart()
@@ -33,9 +34,7 @@ namespace MobileClient
         {
             var data = uri.ToString().ToLowerInvariant();
 
-
-
-            if (((NavigationPage) MainPage).CurrentPage is AuthPage)
+            if (MainPage is AuthPage)
             {
                 var queryDictionary = System.Web.HttpUtility.ParseQueryString(uri.Query);
 
@@ -44,11 +43,10 @@ namespace MobileClient
 
                 var oAuthVerifier = queryDictionary["oauth_verifier"];
 
-                ((AuthPage) ((NavigationPage)MainPage).CurrentPage).UsosLogin(oAuthVerifier);
+                ((AuthPage) MainPage).UsosLogin(oAuthVerifier);
             }
             else 
                 return;
-
 
             base.OnAppLinkRequestReceived(uri);
         }

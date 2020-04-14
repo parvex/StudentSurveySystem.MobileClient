@@ -9,9 +9,13 @@
              NavigationPage.HasBackButton="False">
     <ContentPage.Content>
         <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
-            <Label x:Name="AuthErrorLabel" IsVisible="False" Text="Pin is incorrect!" TextColor="DarkRed"></Label>
+            <Label Text="Login" VerticalOptions="Center" HorizontalOptions="Center" FontSize="24"></Label>
+            <Label x:Name="AuthErrorLabel" IsVisible="False" Text="Wrong auth data!" TextColor="DarkRed"></Label>
             <Button Text="Usos auth" Clicked="Button_UsosAuth" />
-            <Button Text="Local account login" Clicked="Button_LocalAccountLogin" Margin="0,100,0,0"></Button>
+
+            <Entry x:Name="Username" Placeholder="Enter username" Margin ="0, 100, 0, 0"/>
+            <Entry x:Name="Password" Placeholder="Enter password" IsPassword="True" IsSpellCheckEnabled="false" IsTextPredictionEnabled="false"/>
+            <Button Text="Login" Clicked="Button_Login"></Button>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
