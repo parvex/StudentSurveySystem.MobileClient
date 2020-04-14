@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="MobileClient.Views.MenuPage"
+             Title="Menu">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                <Label x:Name="HelloLabel" HorizontalTextAlignment="Center" FontSize="Large"></Label>
+                <Button Text="Survey list" Clicked="Button_NavigateSurveyList" Margin="0,50,0,0" ></Button>
+                <Button Text="Completed surveys" Clicked="Button_NavigateCompletedSurveys"></Button>
+                <Button x:Name="AllResponsesButton" Text="All responses" Clicked="Button_AllResponses"></Button>
+                <Button Text="About" Clicked="Button_NavigateAbout" Margin="0,150,0,0" ></Button>
+                <Button Text="Logout" Clicked="Button_Logout"></Button>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:extensions="clr-namespace:MobileClient.Extensions;assembly=MobileClient"
+             mc:Ignorable="d"
+             x:Class="MobileClient.Views.CompletedSurveysPage"
+             Title="Completed surveys">
+    <ContentPage.Content>
+        <StackLayout>
+            <ListView x:Name="ListView"
+                      HasUnevenRows="true"
+                      ItemSelected="ListView_OnItemSelected">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid Padding="10">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.RowSpan="2"
+                                       Source="{extensions:ImageResource MobileClient.Resources.survey.png}"
+                                       Aspect="AspectFill"
+                                       HeightRequest="60"
+                                       WidthRequest="60" />
+                                <Label Grid.Column="1"
+                                       Text="{Binding SurveyName}"
+                                       FontAttributes="Bold" />
+                                <Label Grid.Row="1"
+                                       Grid.Column="1"
+                                       Text="{Binding CourseName, StringFormat='Course: {0}'}"/>
+                                <Label Grid.Row="2"
+                                       Grid.Column="1"
+                                       Text="{Binding Creator, StringFormat='Survey owner: {0}'}"
+                                       VerticalOptions="End" />
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
