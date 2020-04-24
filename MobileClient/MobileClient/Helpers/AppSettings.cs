@@ -28,6 +28,7 @@ namespace MobileClient.Helpers
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex);
                 Debug.WriteLine("Unable to load secrets file");
             }
         }

@@ -22,7 +22,7 @@ namespace MobileClient.Views
         {
             using (UserDialogs.Instance.Loading("Loading"))
             {
-                SurveyResponses = await SystemApi.SurveyResponsesClient.ApiSurveyResponsesGetAsync();
+                SurveyResponses = await SystemApi.SurveyResponsesClient.SurveyResponsesGetAsync();
                 ListView.ItemsSource = SurveyResponses;
             }
         }

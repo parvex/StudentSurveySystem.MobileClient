@@ -31,6 +31,12 @@ namespace MobileClient.Droid
             ToolbarResource = Resource.Layout.Toolbar;
 
             base.OnCreate(savedInstanceState);
+
+            // HERE
+#if DEBUG
+            System.Net.ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
+#endif
+
             UserDialogs.Init(this);
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);

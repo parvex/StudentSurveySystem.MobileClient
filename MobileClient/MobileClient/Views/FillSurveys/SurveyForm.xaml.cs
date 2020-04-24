@@ -102,7 +102,7 @@ namespace MobileClient.Views
 
         private void Button_Submit(object sender, EventArgs e)
         {
-            SystemApi.SurveyResponsesClient.ApiSurveyResponsesPost(CreateSurveyResponseDtoFromData());
+            SystemApi.SurveyResponsesClient.SurveyResponsesPostAsync(CreateSurveyResponseDtoFromData());
             UserDialogs.Instance.Toast("Survey sent!", TimeSpan.FromSeconds(2));
             Navigation.PopToRootAsync();
         }
