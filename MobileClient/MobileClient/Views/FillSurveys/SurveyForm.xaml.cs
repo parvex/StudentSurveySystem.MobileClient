@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using System.Globalization;
 using Acr.UserDialogs;
-using Core.Models.Survey;
-using Core.Models.SurveyResponse;
 using MobileClient.Helpers;
 using MobileClient.Services;
 using Newtonsoft.Json;
+using StudentSurveySystem.ApiClient.Model;
 using Syncfusion.XForms.ComboBox;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -103,7 +102,7 @@ namespace MobileClient.Views
 
         private void Button_Submit(object sender, EventArgs e)
         {
-            SystemApi.PostSurveyResponse(CreateSurveyResponseDtoFromData());
+            SystemApi.SurveyResponsesClient.ApiSurveyResponsesPost(CreateSurveyResponseDtoFromData());
             UserDialogs.Instance.Toast("Survey sent!", TimeSpan.FromSeconds(2));
             Navigation.PopToRootAsync();
         }

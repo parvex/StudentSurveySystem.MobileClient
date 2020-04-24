@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Acr.UserDialogs;
-using Core.Models.Survey;
 using MobileClient.Services;
+using StudentSurveySystem.ApiClient.Model;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -22,7 +22,7 @@ namespace MobileClient.Views
         {
             using (UserDialogs.Instance.Loading("Loading"))
             {
-                Surveys = await SystemApi.GetUserSurveysToBeFilled();
+                Surveys = await SystemApi.SurveysClient.ApiSurveysMyNotFilledFormGetAsync();
                 ListView.ItemsSource = Surveys;
             }
         }

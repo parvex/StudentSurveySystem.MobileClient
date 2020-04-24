@@ -1,7 +1,6 @@
 ﻿using System;
 using MobileClient.Views;
 using Xamarin.Forms;
-using Xamarin.Forms.PlatformConfiguration;
 
 namespace MobileClient
 {

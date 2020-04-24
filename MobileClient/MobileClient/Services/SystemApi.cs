@@ -1,131 +1,59 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Core.Models.Auth;
-using Core.Models.Survey;
-using Core.Models.SurveyResponse;
 using MobileClient.Helpers;
-using RestSharp;
-using RestSharp.Authenticators;
-using RestSharp.Serializers.NewtonsoftJson;
+using StudentSurveySystem.ApiClient.Api;
+using StudentSurveySystem.ApiClient.Client;
+using StudentSurveySystem.ApiClient.Model;
+
 
 namespace MobileClient.Services
 {
-    public class SystemApi
+    public class SystemApi : ApiClient
     {
-        private static readonly IRestClient Client;
+        private static Configuration ApiConfiguration;
+
+        public static UsersApi UsersClient => new UsersApi(ApiConfiguration);
+        public static SurveysApi SurveysClient => new SurveysApi(ApiConfiguration);
+        public static SurveyResponsesApi SurveyResponsesClient => new SurveyResponsesApi(ApiConfiguration);
+
 
         static SystemApi()
         {
-            Client = new RestClient(AppSettings.Settings["Service"]);
-            Client.UseNewtonsoftJson();
-            //todo: for dev purposes only - remove ssl validation
-            Client.RemoteCertificateValidationCallback = (sender, certificate, chain, sslPolicyErrors) => true;
-        }
+            ApiConfiguration = new Configuration(new Dictionary<string, string>(), 
+                new Dictionary<string, string>(),
+                new Dictionary<string, string>( ), 
+                AppSettings.Settings["Service"]);
 
-        public static async Task<CurrentUserDto> Authenticate(string username, string password)
-        {
-            var request = new RestRequest("users/authenticate", Method.POST);
-            request.AddJsonBody(new {Username = username, Password = password});
 
-            var result = await Client.ExecuteAsync<CurrentUserDto>(request);
-            if (result.IsSuccessful)
-            {
-                Client.Authenticator = new JwtAuthenticator(result.Data.Token);
-                UserHelper.User = result.Data;
-                return result.Data;
-            }
-            else
-            {
-                return null;
-            }
-        }
-
-        public static void Logout()
-        {
-            Client.Authenticator = null;
-            UserHelper.User = null;
-        }
-
-        public static async  Task<List<SurveyDto>> GetUserSurveysToBeFilled()
-        {
-            var request = new RestRequest("surveys/usertobefilled", Method.GET);
-            return await Execute<List<SurveyDto>>(request);
-        }
-
-        public static async Task<List<SurveyDto>> GetUserSurveysFilled()
-        {
-            var request = new RestRequest("surveys/userfilled", Method.GET);
-            return await Execute<List<SurveyDto>>(request);
-        }
-
-        public static async Task<SurveyDto> PostSurveyResponse(SurveyResponseDto surveyResponse)
-        {
-            var request = new RestRequest("surveyresponses", Method.POST);
-            request.AddJsonBody(surveyResponse);
-
-            return await Execute<SurveyDto>(request);
+            //Client.RemoteCertificateValidationCallback = (sender, certificate, chain, sslPolicyErrors) => true;
         }
 
         public static async Task<UsosAuthDto> GetUsosAuthData()
         {
-            var request = new RestRequest("users/usosauthdata", Method.GET);
-
-            return await Execute<UsosAuthDto>(request);
-        }
-        
-        public static async Task<CurrentUserDto> UsosPinAuth(UsosAuthDto usosAuth)
-        {
-            var request = new RestRequest("users/usospinauth", Method.POST);
-            request.AddJsonBody(usosAuth);
-            var result = await Client.ExecuteAsync<CurrentUserDto>(request);
-            if (result.IsSuccessful)
-            {
-                Client.Authenticator = new JwtAuthenticator(result.Data.Token);
-                UserHelper.User = result.Data;
-                return result.Data;
-            }
-            else
-            {
-                return null;
-            }
+            return await UsersClient.ApiUsersUsosAuthDataGetAsync();
         }
 
-        public static async Task<SurveyDto> GetSurvey(int id)
+        public static async Task<CurrentUserDto> Auth(string username, string password)
         {
-            var request = new RestRequest("surveys/" + id, Method.GET);
-            return await Execute<SurveyDto>(request);
+            var result = await UsersClient.ApiUsersAuthenticatePostAsync(new AuthenticateDto(username, password));
+            ApiConfiguration.AddDefaultHeader("Authorization", "Bearer " + result.Token);
+            UserHelper.User = result;
+            return result;
         }
 
-        public static async Task<List<SurveyResponseDetailsDto>> GetUserSurveyResponses()
+        public static async Task<CurrentUserDto> UsosAuth(UsosAuthDto usosAuthDto)
         {
-            var request = new RestRequest("surveyresponses/userfilled", Method.GET);
-            return await Execute<List<SurveyResponseDetailsDto>>(request);
+            var result = await UsersClient.ApiUsersUsosPinAuthPostAsync(usosAuthDto);
+            ApiConfiguration.ApiKey["Authorization"] = result.Token;
+            UserHelper.User = result;
+            return result;
         }
 
-        public static async Task<List<SurveyResponseDetailsDto>> GetSurveyResponses()
-        {
-            var request = new RestRequest("surveyresponses", Method.GET);
-            return await Execute<List<SurveyResponseDetailsDto>>(request);
-        }
 
-        public static async Task<SurveyResponseDto> GetSurveyResponseDto(int id)
+        public static void Logout()
         {
-            var request = new RestRequest("surveyresponses/" + id, Method.GET);
-            return await Execute<SurveyResponseDto>(request);
-        }
-
-        private static async Task<T> Execute<T>(RestRequest request)
-        {
-            var response = await Client.ExecuteAsync<T>(request);
-
-            if (response.ErrorException != null)
-            {
-                const string message = "Error retrieving response.  Check inner details for more info.";
-                var exception = new Exception(message, response.ErrorException);
-                throw exception;
-            }
-            return response.Data;
+            ApiConfiguration.ApiKey["Authorization"] = null;
+            UserHelper.User = null;
         }
     }
 }

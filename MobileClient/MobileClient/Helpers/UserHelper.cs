@@ -1,4 +1,4 @@
-﻿using Core.Models.Auth;
+﻿using StudentSurveySystem.ApiClient.Model;
 
 namespace MobileClient.Helpers
 {

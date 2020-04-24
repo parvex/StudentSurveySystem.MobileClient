@@ -1,8 +1,8 @@
 ﻿using System;
-using System.Threading.Tasks;
 using Acr.UserDialogs;
-using Core.Models.Auth;
 using MobileClient.Services;
+using StudentSurveySystem.ApiClient.Client;
+using StudentSurveySystem.ApiClient.Model;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -41,13 +41,16 @@ namespace MobileClient.Views
             using (UserDialogs.Instance.Loading("Loading"))
             {
                 usosAuth.OAuthVerifier = oAuthVerifier;
-                var result = await SystemApi.UsosPinAuth(usosAuth);
-                if (result != null)
+                try
                 {
+                    var result = await SystemApi.UsosAuth(usosAuth);
                     Application.Current.MainPage = new MainPage();
                 }
-                else
+                catch (ApiException e)
+                {
+                    Console.WriteLine(e);
                     AuthErrorLabel.IsVisible = true;
+                }
             }
         }
 
@@ -60,14 +63,15 @@ namespace MobileClient.Views
         {
             using (UserDialogs.Instance.Loading("Loading"))
             {
-                var result = await SystemApi.Authenticate(Username.Text, Password.Text);
-                if (result != null)
+                try
                 {
+                    var result = await SystemApi.Auth(Username.Text, Password.Text);
                     Application.Current.MainPage = new MainPage();
                 }
-                else
+                catch (ApiException exception)
                 {
                     AuthErrorLabel.IsVisible = true;
+                    Console.WriteLine(exception);
                 }
             }
         }
@@ -78,13 +82,17 @@ namespace MobileClient.Views
             using (UserDialogs.Instance.Loading("Loading"))
             {
                 usosAuth.OAuthVerifier = oAuthVerifier;
-                var result = await SystemApi.UsosPinAuth(usosAuth);
-                if (result != null)
+                try
                 {
+                    var result = await SystemApi.UsosAuth(usosAuth);
                     Application.Current.MainPage = new MainPage();
+
                 }
-                else
+                catch (ApiException exception)
+                {
+                    Console.WriteLine(exception);
                     AuthErrorLabel.IsVisible = true;
+                }
             }
         }
     }

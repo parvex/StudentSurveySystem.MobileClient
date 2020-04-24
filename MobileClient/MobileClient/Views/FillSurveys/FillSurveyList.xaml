@@ -37,7 +37,7 @@
                                        Text="{Binding CourseName, StringFormat='Course: {0}'}"/>
                                 <Label Grid.Row="2"
                                        Grid.Column="1"
-                                       Text="{Binding Creator, StringFormat='Survey owner: {0}'}"
+                                       Text="{Binding CreatorName, StringFormat='Survey owner: {0}'}"
                                        VerticalOptions="End" />
                             </Grid>
                         </ViewCell>
