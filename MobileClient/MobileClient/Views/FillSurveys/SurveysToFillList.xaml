@@ -10,11 +10,13 @@
              Title="Fill surveys">
     <ContentPage.Content>
         <StackLayout>
-            <syncfusion:SfListView x:Name="ListView" ItemsSource="{Binding Surveys}">
+            <syncfusion:SfListView x:Name="ListView" 
+                                   ItemsSource="{Binding Surveys}"
+                                   AutoFitMode="Height">
                 <syncfusion:SfListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <Grid>
+                            <Grid Padding="5">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto" />
                                     <RowDefinition Height="Auto" />
