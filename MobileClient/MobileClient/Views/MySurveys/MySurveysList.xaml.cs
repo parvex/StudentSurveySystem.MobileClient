@@ -24,7 +24,7 @@ namespace MobileClient.Views.MySurveys
         {
             using (UserDialogs.Instance.Loading("Loading"))
             {
-                Surveys = new ObservableCollection<SurveyDto>(await SystemApi.SurveysClient.SurveysMyNotFilledFormGetAsync());
+                Surveys = new ObservableCollection<SurveyDto>(await SystemApi.SurveysClient.SurveysMySurveysGetAsync());
                 this.ListView.ItemsSource = Surveys;
             }
         }

@@ -5,6 +5,7 @@ using Acr.UserDialogs;
 using MobileClient.Services;
 using StudentSurveySystem.ApiClient.Model;
 using Xamarin.Forms;
+using Xamarin.Forms.Extended;
 using Xamarin.Forms.Xaml;
 
 namespace MobileClient.Views
@@ -12,7 +13,9 @@ namespace MobileClient.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SurveysToFillList : ContentPage
     {
-        public List<SurveyDto> Surveys { get; set; }
+        public InfiniteScrollCollection<SurveyDto> Surveys { get; set; }
+        private const int PageSize = 20;
+
 
         public SurveysToFillList()
         {
@@ -22,10 +25,25 @@ namespace MobileClient.Views
 
         protected override async void OnAppearing()
         {
+            LoadData();
+        }
+
+        private async void LoadData(string filter = "")
+        {
             using (UserDialogs.Instance.Loading("Loading"))
             {
-                Surveys = await SystemApi.SurveysClient.SurveysMyNotFilledFormGetAsync();
-                this.ListView.ItemsSource = Surveys;
+                Surveys = new InfiniteScrollCollection<SurveyDto>
+                {
+                    OnLoadMore = async () =>
+                    {
+                        var page = Surveys.Count / PageSize;
+                        var items = await SystemApi.SurveysClient.SurveysMyNotFilledFormGetAsync(filter, page + 1, PageSize);
+
+                        return items;
+                    }
+                };
+                await Surveys.LoadMoreAsync();
+                ListView.ItemsSource = Surveys;
             }
         }
 
@@ -37,22 +55,15 @@ namespace MobileClient.Views
         private async void FilterText_OnSearchButtonPressed(object sender, EventArgs e)
         {
             var searchBar = (SearchBar) sender;
-            using (UserDialogs.Instance.Loading("Loading"))
-            {
-                Surveys = await SystemApi.SurveysClient.SurveysMyNotFilledFormGetAsync(searchBar.Text);
-                this.ListView.ItemsSource = Surveys;
-            }
+            LoadData(searchBar.Text);
+
         }
 
         private async void FilterText_OnTextChanged(object sender, TextChangedEventArgs e)
         {
             var searchBar = (SearchBar)sender;
             if (searchBar.Text == "")
-            using (UserDialogs.Instance.Loading("Loading"))
-            {
-                Surveys = await SystemApi.SurveysClient.SurveysMyNotFilledFormGetAsync(searchBar.Text);
-                this.ListView.ItemsSource = Surveys;
-            }
+                LoadData(searchBar.Text);
         }
     }
 }
