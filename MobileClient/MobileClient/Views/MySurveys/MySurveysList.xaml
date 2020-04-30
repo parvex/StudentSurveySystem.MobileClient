@@ -11,10 +11,10 @@
 
     <ContentPage.Content>
         <StackLayout>
-            <syncfusion:SfListView x:Name="ListView" 
-                                   ItemsSource="{Binding Surveys}"
-                                   AutoFitMode="Height">
-                <syncfusion:SfListView.ItemTemplate>
+            <ListView x:Name="ListView"
+                      HasUnevenRows="true"
+                      ItemsSource="{Binding Surveys}">
+                <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
                             <Grid Padding="5">
@@ -27,24 +27,25 @@
                                     <ColumnDefinition Width="Auto" />
                                     <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
-                                <Image Grid.Row="0" Grid.Column="0"
-                                       Grid.RowSpan="3"
+                                <Image Grid.RowSpan="3"
                                        Source="{extensions:ImageResource MobileClient.Resources.survey.png}"
                                        HeightRequest="60"
                                        WidthRequest="72" />
-                                <Label Grid.Row="0" Grid.Column="1" 
+                                <Label Grid.Column="1"
                                        Text="{Binding Name}"
                                        FontAttributes="Bold" />
-                                <Label Grid.Row="1" Grid.Column="1"
+                                <Label Grid.Row="1"
+                                       Grid.Column="1"
                                        Text="{Binding CourseName, StringFormat='Course: {0}'}"/>
-                                <Label Grid.Row="2" Grid.Column="1"
+                                <Label Grid.Row="2"
+                                       Grid.Column="1"
                                        Text="{Binding CreatorName, StringFormat='Survey owner: {0}'}"
                                        VerticalOptions="End" />
                             </Grid>
                         </ViewCell>
                     </DataTemplate>
-                </syncfusion:SfListView.ItemTemplate>
-            </syncfusion:SfListView>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
