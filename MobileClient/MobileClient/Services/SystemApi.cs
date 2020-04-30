@@ -43,7 +43,7 @@ namespace MobileClient.Services
         public static async Task<CurrentUserDto> UsosAuth(UsosAuthDto usosAuthDto)
         {
             var result = await UsersClient.UsersUsosPinAuthPostAsync(usosAuthDto);
-            ApiConfiguration.ApiKey["Authorization"] = result.Token;
+            ApiConfiguration.AddDefaultHeader("Authorization", "Bearer " + result.Token);
             UserHelper.User = result;
             return result;
         }

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using Acr.UserDialogs;
 using MobileClient.Services;
 using StudentSurveySystem.ApiClient.Model;
@@ -8,11 +9,11 @@ using Xamarin.Forms.Xaml;
 namespace MobileClient.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class SurveyListPage : ContentPage
+    public partial class SurveysToFillList : ContentPage
     {
-        public IList<SurveyDto> Surveys { get; set; }
+        public ObservableCollection<SurveyDto> Surveys { get; set; }
 
-        public SurveyListPage()
+        public SurveysToFillList()
         {
             InitializeComponent();
             BindingContext = this;
@@ -22,8 +23,8 @@ namespace MobileClient.Views
         {
             using (UserDialogs.Instance.Loading("Loading"))
             {
-                Surveys = await SystemApi.SurveysClient.SurveysMyNotFilledFormGetAsync();
-                ListView.ItemsSource = Surveys;
+                Surveys = new ObservableCollection<SurveyDto>(await SystemApi.SurveysClient.SurveysMyNotFilledFormGetAsync());
+                this.ListView.ItemsSource = Surveys;
             }
         }
 

@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using MobileClient.Models;
 using MobileClient.Services;
+using MobileClient.Views.MySurveys;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -27,10 +28,10 @@ namespace MobileClient.Views
                 switch (id)
                 {
                     case MenuItemType.MySurveys:
-                        MenuPages.Add(id, new NavigationPage(new SurveyListPage()));
+                        MenuPages.Add(id, new NavigationPage(new MySurveysList()));
                         break;
                     case MenuItemType.FillSurveys:
-                        MenuPages.Add(id, new NavigationPage(new SurveyListPage()));
+                        MenuPages.Add(id, new NavigationPage(new SurveysToFillList()));
                         break;
                     case MenuItemType.MyResponses:
                         MenuPages.Add(id, new NavigationPage(new CompletedSurveysPage()));

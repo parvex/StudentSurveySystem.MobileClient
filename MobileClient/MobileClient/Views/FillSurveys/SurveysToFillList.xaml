@@ -5,45 +5,43 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              xmlns:extensions="clr-namespace:MobileClient.Extensions;assembly=MobileClient"
-             x:Class="MobileClient.Views.SurveyListPage"
+             xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             x:Class="MobileClient.Views.SurveysToFillList"
              Title="Fill surveys">
     <ContentPage.Content>
         <StackLayout>
-            <ListView x:Name="ListView"
-                      HasUnevenRows="true"
-                      ItemSelected="ListView_OnItemSelected">
-                <ListView.ItemTemplate>
+            <syncfusion:SfListView x:Name="ListView" ItemsSource="{Binding Surveys}">
+                <syncfusion:SfListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <Grid Padding="10">
+                            <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto" />
-                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
                                 </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
-                                <Image Grid.RowSpan="2"
+                                <Image Grid.Row="0" Grid.Column="0"
+                                       Grid.RowSpan="3"
                                        Source="{extensions:ImageResource MobileClient.Resources.survey.png}"
-                                       Aspect="AspectFill"
                                        HeightRequest="60"
-                                       WidthRequest="60" />
-                                <Label Grid.Column="1"
+                                       WidthRequest="72" />
+                                <Label Grid.Row="0" Grid.Column="1" 
                                        Text="{Binding Name}"
                                        FontAttributes="Bold" />
-                                <Label Grid.Row="1"
-                                       Grid.Column="1"
+                                <Label Grid.Row="1" Grid.Column="1"
                                        Text="{Binding CourseName, StringFormat='Course: {0}'}"/>
-                                <Label Grid.Row="2"
-                                       Grid.Column="1"
+                                <Label Grid.Row="2" Grid.Column="1"
                                        Text="{Binding CreatorName, StringFormat='Survey owner: {0}'}"
                                        VerticalOptions="End" />
                             </Grid>
                         </ViewCell>
                     </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+                </syncfusion:SfListView.ItemTemplate>
+            </syncfusion:SfListView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
