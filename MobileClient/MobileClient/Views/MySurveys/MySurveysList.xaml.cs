@@ -1,7 +1,10 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using Acr.UserDialogs;
+using MobileClient.Controllers;
+using MobileClient.Models;
 using MobileClient.Services;
 using StudentSurveySystem.ApiClient.Model;
 using Xamarin.Forms;
@@ -12,21 +15,13 @@ namespace MobileClient.Views.MySurveys
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MySurveysList : ContentPage
     {
-        private ObservableCollection<SurveyDto> Surveys;
+        public ListViewController<SurveyDto> ListViewController;
 
         public MySurveysList()
         {
             InitializeComponent();
+            ListViewController = new ListViewController<SurveyDto>(SystemApi.SurveysClient.SurveysMySurveysGetAsync, ListView, SearchBar);
             BindingContext = this;
-        }
-
-        protected override async void OnAppearing()
-        {
-            using (UserDialogs.Instance.Loading("Loading"))
-            {
-                Surveys = new ObservableCollection<SurveyDto>(await SystemApi.SurveysClient.SurveysMySurveysGetAsync());
-                this.ListView.ItemsSource = Surveys;
-            }
         }
     }
 }

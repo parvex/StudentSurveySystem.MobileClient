@@ -5,21 +5,15 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              xmlns:extensions="clr-namespace:MobileClient.Extensions;assembly=MobileClient"
-             xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
              xmlns:extended="clr-namespace:Xamarin.Forms.Extended;assembly=Xamarin.Forms.Extended.InfiniteScrolling"
              x:Class="MobileClient.Views.SurveysToFillList"
              Title="Fill surveys">
     <ContentPage.Content>
         <StackLayout>
             <SearchBar x:Name="SearchBar" HeightRequest="40"
-                       Placeholder="Search here to filter"
-                       SearchButtonPressed="FilterText_OnSearchButtonPressed" 
-                       TextChanged="FilterText_OnTextChanged"
-                       Grid.Row="0"/>
+                       Placeholder="Search here to filter"/>
             <ListView x:Name="ListView"
                       HasUnevenRows="true"
-                      ItemsSource="{Binding Surveys}"
-                      ItemSelected="ListView_OnItemSelected"
                       CachingStrategy="RecycleElement">
                 <ListView.Behaviors>
                     <extended:InfiniteScrollBehavior />

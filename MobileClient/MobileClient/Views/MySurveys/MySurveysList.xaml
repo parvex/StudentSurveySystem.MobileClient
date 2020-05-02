@@ -5,47 +5,55 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
              xmlns:extensions="clr-namespace:MobileClient.Extensions;assembly=MobileClient"
+             xmlns:extended="clr-namespace:Xamarin.Forms.Extended;assembly=Xamarin.Forms.Extended.InfiniteScrolling"
              mc:Ignorable="d"
              x:Class="MobileClient.Views.MySurveys.MySurveysList"
              Title="My surveys">
 
     <ContentPage.Content>
         <StackLayout>
-            <ListView x:Name="ListView"
+            <StackLayout>
+                <SearchBar x:Name="SearchBar" HeightRequest="40"
+                       Placeholder="Search here to filter"/>
+                <ListView x:Name="ListView"
                       HasUnevenRows="true"
-                      ItemsSource="{Binding Surveys}">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <Grid Padding="5">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto" />
-                                    <RowDefinition Height="Auto" />
-                                    <RowDefinition Height="Auto" />
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="Auto" />
-                                </Grid.ColumnDefinitions>
-                                <Image Grid.RowSpan="3"
+                      CachingStrategy="RecycleElement">
+                    <ListView.Behaviors>
+                        <extended:InfiniteScrollBehavior />
+                    </ListView.Behaviors>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid Padding="5">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <Image Grid.RowSpan="3"
                                        Source="{extensions:ImageResource MobileClient.Resources.survey.png}"
                                        HeightRequest="60"
                                        WidthRequest="72" />
-                                <Label Grid.Column="1"
+                                    <Label Grid.Column="1"
                                        Text="{Binding Name}"
                                        FontAttributes="Bold" />
-                                <Label Grid.Row="1"
+                                    <Label Grid.Row="1"
                                        Grid.Column="1"
                                        Text="{Binding CourseName, StringFormat='Course: {0}'}"/>
-                                <Label Grid.Row="2"
+                                    <Label Grid.Row="2"
                                        Grid.Column="1"
-                                       Text="{Binding CreatorName, StringFormat='Survey owner: {0}'}"
+                                       Text="{Binding Active, StringFormat='Active: {0}'}"
                                        VerticalOptions="End" />
-                            </Grid>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
