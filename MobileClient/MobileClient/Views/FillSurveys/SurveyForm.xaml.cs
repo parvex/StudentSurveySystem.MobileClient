@@ -6,7 +6,6 @@ using MobileClient.Helpers;
 using MobileClient.Services;
 using Newtonsoft.Json;
 using StudentSurveySystem.ApiClient.Model;
-using Syncfusion.XForms.ComboBox;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -46,20 +45,21 @@ namespace MobileClient.Views
             else if(question.QuestionType == QuestionType.Boolean)
                 control = new CheckBox();
             else if (question.QuestionType == QuestionType.SingleSelect)
-                control = new SfComboBox()
+                control = new Picker()
                 {
-                    DataSource = question.Values, 
-                    ComboBoxMode = ComboBoxMode.Suggest,
+                    ItemsSource = question.Values, 
                 };
             else if (question.QuestionType == QuestionType.MultipleSelect)
-                control = new SfComboBox()
-                {
-                    DataSource = question.Values,
-                    ComboBoxMode = ComboBoxMode.Suggest,
-                    MultiSelectMode = MultiSelectMode.Token,
-                    TokensWrapMode = TokensWrapMode.Wrap,
-                    IsSelectedItemsVisibleInDropDown = false
-                };
+                //TODO
+                throw new NotImplementedException();
+                //control = new SfComboBox()
+                //{
+                //    DataSource = question.Values,
+                //    ComboBoxMode = ComboBoxMode.Suggest,
+                //    MultiSelectMode = MultiSelectMode.Token,
+                //    TokensWrapMode = TokensWrapMode.Wrap,
+                //    IsSelectedItemsVisibleInDropDown = false
+                //};
             else
                 control = new Entry();
             return (label, control, question);
@@ -93,9 +93,11 @@ namespace MobileClient.Views
             else if (question.QuestionType == QuestionType.Date)
                 answer.Value = ((DatePicker)control).Date.ToString(CultureInfo.InvariantCulture);
             else if (question.QuestionType == QuestionType.MultipleSelect)
-                answer.Value = JsonConvert.SerializeObject(((SfComboBox)control).SelectedValue);
+                //TODO
+                throw new NotImplementedException();
+                //answer.Value = JsonConvert.SerializeObject(((SfComboBox)control).SelectedValue);
             else if (question.QuestionType == QuestionType.SingleSelect)
-                answer.Value = ((SfComboBox)control).Text;
+                answer.Value = (string) ((Picker)control).SelectedItem;
 
             return answer;
         }

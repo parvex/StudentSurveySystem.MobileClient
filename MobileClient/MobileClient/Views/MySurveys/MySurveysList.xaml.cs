@@ -29,5 +29,15 @@ namespace MobileClient.Views.MySurveys
             ListViewController.ReloadData();
             base.OnAppearing();
         }
+
+        private void ListView_OnItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            Navigation.PushAsync(new CreateSurvey((SurveyDto)e.SelectedItem));
+        }
+
+        private void AddItem_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new CreateSurvey());
+        }
     }
 }

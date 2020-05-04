@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:extensions="clr-namespace:MobileClient.Extensions;assembly=MobileClient"
+             mc:Ignorable="d"
+             x:Class="MobileClient.Views.MySurveys.QuestionForm">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <extensions:IntEnumConverter x:Key="IntEnum"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Question"></Label>
+            <Entry x:Name="QuestionText"></Entry>
+            <Label Text="Type"></Label>
+            <Picker ItemsSource="{Binding QuestionTypes}" SelectedIndex="{Binding SelectedType, Converter={StaticResource IntEnum}}"/>
+            <Button Text="Submit"></Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

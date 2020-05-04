@@ -3,12 +3,15 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
              xmlns:extensions="clr-namespace:MobileClient.Extensions;assembly=MobileClient"
              xmlns:extended="clr-namespace:Xamarin.Forms.Extended;assembly=Xamarin.Forms.Extended.InfiniteScrolling"
              mc:Ignorable="d"
              x:Class="MobileClient.Views.MySurveys.MySurveysList"
              Title="My surveys">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add" Clicked="AddItem_Clicked" />
+    </ContentPage.ToolbarItems>
 
     <ContentPage.Content>
         <StackLayout>
@@ -17,7 +20,8 @@
                        Placeholder="Search here to filter"/>
                 <ListView x:Name="ListView"
                       HasUnevenRows="true"
-                      CachingStrategy="RecycleElement">
+                      CachingStrategy="RecycleElement"
+                      ItemSelected="ListView_OnItemSelected">
                     <ListView.Behaviors>
                         <extended:InfiniteScrollBehavior />
                     </ListView.Behaviors>

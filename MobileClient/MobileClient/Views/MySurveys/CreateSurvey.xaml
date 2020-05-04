@@ -6,13 +6,38 @@
              mc:Ignorable="d"
              x:Class="MobileClient.Views.CreateSurvey"
              Title="Create new survey form">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add question" Clicked="AddQuestion_OnClicked" />
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <ScrollView>
             <StackLayout>
-                <Entry Placeholder="Title" Text="{Binding Survey.Name}"/>
-                <ListView ItemsSource="{Binding Survey.Questions}">
+                <Label Text="Title"></Label>
+                <Entry Text="{Binding Survey.Name}"/>
+                <ListView ItemsSource="{Binding Survey.Questions}" ItemSelected="ListView_OnItemSelected"><ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid Padding="5">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <Label Grid.Column="0"
+                                           Text="{Binding QuestionText}"
+                                           FontAttributes="Bold" />
+                                    <Label Grid.Column="1"
+                                           Text="{Binding QuestionType, StringFormat='Type: {0}'}"/>
 
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
                 </ListView>
+
+                <Button Text="Submit"></Button>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>
