@@ -31,8 +31,7 @@ namespace MobileClient.Controllers
 
         public async void ReloadData()
         {
-            SearchBar.Text = "";
-            LoadData();
+            LoadData(SearchBar.Text);
         }
 
         public async void LoadData(string filter = "")
