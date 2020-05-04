@@ -17,8 +17,8 @@ namespace MobileClient.Views
         {
             InitializeComponent();
             SurveyResponse = surveyResponse;
-            BindingContext = this;
             ProcessValuesToShow();
+            BindingContext = this;
         }
 
         private void ProcessValuesToShow()

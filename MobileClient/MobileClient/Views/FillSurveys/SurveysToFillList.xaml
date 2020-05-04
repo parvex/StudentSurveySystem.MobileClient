@@ -14,7 +14,8 @@
                        Placeholder="Search here to filter"/>
             <ListView x:Name="ListView"
                       HasUnevenRows="true"
-                      CachingStrategy="RecycleElement">
+                      CachingStrategy="RecycleElement"
+                      ItemSelected="ListView_OnItemSelected">
                 <ListView.Behaviors>
                     <extended:InfiniteScrollBehavior />
                 </ListView.Behaviors>

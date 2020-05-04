@@ -35,19 +35,19 @@
                                         <ColumnDefinition Width="Auto" />
                                     </Grid.ColumnDefinitions>
                                     <Image Grid.RowSpan="3"
-                                       Source="{extensions:ImageResource MobileClient.Resources.survey.png}"
-                                       HeightRequest="60"
-                                       WidthRequest="72" />
+                                           Source="{extensions:ImageResource MobileClient.Resources.survey.png}"
+                                           HeightRequest="60"
+                                           WidthRequest="72" />
                                     <Label Grid.Column="1"
-                                       Text="{Binding Name}"
-                                       FontAttributes="Bold" />
+                                           Text="{Binding Name}"
+                                           FontAttributes="Bold" />
                                     <Label Grid.Row="1"
-                                       Grid.Column="1"
-                                       Text="{Binding CourseName, StringFormat='Course: {0}'}"/>
+                                           Grid.Column="1"
+                                           Text="{Binding CourseName, StringFormat='Course: {0}'}"/>
                                     <Label Grid.Row="2"
-                                       Grid.Column="1"
-                                       Text="{Binding Active, StringFormat='Active: {0}'}"
-                                       VerticalOptions="End" />
+                                           Grid.Column="1"
+                                           Text="{Binding Active, StringFormat='Active: {0}'}"
+                                           VerticalOptions="End" />
                                 </Grid>
                             </ViewCell>
                         </DataTemplate>

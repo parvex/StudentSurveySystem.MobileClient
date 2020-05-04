@@ -13,12 +13,12 @@ using Xamarin.Forms.Xaml;
 namespace MobileClient.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class SurveyPage : ContentPage
+    public partial class SurveyForm : ContentPage
     {
         private SurveyDto Survey { get; set; }
         private readonly List<(Label, View, QuestionDto)> _controlList = new List<(Label, View, QuestionDto)>();
 
-        public SurveyPage(SurveyDto survey)
+        public SurveyForm(SurveyDto survey)
         {
             InitializeComponent();
             BindingContext = this;
@@ -100,11 +100,14 @@ namespace MobileClient.Views
             return answer;
         }
 
-        private void Button_Submit(object sender, EventArgs e)
+        private async void Button_Submit(object sender, EventArgs e)
         {
-            SystemApi.SurveyResponsesClient.SurveyResponsesPostAsync(CreateSurveyResponseDtoFromData());
+            using (UserDialogs.Instance.Loading())
+            {
+                await SystemApi.SurveyResponsesClient.SurveyResponsesPostAsync(CreateSurveyResponseDtoFromData());
+            }
             UserDialogs.Instance.Toast("Survey sent!", TimeSpan.FromSeconds(2));
-            Navigation.PopToRootAsync();
+            await Navigation.PopAsync();
         }
     }
 }

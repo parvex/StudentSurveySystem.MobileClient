@@ -16,16 +16,24 @@ namespace MobileClient.Controllers
         {
             ListView = listView;
             LoadingFunction = loadingFunction;
+            SearchBar = searchBar;
             searchBar.SearchButtonPressed += SearchBar_OnSearchButtonPressed;
             searchBar.TextChanged += SearchBar_OnTextChanged;
             LoadData();
         }
 
         public ListView ListView { get; set; }
+        public SearchBar SearchBar { get; set; }
         public InfiniteScrollList<T> Items { get; set; }
         public int PageSize { get; set; } = 20;
 
         public Func<string, int?, int?, Task<List<T>>> LoadingFunction { get; set; }
+
+        public async void ReloadData()
+        {
+            SearchBar.Text = "";
+            LoadData();
+        }
 
         public async void LoadData(string filter = "")
         {

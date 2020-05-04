@@ -23,5 +23,16 @@ namespace MobileClient.Views
             BindingContext = this;
             ListViewController = new ListViewController<SurveyDto>(SystemApi.SurveysClient.SurveysMyNotFilledFormGetAsync, ListView, SearchBar);
         }
+
+        protected override void OnAppearing()
+        {
+            ListViewController.ReloadData();
+            base.OnAppearing();
+        }
+
+        private void ListView_OnItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            Navigation.PushAsync(new SurveyForm((SurveyDto) e.SelectedItem));
+        }
     }
 }

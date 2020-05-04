@@ -23,5 +23,11 @@ namespace MobileClient.Views.MySurveys
             ListViewController = new ListViewController<SurveyDto>(SystemApi.SurveysClient.SurveysMySurveysGetAsync, ListView, SearchBar);
             BindingContext = this;
         }
+
+        protected override void OnAppearing()
+        {
+            ListViewController.ReloadData();
+            base.OnAppearing();
+        }
     }
 }

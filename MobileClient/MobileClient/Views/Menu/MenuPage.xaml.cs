@@ -18,12 +18,13 @@ namespace MobileClient.Views
 
             menuItems = new List<HomeMenuItem>();
 
+            menuItems.Add(new HomeMenuItem { Id = MenuItemType.FillSurveys, Title = "Fill surveys" });
+            menuItems.Add(new HomeMenuItem { Id = MenuItemType.MyResponses, Title = "My responses" });
+
             if (UserHelper.User.UserRole == UserRole.Lecturer || UserHelper.User.UserRole == UserRole.Admin)
             {
                 menuItems.Add(new HomeMenuItem { Id = MenuItemType.MySurveys, Title = "My surveys" });
             }
-
-            menuItems.Add(new HomeMenuItem { Id = MenuItemType.FillSurveys, Title = "Fill surveys" });
 
             if (UserHelper.User.UserRole == UserRole.Admin)
             {
