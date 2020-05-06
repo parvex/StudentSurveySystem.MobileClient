@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using Acr.UserDialogs;
 using MobileClient.Helpers;
 using MobileClient.Services;
@@ -23,6 +24,7 @@ namespace MobileClient.Views
             BindingContext = this;
             Survey = survey;
             SurveyNameLabel.Text = survey.Name;
+            Survey.Questions = Survey.Questions.OrderBy(x => x.Index).ToList();
             foreach (var question in Survey.Questions)
             {
                 var controls = CreateControlAndLabelForQuestion(question);

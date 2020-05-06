@@ -30,14 +30,14 @@ namespace MobileClient.Views.MySurveys
             base.OnAppearing();
         }
 
-        private void ListView_OnItemSelected(object sender, SelectedItemChangedEventArgs e)
-        {
-            Navigation.PushAsync(new CreateSurvey((SurveyDto)e.SelectedItem));
-        }
-
         private void AddItem_Clicked(object sender, EventArgs e)
         {
             Navigation.PushAsync(new CreateSurvey());
+        }
+
+        private void ListView_OnItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            Navigation.PushAsync(new CreateSurvey((SurveyDto)e.Item));
         }
     }
 }

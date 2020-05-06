@@ -21,7 +21,7 @@
                 <ListView x:Name="ListView"
                       HasUnevenRows="true"
                       CachingStrategy="RecycleElement"
-                      ItemSelected="ListView_OnItemSelected">
+                      ItemTapped="ListView_OnItemTapped">
                     <ListView.Behaviors>
                         <extended:InfiniteScrollBehavior />
                     </ListView.Behaviors>

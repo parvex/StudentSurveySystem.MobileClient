@@ -5,7 +5,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:extensions="clr-namespace:MobileClient.Extensions;assembly=MobileClient"
              mc:Ignorable="d"
-             x:Class="MobileClient.Views.MySurveys.QuestionForm">
+             x:Class="MobileClient.Views.MySurveys.QuestionForm"
+             Title="Question form">
     <ContentPage.Resources>
         <ResourceDictionary>
             <extensions:IntEnumConverter x:Key="IntEnum"/>
@@ -14,11 +15,13 @@
 
     <ContentPage.Content>
         <StackLayout>
+            <Label Text="Index"></Label>
+            <Entry Text="{Binding Index}"></Entry>
             <Label Text="Question"></Label>
-            <Entry x:Name="QuestionText"></Entry>
+            <Entry Text="{Binding Question.QuestionText}"></Entry>
             <Label Text="Type"></Label>
-            <Picker ItemsSource="{Binding QuestionTypes}" SelectedIndex="{Binding SelectedType, Converter={StaticResource IntEnum}}"/>
-            <Button Text="Submit"></Button>
+            <Picker Title="Question type" ItemsSource="{Binding QuestionTypes}" SelectedIndex="{Binding Question.QuestionType, Converter={StaticResource IntEnum}}"/>
+            <Button Text="Submit" Clicked="Submit_OnClicked"></Button>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

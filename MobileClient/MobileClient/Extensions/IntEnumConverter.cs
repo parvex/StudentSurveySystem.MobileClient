@@ -19,6 +19,12 @@ namespace MobileClient.Extensions
         {
             if (value is int)
             {
+                var type = Nullable.GetUnderlyingType(targetType);
+                if (type != null)
+                {
+                    return Enum.ToObject(type, value);
+                }
+
                 return Enum.ToObject(targetType, value);
             }
             return 0;
