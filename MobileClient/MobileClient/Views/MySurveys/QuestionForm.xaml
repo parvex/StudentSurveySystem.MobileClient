@@ -16,11 +16,18 @@
     <ContentPage.Content>
         <StackLayout>
             <Label Text="Index"></Label>
-            <Entry Text="{Binding Index}"></Entry>
+            <Label Text="{Binding ErrorDictionary[Index]}" TextColor="Red"></Label>
+            <Entry Keyboard="Numeric" Text="{Binding Index}">
+                <Entry.Behaviors>
+                    <extensions:IntegerValidationBehavior />
+                </Entry.Behaviors>
+            </Entry>
             <Label Text="Question"></Label>
-            <Entry Text="{Binding Question.QuestionText}"></Entry>
+            <Entry Text="{Binding QuestionText}"></Entry>
+            <Label Text="{Binding ErrorDictionary[QuestionText]}" TextColor="Red"></Label>
             <Label Text="Type"></Label>
-            <Picker Title="Question type" ItemsSource="{Binding QuestionTypes}" SelectedIndex="{Binding Question.QuestionType, Converter={StaticResource IntEnum}}"/>
+            <Picker Title="Question type" ItemsSource="{Binding QuestionTypes}" SelectedIndex="{Binding QuestionType, Converter={StaticResource IntEnum}}"/>
+            <Label Text="{Binding ErrorDictionary[QuestionType]}" TextColor="Red"></Label>
             <Button Text="Submit" Clicked="Submit_OnClicked"></Button>
         </StackLayout>
     </ContentPage.Content>
