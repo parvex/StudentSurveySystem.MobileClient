@@ -36,7 +36,7 @@ namespace MobileClient.Droid
 #if DEBUG
             System.Net.ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
 #endif
-
+            global::Xamarin.Forms.Forms.SetFlags("SwipeView_Experimental");
             UserDialogs.Init(this);
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);

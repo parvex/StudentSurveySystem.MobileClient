@@ -7,11 +7,13 @@
 
   <ItemGroup>
     <None Remove="appsettings.json" />
+    <None Remove="Resources\delete.png" />
     <None Remove="Resources\survey.png" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="appsettings.json" />
+    <EmbeddedResource Include="Resources\delete.png" />
     <EmbeddedResource Include="Resources\survey.png" />
   </ItemGroup>
 

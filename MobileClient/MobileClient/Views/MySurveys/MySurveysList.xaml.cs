@@ -39,5 +39,10 @@ namespace MobileClient.Views.MySurveys
         {
             Navigation.PushAsync(new CreateSurvey((SurveyDto)e.Item));
         }
+
+        private void SwipeItem_OnInvoked(object sender, EventArgs e)
+        {
+            Console.WriteLine("lol");
+        }
     }
 }

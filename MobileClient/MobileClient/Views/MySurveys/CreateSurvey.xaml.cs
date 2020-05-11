@@ -15,13 +15,18 @@ namespace MobileClient.Views
         public ObservableCollection<QuestionDto> QuestionsList { get; set; }
         public Command<object> DeleteCommand { get; set; }
 
+        public void Initialize()
+        {
+            DeleteCommand = new Command<object>(DeleteQuestion);
+            BindingContext = this;
+        }
+
         public CreateSurvey()
         {
             InitializeComponent();
             Survey = new SurveyDto();
             QuestionsList = new ObservableCollection<QuestionDto>();
-            DeleteCommand = new Command<object>(DeleteQuestion);
-            BindingContext = this;
+            Initialize();
         }
 
         public CreateSurvey(SurveyDto survey)
@@ -31,8 +36,7 @@ namespace MobileClient.Views
             QuestionsList = survey.Questions != null
                 ? new ObservableCollection<QuestionDto>(survey.Questions.OrderBy(x => x.Index))
                 : new ObservableCollection<QuestionDto>();
-            DeleteCommand = new Command<object>(DeleteQuestion);
-            BindingContext = this;
+            Initialize();
         }
 
         private void AddQuestion_OnClicked(object sender, EventArgs e)
@@ -50,6 +54,11 @@ namespace MobileClient.Views
         {
             var question = obj as QuestionDto;
             QuestionsList.Remove(question);
+        }
+
+        private void OnDeleteSwipeItemInvoked(object sender, EventArgs e)
+        {
+            Console.WriteLine("lol");
         }
     }
 }
