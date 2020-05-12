@@ -72,7 +72,10 @@ namespace MobileClient.Views
                     question.Index = x.Index;
                     return (QuestionDto) x;
                 }).ToList();
-                await SystemApi.SurveysClient.SurveysIdPutAsync(Survey.Id, Survey);
+                if (Survey.Id.HasValue)
+                    await SystemApi.SurveysClient.SurveysIdPutAsync(Survey.Id, Survey);
+                else
+                    await SystemApi.SurveysClient.SurveysPostAsync(Survey);
                 await Navigation.PopAsync();
             }
         }
