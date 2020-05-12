@@ -62,13 +62,18 @@ namespace MobileClient.Views
             }
         }
 
-        private void Save_OnClicked(object sender, EventArgs e)
+        private async void Save_OnClicked(object sender, EventArgs e)
         {
             using (UserDialogs.Instance.Loading())
             {
-                Survey.Questions = QuestionsList.Select(x => (QuestionDto)x).ToList();
-                SystemApi.SurveysClient.SurveysIdPut(Survey.Id, Survey);
-                Navigation.PopAsync();
+                Survey.Questions = QuestionsList.Select(x =>
+                {
+                    var question = (QuestionDto) x;
+                    question.Index = x.Index;
+                    return (QuestionDto) x;
+                }).ToList();
+                await SystemApi.SurveysClient.SurveysIdPutAsync(Survey.Id, Survey);
+                await Navigation.PopAsync();
             }
         }
     }
