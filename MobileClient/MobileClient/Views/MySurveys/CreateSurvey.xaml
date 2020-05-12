@@ -45,8 +45,7 @@
                 </ListView.ItemTemplate>
             </ListView>
 
-            <Button Text="Save"></Button>
-            <Button Text="Activate"></Button>
+            <Button Clicked="Save_OnClicked" Text="Save"></Button>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

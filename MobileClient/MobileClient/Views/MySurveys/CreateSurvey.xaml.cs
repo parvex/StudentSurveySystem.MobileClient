@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Linq;
+using Acr.UserDialogs;
+using MobileClient.Services;
 using MobileClient.Views.MySurveys;
 using StudentSurveySystem.ApiClient.Model;
 using Xamarin.Forms;
@@ -12,7 +14,7 @@ namespace MobileClient.Views
     public partial class CreateSurvey : ContentPage
     {
         public SurveyDto Survey { get; set; }
-        public ObservableCollection<QuestionDto> QuestionsList { get; set; }
+        public ObservableCollection<QuestioDtoModel> QuestionsList { get; set; }
         public Command<object> DeleteCommand { get; set; }
 
         public void Initialize()
@@ -25,7 +27,7 @@ namespace MobileClient.Views
         {
             InitializeComponent();
             Survey = new SurveyDto();
-            QuestionsList = new ObservableCollection<QuestionDto>();
+            QuestionsList = new ObservableCollection<QuestioDtoModel>();
             Initialize();
         }
 
@@ -34,8 +36,8 @@ namespace MobileClient.Views
             InitializeComponent();
             Survey = survey;
             QuestionsList = survey.Questions != null
-                ? new ObservableCollection<QuestionDto>(survey.Questions.OrderBy(x => x.Index))
-                : new ObservableCollection<QuestionDto>();
+                ? new ObservableCollection<QuestioDtoModel>(survey.Questions.OrderBy(x => x.Index).Select(x => new QuestioDtoModel(x)))
+                : new ObservableCollection<QuestioDtoModel>();
             Initialize();
         }
 
@@ -47,18 +49,27 @@ namespace MobileClient.Views
 
         private void ListView_OnItemTapped(object sender, ItemTappedEventArgs e)
         {
-            Navigation.PushAsync(new QuestionForm((QuestionDto)e.Item, QuestionsList));
+            Navigation.PushAsync(new QuestionForm((QuestioDtoModel)e.Item, QuestionsList));
         }
 
         private void DeleteQuestion(object obj)
         {
-            var question = obj as QuestionDto;
+            var question = obj as QuestioDtoModel;
             QuestionsList.Remove(question);
+            for (int i = 0; i < QuestionsList.Count; ++i)
+            {
+                QuestionsList[i].Index = i + 1;
+            }
         }
 
-        private void OnDeleteSwipeItemInvoked(object sender, EventArgs e)
+        private void Save_OnClicked(object sender, EventArgs e)
         {
-            Console.WriteLine("lol");
+            using (UserDialogs.Instance.Loading())
+            {
+                Survey.Questions = QuestionsList.Select(x => (QuestionDto)x).ToList();
+                SystemApi.SurveysClient.SurveysIdPut(Survey.Id, Survey);
+                Navigation.PopAsync();
+            }
         }
     }
 }

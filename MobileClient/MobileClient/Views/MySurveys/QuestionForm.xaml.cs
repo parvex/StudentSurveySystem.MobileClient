@@ -17,13 +17,13 @@ namespace MobileClient.Views.MySurveys
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class QuestionForm : ContentPage
     {
-        public QuestionForm(ObservableCollection<QuestionDto> questionList)
+        public QuestionForm(ObservableCollection<QuestioDtoModel> questionList)
         {
             InitializeComponent();
             BindingContext = new QuestionViewModel(questionList);
         }
 
-        public QuestionForm(QuestionDto question, ObservableCollection<QuestionDto> questionList)
+        public QuestionForm(QuestioDtoModel question, ObservableCollection<QuestioDtoModel> questionList)
         {
             InitializeComponent();
             BindingContext = new QuestionViewModel(question ,questionList);

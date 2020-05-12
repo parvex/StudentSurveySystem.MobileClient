@@ -12,11 +12,11 @@ using StudentSurveySystem.ApiClient.Model;
 
 namespace MobileClient.Views.MySurveys
 {
-    public class QuestionViewModel : INotifyPropertyChanged
+    public class QuestionViewModel : ViewModelBase
     {
 
-        private readonly ObservableCollection<QuestionDto> _questionList;
-        private readonly QuestionDto _originalQuestion;
+        private readonly ObservableCollection<QuestioDtoModel> _questionList;
+        private readonly QuestioDtoModel _originalQuestion;
         private string _questionText;
         public QuestionType? _questionType { get; set; }
 
@@ -60,13 +60,13 @@ namespace MobileClient.Views.MySurveys
             QuestionTypes.Insert(0, "Select type");
         }
 
-        public QuestionViewModel(ObservableCollection<QuestionDto> questionList) : this()
+        public QuestionViewModel(ObservableCollection<QuestioDtoModel> questionList) : this()
         {
             _questionList = questionList;
             Index = questionList.Count.ToString();
         }
 
-        public QuestionViewModel(QuestionDto question, ObservableCollection<QuestionDto> questionList) : this()
+        public QuestionViewModel(QuestioDtoModel question, ObservableCollection<QuestioDtoModel> questionList) : this()
         {
             _questionList = questionList;
             _originalQuestion = question;
@@ -81,7 +81,7 @@ namespace MobileClient.Views.MySurveys
             if (ErrorDictionary.Any(x => !string.IsNullOrEmpty(x.Value)))
                 return false;
 
-            QuestionDto question;
+            QuestioDtoModel question;
             if (_originalQuestion != null)
             {
                 _questionList.Remove(_originalQuestion);
@@ -89,7 +89,7 @@ namespace MobileClient.Views.MySurveys
             }
             else
             {
-                question = new QuestionDto();
+                question = new QuestioDtoModel();
             }
 
             question.Index = string.IsNullOrEmpty(Index) ? _questionList.Count : int.Parse(Index);
@@ -105,14 +105,6 @@ namespace MobileClient.Views.MySurveys
                 _questionList[i].Index = i + 1;
             }
             return true;
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        [NotifyPropertyChangedInvocator]
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }
