@@ -12,8 +12,7 @@ namespace MobileClient.Templates
         private List<string> _itemsSource;
 
         public MultiSelectObservableCollection<string> ItemList { get; set; }
-        public MultiSelectObservableCollection<string> PickedItems { get; set; } = new MultiSelectObservableCollection<string>();
-        public string Text => string.Join(", ", PickedItems);
+        public string Text => ItemList != null ? string.Join(", ", ItemList.SelectedItems) : null;
 
         public List<string> ItemsSource
         {
@@ -33,7 +32,7 @@ namespace MobileClient.Templates
 
         private void Entry_OnFocused(object sender, FocusEventArgs e)
         {
-            Navigation.PushModalAsync(new MultiSelectDialog(ItemList, PickedItems));
+            Navigation.PushAsync(new MultiSelectDialog(ItemList));
         }
     }
 }

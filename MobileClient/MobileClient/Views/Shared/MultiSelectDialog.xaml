@@ -8,9 +8,7 @@
              x:Class="MobileClient.Templates.MultiSelectDialog">
     <ContentPage.Content>
         <StackLayout>
-            <Button Text="Submit" Clicked="Submit_OnClicked"></Button>
-
-            <!--<ListView  HasUnevenRows="true"
+            <ListView  HasUnevenRows="true"
                        SeparatorVisibility="Default" 
                        ItemsSource="{Binding ItemList}"
                        multiSelectListView:MultiSelect.Enable="true">
@@ -20,7 +18,7 @@
 
                             <multiSelectListView:SelectableCell.CheckView>
                                 <Label Text=" Selected"></Label>
-                                    --><!--<Image Source="select.png" WidthRequest="30" HeightRequest="30"></Image>--><!--
+                                    <!--<Image Source="select.png" WidthRequest="30" HeightRequest="30"></Image>-->
                             </multiSelectListView:SelectableCell.CheckView>
 
                             <multiSelectListView:SelectableCell.DataView>
@@ -34,7 +32,7 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
 
-            </ListView>-->
+            </ListView>
             <Button Text="Submit" Clicked="Submit_OnClicked"></Button>
         </StackLayout>
     </ContentPage.Content>

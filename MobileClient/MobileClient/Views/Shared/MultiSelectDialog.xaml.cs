@@ -9,8 +9,6 @@ namespace MobileClient.Templates
     public partial class MultiSelectDialog : ContentPage
     {
         public MultiSelectObservableCollection<string> ItemList { get; }
-        public MultiSelectObservableCollection<string> PickedItems { get; }
-
 
         public MultiSelectDialog()
         {
@@ -18,10 +16,9 @@ namespace MobileClient.Templates
             BindingContext = this;
         }
 
-        public MultiSelectDialog(MultiSelectObservableCollection<string> itemList, MultiSelectObservableCollection<string> pickedItems)
+        public MultiSelectDialog(MultiSelectObservableCollection<string> itemList)
         {
             ItemList = itemList;
-            PickedItems = pickedItems;
         }
 
         private void Submit_OnClicked(object sender, EventArgs e)
