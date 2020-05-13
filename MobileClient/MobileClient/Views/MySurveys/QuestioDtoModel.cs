@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using MobileClient.Annotations;
 using StudentSurveySystem.ApiClient.Model;
 
 namespace MobileClient.Views.MySurveys
@@ -25,7 +24,6 @@ namespace MobileClient.Views.MySurveys
 
         public new int? Index { get; set; }
 
-        [NotifyPropertyChangedInvocator]
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

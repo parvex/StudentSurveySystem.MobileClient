@@ -5,7 +5,7 @@ using System.Linq;
 using Acr.UserDialogs;
 using MobileClient.Helpers;
 using MobileClient.Services;
-using Newtonsoft.Json;
+using MobileClient.Templates;
 using StudentSurveySystem.ApiClient.Model;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -52,16 +52,11 @@ namespace MobileClient.Views
                     ItemsSource = question.Values, 
                 };
             else if (question.QuestionType == QuestionType.MultipleSelect)
-                //TODO
-                throw new NotImplementedException();
-                //control = new SfComboBox()
-                //{
-                //    DataSource = question.Values,
-                //    ComboBoxMode = ComboBoxMode.Suggest,
-                //    MultiSelectMode = MultiSelectMode.Token,
-                //    TokensWrapMode = TokensWrapMode.Wrap,
-                //    IsSelectedItemsVisibleInDropDown = false
-                //};
+                //todo
+                control = new MultiSelectPicker()
+                {
+                    ItemsSource = question.Values,
+                };
             else
                 control = new Entry();
             return (label, control, question);

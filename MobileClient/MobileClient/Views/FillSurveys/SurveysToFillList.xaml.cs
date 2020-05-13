@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using Acr.UserDialogs;
-using MobileClient.Controllers;
-using MobileClient.Models;
+﻿using MobileClient.Controllers;
 using MobileClient.Services;
 using StudentSurveySystem.ApiClient.Model;
 using Xamarin.Forms;
-using Xamarin.Forms.Extended;
 using Xamarin.Forms.Xaml;
 
 namespace MobileClient.Views

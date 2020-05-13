@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace MobileClient.Models
+﻿namespace MobileClient.Models
 {
     public class ErrorDictionary : ObservableDictionary<string, string>
     {

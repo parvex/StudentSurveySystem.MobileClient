@@ -3,9 +3,6 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Acr.UserDialogs;
 using MobileClient.Models;
-using MobileClient.Services;
-using MobileClient.Views;
-using StudentSurveySystem.ApiClient.Model;
 using Xamarin.Forms;
 
 namespace MobileClient.Controllers

@@ -39,7 +39,6 @@
                                     <Label Grid.Column="2" Text="{Binding QuestionType, StringFormat='Type: {0}'}"/>
                                 </Grid>
                             </SwipeView>
-
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>

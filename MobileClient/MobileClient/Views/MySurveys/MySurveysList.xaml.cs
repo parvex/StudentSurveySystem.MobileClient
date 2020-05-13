@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using Acr.UserDialogs;
 using MobileClient.Controllers;
-using MobileClient.Models;
 using MobileClient.Services;
 using StudentSurveySystem.ApiClient.Model;
 using Xamarin.Forms;

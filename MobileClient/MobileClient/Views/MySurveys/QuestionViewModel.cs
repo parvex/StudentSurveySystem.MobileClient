@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
+using System.Collections.Specialized;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using Force.DeepCloner;
-using MobileClient.Annotations;
 using MobileClient.Extensions;
 using MobileClient.Models;
 using StudentSurveySystem.ApiClient.Model;
+using Xamarin.Forms;
 
 namespace MobileClient.Views.MySurveys
 {
@@ -19,7 +18,11 @@ namespace MobileClient.Views.MySurveys
         private readonly QuestioDtoModel _originalQuestion;
         private string _questionText;
         public QuestionType? _questionType { get; set; }
-
+        /// <summary>
+        /// Values for mutli or single select
+        /// </summary>
+        public ObservableCollection<string> Values{ get; set; } = new ObservableCollection<string>();
+        public bool ValuesVisible { get; set; }
         public string QuestionText {
             get => _questionText; 
             set
@@ -46,6 +49,11 @@ namespace MobileClient.Views.MySurveys
                 else
                     ErrorDictionary["QuestionType"] = "";
 
+                if (value == StudentSurveySystem.ApiClient.Model.QuestionType.MultipleSelect || value == StudentSurveySystem.ApiClient.Model.QuestionType.SingleSelect)
+                    ValuesVisible = true;
+                else
+                    ValuesVisible = false;
+
                 _questionType = value;
                 OnPropertyChanged(nameof(QuestionType));
             }
@@ -58,12 +66,21 @@ namespace MobileClient.Views.MySurveys
         public QuestionViewModel()
         {
             QuestionTypes.Insert(0, "Select type");
+            Commands["DeleteValue"] = new Command((object selectedItem) => { var item = (string) selectedItem; Values.Remove(item); });
+        }
+
+        public void AddOrUpdateValue(string value, int? index = null)
+        {
+            if(!index.HasValue)
+                Values.Add(value);
+            else
+                Values[index.Value] = value;
         }
 
         public QuestionViewModel(ObservableCollection<QuestioDtoModel> questionList) : this()
         {
             _questionList = questionList;
-            Index = questionList.Count.ToString();
+            Index = (questionList.Count+1).ToString();
         }
 
         public QuestionViewModel(QuestioDtoModel question, ObservableCollection<QuestioDtoModel> questionList) : this()
@@ -73,7 +90,8 @@ namespace MobileClient.Views.MySurveys
             var copied = _originalQuestion.DeepClone();
             QuestionType = copied.QuestionType;
             QuestionText = copied.QuestionText;
-            Index = copied.Index.Value.ToString();
+            Values = copied.Values != null ? new ObservableCollection<string>(copied.Values) : Values; 
+            Index = (copied.Index.Value+1).ToString();
         }
 
         public bool Submit()
@@ -96,7 +114,8 @@ namespace MobileClient.Views.MySurveys
             
             question.QuestionText = QuestionText;
             question.QuestionType = QuestionType;
-            if(question.Index.Value >= _questionList.Count)
+            question.Values = Values.ToList();
+            if(question.Index.Value > _questionList.Count)
                 _questionList.Add(question);
             else
                 _questionList.Insert(question.Index.Value, question);

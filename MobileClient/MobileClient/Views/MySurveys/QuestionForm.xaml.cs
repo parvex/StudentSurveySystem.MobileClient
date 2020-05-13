@@ -1,14 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-using Force.DeepCloner;
-using MobileClient.Controllers;
-using MobileClient.Extensions;
-using StudentSurveySystem.ApiClient.Model;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -17,6 +8,8 @@ namespace MobileClient.Views.MySurveys
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class QuestionForm : ContentPage
     {
+        public QuestionViewModel QuestionViewModel => (QuestionViewModel) BindingContext;
+
         public QuestionForm(ObservableCollection<QuestioDtoModel> questionList)
         {
             InitializeComponent();
@@ -33,6 +26,20 @@ namespace MobileClient.Views.MySurveys
         {
             if(((QuestionViewModel) BindingContext).Submit())
                 Navigation.PopAsync();
+        }
+
+        private async void AddValue_OnClicked(object sender, EventArgs e)
+        { 
+            string result = await DisplayPromptAsync("Add value", "Type new value:");
+            if(!string.IsNullOrEmpty(result))
+                QuestionViewModel.AddOrUpdateValue(result);
+        }
+
+        private async void ValuesListView_OnItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            string result = await DisplayPromptAsync("Change value", "Type new value:");
+            if (!string.IsNullOrEmpty(result))
+                QuestionViewModel.AddOrUpdateValue(result, e.ItemIndex);
         }
     }
 }

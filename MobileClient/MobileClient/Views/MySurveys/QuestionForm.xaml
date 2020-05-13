@@ -28,6 +28,27 @@
             <Label Text="Type"></Label>
             <Picker Title="Question type" ItemsSource="{Binding QuestionTypes}" SelectedIndex="{Binding QuestionType, Converter={StaticResource IntEnum}}"/>
             <Label Text="{Binding ErrorDictionary[QuestionType]}" TextColor="Red"></Label>
+            <Button Text="Add value" IsVisible="{Binding ValuesVisible}" Clicked="AddValue_OnClicked"></Button>
+            <Label Text="Values to select" IsVisible="{Binding ValuesVisible}"></Label>
+            <ListView x:Name="ListView" ItemsSource="{Binding Values}" IsVisible="{Binding ValuesVisible}" ItemTapped="ValuesListView_OnItemTapped">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <SwipeView>
+                                <SwipeView.RightItems>
+                                    <SwipeItems>
+                                        <SwipeItem Text="Delete"
+                                                   BackgroundColor="LightPink"
+                                                   Command="{Binding Path=BindingContext.Commands[DeleteValue], Source={x:Reference ListView}}" CommandParameter="{Binding .}"
+                                                   IconImageSource="{extensions:ImageResource MobileClient.Resources.delete.png}"/>
+                                    </SwipeItems>
+                                </SwipeView.RightItems>
+                                <Label Text="{Binding .}"></Label>
+                            </SwipeView>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
             <Button Text="Submit" Clicked="Submit_OnClicked"></Button>
         </StackLayout>
     </ContentPage.Content>
