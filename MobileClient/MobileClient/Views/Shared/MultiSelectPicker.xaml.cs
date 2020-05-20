@@ -1,5 +1,8 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Windows.Input;
+using MobileClient.Helpers;
 using Xamarin.Forms;
 using Xamarin.Forms.MultiSelectListView;
 using Xamarin.Forms.Xaml;
@@ -12,7 +15,7 @@ namespace MobileClient.Templates
         private List<string> _itemsSource;
 
         public MultiSelectObservableCollection<string> ItemList { get; set; }
-        public string Text => ItemList != null ? string.Join(", ", ItemList.SelectedItems) : null;
+        public string Text => ItemList != null && ItemList.SelectedItems.Count() > 0 ? "-" + string.Join("\n-", ItemList.SelectedItems) : null;
 
         public List<string> ItemsSource
         {
@@ -24,15 +27,20 @@ namespace MobileClient.Templates
             }
         }
 
+        public List<string> SelectedValues => ItemList.SelectedItems.ToList();
+
         public MultiSelectPicker()
         {
             InitializeComponent();
             BindingContext = this;
         }
 
-        private void Entry_OnFocused(object sender, FocusEventArgs e)
+        private void Editor_OnFocused(object sender, FocusEventArgs e)
         {
-            Navigation.PushAsync(new MultiSelectDialog(ItemList));
+            DependencyService.Get<IKeyboardHelper>().HideKeyboard();
+            Navigation.PushAsync(new MultiSelectDialog(ItemList, new Command(() => OnPropertyChanged(nameof(Text)))));
+            DependencyService.Get<IKeyboardHelper>().HideKeyboard();
+
         }
     }
 }

@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Windows.Input;
+using MobileClient.Helpers;
 using Xamarin.Forms;
 using Xamarin.Forms.MultiSelectListView;
 using Xamarin.Forms.Xaml;
@@ -10,20 +12,34 @@ namespace MobileClient.Templates
     {
         public MultiSelectObservableCollection<string> ItemList { get; }
 
-        public MultiSelectDialog()
+        public ICommand SelectedItemCommand { get; set; }
+
+        public MultiSelectDialog(MultiSelectObservableCollection<string> itemList, ICommand selectedItemCommand)
         {
             InitializeComponent();
-            BindingContext = this;
-        }
-
-        public MultiSelectDialog(MultiSelectObservableCollection<string> itemList)
-        {
             ItemList = itemList;
+            SelectedItemCommand = selectedItemCommand;
+            BindingContext = this;
+            DependencyService.Get<IKeyboardHelper>().HideKeyboard();
+
         }
 
-        private void Submit_OnClicked(object sender, EventArgs e)
+        private void Clear_OnClicked(object sender, EventArgs e)
         {
-            Navigation.PopModalAsync();
+            foreach (var item in ItemList)
+            {
+                item.IsSelected = false;
+                SelectedItemCommand.Execute(null);
+            }
+        }
+
+        private void SelectAll_OnClicked(object sender, EventArgs e)
+        {
+            foreach (var item in ItemList)
+            {
+                item.IsSelected = true;
+                SelectedItemCommand.Execute(null);
+            }
         }
     }
 }

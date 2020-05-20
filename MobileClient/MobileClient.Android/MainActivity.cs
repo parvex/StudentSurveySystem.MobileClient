@@ -32,14 +32,11 @@ namespace MobileClient.Droid
 
             base.OnCreate(savedInstanceState);
 
-            // HERE
-#if DEBUG
-            System.Net.ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
-#endif
             global::Xamarin.Forms.Forms.SetFlags("SwipeView_Experimental");
             UserDialogs.Init(this);
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
+
             LoadApplication(new App());
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)

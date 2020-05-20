@@ -5,13 +5,24 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:multiSelectListView="clr-namespace:Xamarin.Forms.MultiSelectListView;assembly=Xamarin.Forms.MultiSelectListView"
              mc:Ignorable="d"
-             x:Class="MobileClient.Templates.MultiSelectDialog">
+             x:Class="MobileClient.Templates.MultiSelectDialog"
+             Title="Select multiple values">
     <ContentPage.Content>
         <StackLayout>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Button Grid.Column="0" Text="Clear" Clicked="Clear_OnClicked"></Button>
+                <Button Grid.Column="1" Text="Select all" Clicked="SelectAll_OnClicked"></Button>
+            </Grid>
             <ListView  HasUnevenRows="true"
                        SeparatorVisibility="Default" 
                        ItemsSource="{Binding ItemList}"
                        multiSelectListView:MultiSelect.Enable="true">
+                <ListView.Behaviors>
+                    <multiSelectListView:SelectedItemBehavior Command="{Binding SelectedItemCommand}"/>
+                </ListView.Behaviors>
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <multiSelectListView:SelectableCell x:Name="SelectableCell">
@@ -31,9 +42,7 @@
 
                     </DataTemplate>
                 </ListView.ItemTemplate>
-
             </ListView>
-            <Button Text="Submit" Clicked="Submit_OnClicked"></Button>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

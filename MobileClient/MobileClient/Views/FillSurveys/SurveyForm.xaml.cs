@@ -8,7 +8,6 @@ using MobileClient.Services;
 using MobileClient.Templates;
 using Newtonsoft.Json;
 using StudentSurveySystem.ApiClient.Model;
-using Syncfusion.XForms.ComboBox;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -54,13 +53,9 @@ namespace MobileClient.Views
                     ItemsSource = question.Values, 
                 };
             else if (question.QuestionType == QuestionType.MultipleSelect)
-                control = new SfComboBox()
+                control = new MultiSelectPicker()
                 {
-                    DataSource = question.Values,
-                    ComboBoxMode = ComboBoxMode.Suggest,
-                    MultiSelectMode = MultiSelectMode.Token,
-                    TokensWrapMode = TokensWrapMode.Wrap,
-                    IsSelectedItemsVisibleInDropDown = false
+                    ItemsSource = question.Values
                 };
             else
                         control = new Entry();
@@ -95,7 +90,7 @@ namespace MobileClient.Views
             else if (question.QuestionType == QuestionType.Date)
                 answer.Value = ((DatePicker)control).Date.ToString(CultureInfo.InvariantCulture);
             else if (question.QuestionType == QuestionType.MultipleSelect)
-                answer.Value = JsonConvert.SerializeObject(((SfComboBox)control).SelectedValue);
+                answer.Value = JsonConvert.SerializeObject(((MultiSelectPicker)control).SelectedValues);
             else if (question.QuestionType == QuestionType.SingleSelect)
                 answer.Value = (string) ((Picker)control).SelectedItem;
 

@@ -18,7 +18,6 @@ namespace MobileClient.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
-            new Syncfusion.XForms.iOS.ComboBox.SfComboBoxRenderer();
             global::Xamarin.Forms.Forms.SetFlags("SwipeView_Experimental");
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());

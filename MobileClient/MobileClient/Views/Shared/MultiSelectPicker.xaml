@@ -7,7 +7,7 @@
              x:Class="MobileClient.Templates.MultiSelectPicker">
   <ContentView.Content>
       <StackLayout>
-          <Entry Text="{Binding Text}" Focused="Entry_OnFocused"></Entry>
+            <Editor Text="{Binding Text}" Focused="Editor_OnFocused" AutoSize="TextChanges"></Editor>
       </StackLayout>
   </ContentView.Content>
 </ContentView>
