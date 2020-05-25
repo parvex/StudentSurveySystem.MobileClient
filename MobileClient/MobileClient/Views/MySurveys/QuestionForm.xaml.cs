@@ -10,13 +10,13 @@ namespace MobileClient.Views.MySurveys
     {
         public QuestionViewModel QuestionViewModel => (QuestionViewModel) BindingContext;
 
-        public QuestionForm(ObservableCollection<QuestioDtoModel> questionList)
+        public QuestionForm(ObservableCollection<QuestionVm> questionList)
         {
             InitializeComponent();
             BindingContext = new QuestionViewModel(questionList);
         }
 
-        public QuestionForm(QuestioDtoModel question, ObservableCollection<QuestioDtoModel> questionList)
+        public QuestionForm(QuestionVm question, ObservableCollection<QuestionVm> questionList)
         {
             InitializeComponent();
             BindingContext = new QuestionViewModel(question ,questionList);

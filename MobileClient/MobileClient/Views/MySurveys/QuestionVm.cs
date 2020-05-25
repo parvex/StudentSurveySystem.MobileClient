@@ -1,18 +1,19 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using Mapster;
 using StudentSurveySystem.ApiClient.Model;
 
 namespace MobileClient.Views.MySurveys
 {
-    public class QuestioDtoModel : QuestionDto, INotifyPropertyChanged
+    public class QuestionVm : QuestionDto, INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public QuestioDtoModel()
+        public QuestionVm()
         {
         }
 
-        public QuestioDtoModel(QuestionDto question)
+        public QuestionVm(QuestionDto question)
         {
             this.Id = question.Id;
             this.Index = question.Index;
@@ -23,6 +24,12 @@ namespace MobileClient.Views.MySurveys
         }
 
         public new int? Index { get; set; }
+
+        public QuestionDto ToDto()
+        {
+            var dto = this.Adapt<QuestionDto>();
+            return dto;
+        }
 
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {

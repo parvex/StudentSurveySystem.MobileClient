@@ -14,7 +14,7 @@ namespace MobileClient.Views
     public partial class CreateSurvey : ContentPage
     {
         public SurveyDto Survey { get; set; }
-        public ObservableCollection<QuestioDtoModel> QuestionsList { get; set; }
+        public ObservableCollection<QuestionVm> QuestionsList { get; set; }
         public Command<object> DeleteCommand { get; set; }
 
         public void Initialize()
@@ -27,7 +27,7 @@ namespace MobileClient.Views
         {
             InitializeComponent();
             Survey = new SurveyDto();
-            QuestionsList = new ObservableCollection<QuestioDtoModel>();
+            QuestionsList = new ObservableCollection<QuestionVm>();
             Initialize();
         }
 
@@ -36,8 +36,8 @@ namespace MobileClient.Views
             InitializeComponent();
             Survey = survey;
             QuestionsList = survey.Questions != null
-                ? new ObservableCollection<QuestioDtoModel>(survey.Questions.OrderBy(x => x.Index).Select(x => new QuestioDtoModel(x)))
-                : new ObservableCollection<QuestioDtoModel>();
+                ? new ObservableCollection<QuestionVm>(survey.Questions.OrderBy(x => x.Index).Select(x => new QuestionVm(x)))
+                : new ObservableCollection<QuestionVm>();
             Initialize();
         }
 
@@ -49,12 +49,12 @@ namespace MobileClient.Views
 
         private void ListView_OnItemTapped(object sender, ItemTappedEventArgs e)
         {
-            Navigation.PushAsync(new QuestionForm((QuestioDtoModel)e.Item, QuestionsList));
+            Navigation.PushAsync(new QuestionForm((QuestionVm)e.Item, QuestionsList));
         }
 
         private void DeleteQuestion(object obj)
         {
-            var question = obj as QuestioDtoModel;
+            var question = obj as QuestionVm;
             QuestionsList.Remove(question);
             for (int i = 0; i < QuestionsList.Count; ++i)
             {

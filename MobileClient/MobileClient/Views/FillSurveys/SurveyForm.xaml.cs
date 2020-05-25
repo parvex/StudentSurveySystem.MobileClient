@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Text.RegularExpressions;
 using Acr.UserDialogs;
+using MobileClient.Controllers;
+using MobileClient.Extensions;
 using MobileClient.Helpers;
 using MobileClient.Services;
 using MobileClient.Templates;
@@ -17,7 +20,7 @@ namespace MobileClient.Views
     public partial class SurveyForm : ContentPage
     {
         private SurveyDto Survey { get; set; }
-        private readonly List<(Label, View, QuestionDto)> _controlList = new List<(Label, View, QuestionDto)>();
+        private readonly List<(Label, View, QuestionDto, Label)> _controlList = new List<(Label, View, QuestionDto, Label)>();
 
         public SurveyForm(SurveyDto survey)
         {
@@ -32,34 +35,97 @@ namespace MobileClient.Views
                 _controlList.Add(controls);
                 FormControlsLayout.Children.Add(controls.Item1);
                 FormControlsLayout.Children.Add(controls.Item2);
+                FormControlsLayout.Children.Add(controls.Item4);
             }
         }
 
-        private (Label, View, QuestionDto) CreateControlAndLabelForQuestion(QuestionDto question)
+        private (Label, View, QuestionDto, Label) CreateControlAndLabelForQuestion(QuestionDto question)
         {
             var label = new Label() {Text = question.QuestionText};
+            var validationLabel = new Label() {TextColor = Color.Red};
             View control;
-            if(question.QuestionType == QuestionType.Text)
-                control = new Entry();
-            else if(question.QuestionType == QuestionType.Numeric)
-                control = new Entry() {Keyboard = Keyboard.Numeric};
-            else if(question.QuestionType == QuestionType.Date)
-                control = new DatePicker();
-            else if(question.QuestionType == QuestionType.Boolean)
-                control = new CheckBox();
-            else if (question.QuestionType == QuestionType.SingleSelect)
-                control = new Picker()
-                {
-                    ItemsSource = question.Values, 
-                };
-            else if (question.QuestionType == QuestionType.MultipleSelect)
-                control = new MultiSelectPicker()
-                {
-                    ItemsSource = question.Values
-                };
+            switch (question.QuestionType)
+            {
+                case QuestionType.Text:
+                    var text = new Entry();
+                    text.TextChanged += ValidateText;
+                    control = text;
+                    break;
+                case QuestionType.Numeric:
+                    var numeric = new Entry() {Keyboard = Keyboard.Numeric};
+                    numeric.TextChanged += ValidateNumeric;
+                    if(question.ValidationConfig.Integer == true)
+                        numeric.Behaviors.Add(new IntegerValidationBehavior());
+                    control = numeric;
+                    break;
+                case QuestionType.Date:
+                    var date = new NullableDatePicker();
+                    date.DateSelected += ValidateDate;
+                    control = date;
+                    break;
+                case QuestionType.Boolean:
+                    var boolean = new CheckBox();
+                    control = boolean;
+                    break;
+                case QuestionType.SingleSelect:
+                    var singleSelect = new Picker()
+                    {
+                        ItemsSource = question.Values, 
+                    };
+                    control = singleSelect;
+                    break;
+                case QuestionType.MultipleSelect:
+                    var multiSelect = new MultiSelectPicker()
+                    {
+                        ItemsSource = question.Values
+                    };
+                    control = multiSelect;
+                    break;
+                default:
+                    control = new Entry();
+                    break;
+            }
+            return (label, control, question, validationLabel);
+        }
+
+        private void ValidateText(object sender, TextChangedEventArgs e)
+        {
+            var control = (Entry) sender;
+            var (_, _, question, validationLabel) = _controlList.Find(x => x.Item2 == control);
+            var regexString = question.ValidationConfig.Regex;
+            if (regexString == null) return;
+            regexString = "^" + regexString + "$";
+            var match = Regex.Match(control.Text, regexString);
+            validationLabel.Text = !match.Success ? $"Text doesn't match criteria - {regexString}" : null;
+        }
+
+        private void ValidateNumeric(object sender, TextChangedEventArgs e)
+        {
+            var control = (Entry) sender;
+            var (_, _, question, validationLabel) = _controlList.Find(x => x.Item2 == control);
+            var minValue = question.ValidationConfig.MinNumericValue;
+            var maxValue = question.ValidationConfig.MaxNumericValue;
+            if (!minValue.HasValue && !maxValue.HasValue) return;
+            var value = double.TryParse(control.Text, out var tempVal) ? tempVal : (double?)null;
+            if (!value.HasValue || (minValue.HasValue && value < minValue) || (maxValue.HasValue && value > maxValue))
+                validationLabel.Text = "Number should be " + (minValue.HasValue ? "from " + minValue : null) + (maxValue.HasValue ? " to " + maxValue : null);
             else
-                        control = new Entry();
-            return (label, control, question);
+                validationLabel.Text = null;
+        }
+
+        private void ValidateDate(object sender, DateChangedEventArgs e)
+        {
+            var control = (NullableDatePicker) sender;
+            var (_, _, question, validationLabel) = _controlList.Find(x => x.Item2 == control);
+            var minValue = question.ValidationConfig.MinDateValue;
+            var maxValue = question.ValidationConfig.MaxDateValue;
+            if (!minValue.HasValue && !maxValue.HasValue) return;
+            var value = control.NullableDate;
+            if (!value.HasValue || (minValue.HasValue && value < minValue) || (maxValue.HasValue && value > maxValue))
+                validationLabel.Text = "Date should be " + (minValue.HasValue ? "from " + minValue.Value.ToString("dd/MM/yyyy") : null) 
+                                                         + (maxValue.HasValue ? " to " + maxValue.Value.Date.ToString("dd/MM/yyyy") : null);
+            else
+                validationLabel.Text = null;
         }
 
         private SurveyResponseDto CreateSurveyResponseDtoFromData()
@@ -73,13 +139,13 @@ namespace MobileClient.Views
 
             foreach (var controlTuple in _controlList)
             {
-                surveyResponse.Answers.Add(CreateAnswer(controlTuple.Item2, controlTuple.Item3));
+                surveyResponse.Answers.Add(CreateAnswerDto(controlTuple.Item2, controlTuple.Item3));
             }
 
             return surveyResponse;
         }
 
-        private AnswerDto CreateAnswer(View control, QuestionDto question)
+        private AnswerDto CreateAnswerDto(View control, QuestionDto question)
         {
             var answer = new AnswerDto {QuestionId = question.Id.Value};
 
@@ -99,6 +165,24 @@ namespace MobileClient.Views
 
         private async void Button_Submit(object sender, EventArgs e)
         {
+            foreach (var (_, control, questionDto, _) in _controlList)
+            {
+                switch (questionDto.QuestionType)
+                {
+                    case QuestionType.Text:
+                        ValidateDate(control, null);
+                        break;
+                    case QuestionType.Numeric:
+                        ValidateNumeric(control, null);
+                        break;
+                    case QuestionType.Date:
+                        ValidateDate(control, null);
+                        break;
+                }
+            }
+
+            if (_controlList.Any(x => x.Item4.Text != null))
+                return;
             using (UserDialogs.Instance.Loading())
             {
                 await SystemApi.SurveyResponsesClient.SurveyResponsesPostAsync(CreateSurveyResponseDtoFromData());

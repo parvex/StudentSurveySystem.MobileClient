@@ -4,6 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:extensions="clr-namespace:MobileClient.Extensions;assembly=MobileClient"
+             xmlns:controllers="clr-namespace:MobileClient.Controllers;assembly=MobileClient"
              mc:Ignorable="d"
              x:Class="MobileClient.Views.MySurveys.QuestionForm"
              Title="Question form">
@@ -28,9 +29,28 @@
             <Label Text="Type"></Label>
             <Picker Title="Question type" ItemsSource="{Binding QuestionTypes}" SelectedIndex="{Binding QuestionType, Converter={StaticResource IntEnum}}"/>
             <Label Text="{Binding ErrorDictionary[QuestionType]}" TextColor="Red"></Label>
-            <Button Text="Add value" IsVisible="{Binding ValuesVisible}" Clicked="AddValue_OnClicked"></Button>
-            <Label Text="Values to select" IsVisible="{Binding ValuesVisible}"></Label>
-            <ListView x:Name="ListView" ItemsSource="{Binding Values}" IsVisible="{Binding ValuesVisible}" ItemTapped="ValuesListView_OnItemTapped">
+
+            <Label Text="Integer" IsVisible="{Binding VisibleDictionary[Numeric]}"></Label>
+            <CheckBox IsChecked="{Binding ValidationConfig.Integer}" IsVisible="{Binding VisibleDictionary[Numeric]}"></CheckBox>
+            <Label Text="Min value" IsVisible="{Binding VisibleDictionary[Numeric]}"></Label>
+            <Entry Keyboard="Numeric" Text="{Binding ValidationConfig.MinNumericValue}" IsVisible="{Binding VisibleDictionary[Numeric]}"></Entry>
+            <Label Text="Max value" IsVisible="{Binding VisibleDictionary[Numeric]}"></Label>
+            <Entry Keyboard="Numeric" Text="{Binding ValidationConfig.MaxNumericValue}" IsVisible="{Binding VisibleDictionary[Numeric]}"></Entry>
+            <Label Text="{Binding ErrorDictionary[NumericRange]}" TextColor="Red" IsVisible="{Binding VisibleDictionary[Numeric]}"></Label>
+
+            <Label Text="Min value" IsVisible="{Binding VisibleDictionary[Date]}"></Label>
+            <controllers:NullableDatePicker Date="{Binding ValidationConfig.MinDateValue}" IsVisible="{Binding VisibleDictionary[Date]}"></controllers:NullableDatePicker>
+            <Label Text="Max value" IsVisible="{Binding VisibleDictionary[Date]}"></Label>
+            <controllers:NullableDatePicker Date="{Binding ValidationConfig.MaxDateValue}" IsVisible="{Binding VisibleDictionary[Date]}"></controllers:NullableDatePicker>
+            <Label Text="{Binding ErrorDictionary[DateRange]}" TextColor="Red" IsVisible="{Binding VisibleDictionary[Date]}"></Label>
+
+            <Label Text="Regex" IsVisible="{Binding VisibleDictionary[Text]}"></Label>
+            <Entry Text="{Binding ValidationConfig.Regex}" IsVisible="{Binding VisibleDictionary[Text]}"></Entry>
+            <Label Text="{Binding ErrorDictionary[Regex]}" TextColor="Red" IsVisible="{Binding VisibleDictionary[Text]}"></Label>
+
+            <Button Text="Add value" IsVisible="{Binding VisibleDictionary[MultipleSelect]}" Clicked="AddValue_OnClicked"></Button>
+            <Label Text="Values to select" IsVisible="{Binding VisibleDictionary[MultipleSelect]}"></Label>
+            <ListView x:Name="ListView" ItemsSource="{Binding Values}" IsVisible="{Binding VisibleDictionary[MultipleSelect]}" ItemTapped="ValuesListView_OnItemTapped">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>

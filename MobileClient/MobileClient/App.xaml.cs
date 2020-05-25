@@ -1,4 +1,6 @@
 ﻿using System;
+using Mapster.Utils;
+using MobileClient.Helpers;
 using MobileClient.Views;
 using Xamarin.Forms;
 
@@ -10,6 +12,7 @@ namespace MobileClient
         public App()
         {
             InitializeComponent();
+            MapsterConfig.Setup();
             var navAuthPage = new AuthPage();
             MainPage = navAuthPage;
         }

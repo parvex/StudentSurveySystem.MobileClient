@@ -15,7 +15,7 @@ namespace MobileClient.Templates
         private List<string> _itemsSource;
 
         public MultiSelectObservableCollection<string> ItemList { get; set; }
-        public string Text => ItemList != null && ItemList.SelectedItems.Count() > 0 ? "-" + string.Join("\n-", ItemList.SelectedItems) : null;
+        public string Text => ItemList != null && ItemList.SelectedItems.Any() ? "-" + string.Join("\n-", ItemList.SelectedItems) : "";
 
         public List<string> ItemsSource
         {
@@ -37,10 +37,7 @@ namespace MobileClient.Templates
 
         private void Editor_OnFocused(object sender, FocusEventArgs e)
         {
-            DependencyService.Get<IKeyboardHelper>().HideKeyboard();
             Navigation.PushAsync(new MultiSelectDialog(ItemList, new Command(() => OnPropertyChanged(nameof(Text)))));
-            DependencyService.Get<IKeyboardHelper>().HideKeyboard();
-
         }
     }
 }
