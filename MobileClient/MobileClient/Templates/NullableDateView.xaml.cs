@@ -81,7 +81,7 @@ namespace MobileClient.Templates
             }
             else
             {
-                _format = Picker.Format; Picker.Format = "pick";
+                Picker.Format = "pick";
             }
         }
         protected override void OnBindingContextChanged()
