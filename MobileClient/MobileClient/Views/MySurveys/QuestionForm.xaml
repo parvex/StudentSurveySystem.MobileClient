@@ -5,6 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:extensions="clr-namespace:MobileClient.Extensions;assembly=MobileClient"
              xmlns:controllers="clr-namespace:MobileClient.Controllers;assembly=MobileClient"
+             xmlns:templates="clr-namespace:MobileClient.Templates;assembly=MobileClient"
              mc:Ignorable="d"
              x:Class="MobileClient.Views.MySurveys.QuestionForm"
              Title="Question form">
@@ -39,9 +40,9 @@
             <Label Text="{Binding ErrorDictionary[NumericRange]}" TextColor="Red" IsVisible="{Binding VisibleDictionary[Numeric]}"></Label>
 
             <Label Text="Min value" IsVisible="{Binding VisibleDictionary[Date]}"></Label>
-            <controllers:NullableDatePicker Date="{Binding ValidationConfig.MinDateValue}" IsVisible="{Binding VisibleDictionary[Date]}"></controllers:NullableDatePicker>
+            <templates:NullableDateView NullableDate="{Binding ValidationConfig.MinDateValue}" IsVisible="{Binding VisibleDictionary[Date]}"></templates:NullableDateView>
             <Label Text="Max value" IsVisible="{Binding VisibleDictionary[Date]}"></Label>
-            <controllers:NullableDatePicker Date="{Binding ValidationConfig.MaxDateValue}" IsVisible="{Binding VisibleDictionary[Date]}"></controllers:NullableDatePicker>
+            <templates:NullableDateView NullableDate="{Binding ValidationConfig.MaxDateValue}" IsVisible="{Binding VisibleDictionary[Date]}"></templates:NullableDateView>
             <Label Text="{Binding ErrorDictionary[DateRange]}" TextColor="Red" IsVisible="{Binding VisibleDictionary[Date]}"></Label>
 
             <Label Text="Regex" IsVisible="{Binding VisibleDictionary[Text]}"></Label>

@@ -53,6 +53,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="Templates\NullableDateView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\Menu\AboutPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -62,10 +65,10 @@
     <EmbeddedResource Update="Views\MySurveys\QuestionForm.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Shared\MultiSelectDialog.xaml">
+    <EmbeddedResource Update="Templates\MultiSelectDialog.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Shared\MultiSelectPicker.xaml">
+    <EmbeddedResource Update="Templates\MultiSelectPicker.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\SurveyResponses\AllResponses.xaml">
@@ -95,5 +98,9 @@
     <EmbeddedResource Update="Views\FillSurveys\SurveyForm.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Views\Shared\" />
   </ItemGroup>
 </Project>

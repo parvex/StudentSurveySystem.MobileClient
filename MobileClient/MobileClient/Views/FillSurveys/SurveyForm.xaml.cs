@@ -4,7 +4,6 @@ using System.Globalization;
 using System.Linq;
 using System.Text.RegularExpressions;
 using Acr.UserDialogs;
-using MobileClient.Controllers;
 using MobileClient.Extensions;
 using MobileClient.Helpers;
 using MobileClient.Services;
@@ -14,7 +13,7 @@ using StudentSurveySystem.ApiClient.Model;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace MobileClient.Views
+namespace MobileClient.Views.FillSurveys
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SurveyForm : ContentPage
@@ -59,8 +58,8 @@ namespace MobileClient.Views
                     control = numeric;
                     break;
                 case QuestionType.Date:
-                    var date = new NullableDatePicker();
-                    date.DateSelected += ValidateDate;
+                    var date = new NullableDateView();
+                    date.DateChanged += ValidateDate;
                     control = date;
                     break;
                 case QuestionType.Boolean:
@@ -113,9 +112,9 @@ namespace MobileClient.Views
                 validationLabel.Text = null;
         }
 
-        private void ValidateDate(object sender, DateChangedEventArgs e)
+        private void ValidateDate(object sender, EventArgs e)
         {
-            var control = (NullableDatePicker) sender;
+            var control = (NullableDateView) sender;
             var (_, _, question, validationLabel) = _controlList.Find(x => x.Item2 == control);
             var minValue = question.ValidationConfig.MinDateValue;
             var maxValue = question.ValidationConfig.MaxDateValue;
@@ -154,7 +153,7 @@ namespace MobileClient.Views
             else if (question.QuestionType == QuestionType.Text || question.QuestionType == QuestionType.Numeric)
                 answer.Value = ((Entry)control).Text;
             else if (question.QuestionType == QuestionType.Date)
-                answer.Value = ((DatePicker)control).Date.ToString(CultureInfo.InvariantCulture);
+                answer.Value = ((NullableDateView)control).NullableDate?.ToString(CultureInfo.InvariantCulture) ?? null;
             else if (question.QuestionType == QuestionType.MultipleSelect)
                 answer.Value = JsonConvert.SerializeObject(((MultiSelectPicker)control).SelectedValues);
             else if (question.QuestionType == QuestionType.SingleSelect)

@@ -1,5 +1,6 @@
 ﻿using MobileClient.Controllers;
 using MobileClient.Services;
+using MobileClient.Views.FillSurveys;
 using StudentSurveySystem.ApiClient.Model;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
