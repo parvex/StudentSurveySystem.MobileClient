@@ -1,6 +1,11 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel;
+using System.Text;
 using System.Threading.Tasks;
+using Acr.UserDialogs;
 using MobileClient.Helpers;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using StudentSurveySystem.ApiClient.Api;
 using StudentSurveySystem.ApiClient.Client;
 using StudentSurveySystem.ApiClient.Model;
@@ -52,6 +57,27 @@ namespace MobileClient.Services
         {
             ApiConfiguration.ApiKey["Authorization"] = null;
             UserHelper.User = null;
+        }
+
+        public static void HandleException(ApiException exception)
+        {
+            if (exception.ErrorCode == 400)
+            {
+                var content = JObject.Parse(exception.ErrorContent.ToString());
+
+                var x = content["errors"];
+                Dictionary<string, List<string>> errorDictionary = JsonConvert.DeserializeObject<Dictionary<string, List<string>>>(content["errors"].ToString());
+                var stringBuild = new StringBuilder("Validation errors:\n");
+                foreach (var errorList in errorDictionary)
+                {
+                    foreach (var error in errorList.Value)
+                    {
+                        stringBuild.Append(error + "\n");
+                    }
+                }
+                UserDialogs.Instance.Toast(stringBuild.ToString());
+
+            }
         }
     }
 }

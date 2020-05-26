@@ -4,6 +4,7 @@ using System.Linq;
 using Acr.UserDialogs;
 using MobileClient.Services;
 using MobileClient.Views.MySurveys;
+using StudentSurveySystem.ApiClient.Client;
 using StudentSurveySystem.ApiClient.Model;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -72,11 +73,20 @@ namespace MobileClient.Views
                     question.Index = x.Index;
                     return (QuestionDto) x;
                 }).ToList();
-                if (Survey.Id.HasValue)
-                    await SystemApi.SurveysClient.SurveysIdPutAsync(Survey.Id, Survey);
-                else
-                    await SystemApi.SurveysClient.SurveysPostAsync(Survey);
-                await Navigation.PopAsync();
+
+                try
+                {
+                    if (Survey.Id.HasValue)
+                        await SystemApi.SurveysClient.SurveysIdPutAsync(Survey.Id, Survey);
+                    else
+                        await SystemApi.SurveysClient.SurveysPostAsync(Survey);
+
+                    await Navigation.PopAsync();
+                }
+                catch (ApiException exception)
+                {
+                    SystemApi.HandleException(exception);
+                }
             }
         }
     }
