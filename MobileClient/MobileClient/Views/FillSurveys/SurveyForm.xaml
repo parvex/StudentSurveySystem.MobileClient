@@ -9,7 +9,7 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout>
-                <Label x:Name="SurveyNameLabel" Margin="0,0,0,20" FontAttributes="Bold" FontSize="Large" HorizontalTextAlignment="Center"/>
+                <Label x:Name="SurveyNameLabel" Style="{StaticResource FormLabel}" FontAttributes="Bold" FontSize="Large" HorizontalTextAlignment="Center"/>
                 <StackLayout x:Name="FormControlsLayout">
 
                 </StackLayout>

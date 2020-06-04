@@ -34,6 +34,8 @@ namespace MobileClient.Templates
         {
             ((NullableDateView)bindable).IsVisible = (bool)newValue;
             ((NullableDateView) bindable).Content.IsVisible = (bool) newValue;
+            ((NullableDateView) bindable).IsVisible = (bool) newValue;
+            ((NullableDateView) bindable).Grid.IsVisible = (bool) newValue;
         }
 
         public event EventHandler DateChanged;

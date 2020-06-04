@@ -12,40 +12,43 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <extensions:IntEnumConverter x:Key="IntEnum"/>
+            <extensions:NullToVisibilityConverter x:Key="NullToVisibility"/>
         </ResourceDictionary>
     </ContentPage.Resources>
 
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Index"></Label>
-            <Label Text="{Binding ErrorDictionary[Index]}" TextColor="Red"></Label>
+            <Label Text="Index" Style="{StaticResource FormLabel}"></Label>
             <Entry Keyboard="Numeric" Text="{Binding Index}">
                 <Entry.Behaviors>
                     <extensions:IntegerValidationBehavior />
                 </Entry.Behaviors>
             </Entry>
-            <Label Text="Question"></Label>
-            <Entry Text="{Binding QuestionText}"></Entry>
-            <Label Text="{Binding ErrorDictionary[QuestionText]}" TextColor="Red"></Label>
-            <Label Text="Type"></Label>
-            <Picker Title="Question type" ItemsSource="{Binding QuestionTypes}" SelectedIndex="{Binding QuestionType, Converter={StaticResource IntEnum}}"/>
-            <Label Text="{Binding ErrorDictionary[QuestionType]}" TextColor="Red"></Label>
 
-            <Label Text="Integer" IsVisible="{Binding VisibleDictionary[Numeric]}"></Label>
+            <Label Text="Question" Style="{StaticResource FormLabel}"></Label>
+            <Entry Text="{Binding QuestionText}"></Entry>
+            <Label Text="{Binding ErrorDictionary[QuestionText]}" TextColor="Red" IsVisible="{Binding ErrorDictionary[QuestionText], Converter={StaticResource NullToVisibility}}"></Label>
+
+            <Label Text="Type" Style="{StaticResource FormLabel}"></Label>
+            <Picker Title="Question type" ItemsSource="{Binding QuestionTypes}" SelectedIndex="{Binding QuestionType, Converter={StaticResource IntEnum}}"/>
+            <Label Text="{Binding ErrorDictionary[QuestionType]}" TextColor="Red" IsVisible="{Binding ErrorDictionary[QuestionType], Converter={StaticResource NullToVisibility}}"></Label>
+
+            <Label Text="Integer" IsVisible="{Binding VisibleDictionary[Numeric]}" Style="{StaticResource FormLabel}"></Label>
             <CheckBox IsChecked="{Binding ValidationConfig.Integer}" IsVisible="{Binding VisibleDictionary[Numeric]}"></CheckBox>
-            <Label Text="Min value" IsVisible="{Binding VisibleDictionary[Numeric]}"></Label>
+
+            <Label Text="Min value" IsVisible="{Binding VisibleDictionary[Numeric]}" Style="{StaticResource FormLabel}"></Label>
             <Entry Keyboard="Numeric" Text="{Binding ValidationConfig.MinNumericValue}" IsVisible="{Binding VisibleDictionary[Numeric]}"></Entry>
-            <Label Text="Max value" IsVisible="{Binding VisibleDictionary[Numeric]}"></Label>
+            <Label Text="Max value" IsVisible="{Binding VisibleDictionary[Numeric]}" Style="{StaticResource FormLabel}"></Label>
             <Entry Keyboard="Numeric" Text="{Binding ValidationConfig.MaxNumericValue}" IsVisible="{Binding VisibleDictionary[Numeric]}"></Entry>
             <Label Text="{Binding ErrorDictionary[NumericRange]}" TextColor="Red" IsVisible="{Binding VisibleDictionary[Numeric]}"></Label>
 
-            <Label Text="Min value" IsVisible="{Binding VisibleDictionary[Date]}"></Label>
+            <Label Text="Min value" IsVisible="{Binding VisibleDictionary[Date]}" Style="{StaticResource FormLabel}"></Label>
             <templates:NullableDateView NullableDate="{Binding ValidationConfig.MinDateValue}" IsVisible="{Binding VisibleDictionary[Date]}"></templates:NullableDateView>
-            <Label Text="Max value" IsVisible="{Binding VisibleDictionary[Date]}"></Label>
+            <Label Text="Max value" IsVisible="{Binding VisibleDictionary[Date]}" Style="{StaticResource FormLabel}"></Label>
             <templates:NullableDateView NullableDate="{Binding ValidationConfig.MaxDateValue}" IsVisible="{Binding VisibleDictionary[Date]}"></templates:NullableDateView>
-            <Label Text="{Binding ErrorDictionary[DateRange]}" TextColor="Red" IsVisible="{Binding VisibleDictionary[Date]}"></Label>
+            <Label Text="{Binding ErrorDictionary[DateRange]}" TextColor="Red"></Label>
 
-            <Label Text="Regex" IsVisible="{Binding VisibleDictionary[Text]}"></Label>
+            <Label Text="Regex" IsVisible="{Binding VisibleDictionary[Text]}" Style="{StaticResource FormLabel}"></Label>
             <Entry Text="{Binding ValidationConfig.Regex}" IsVisible="{Binding VisibleDictionary[Text]}"></Entry>
             <Label Text="{Binding ErrorDictionary[Regex]}" TextColor="Red" IsVisible="{Binding VisibleDictionary[Text]}"></Label>
 
@@ -56,16 +59,15 @@
                     <DataTemplate>
                         <ViewCell>
                             <SwipeView>
-                                <SwipeView.RightItems>
-                                    <SwipeItems>
-                                        <SwipeItem Text="Delete"
-                                                   BackgroundColor="LightPink"
-                                                   Command="{Binding Path=BindingContext.Commands[DeleteValue], Source={x:Reference ListView}}" CommandParameter="{Binding .}"
-                                                   IconImageSource="{extensions:ImageResource MobileClient.Resources.delete.png}"/>
-                                    </SwipeItems>
-                                </SwipeView.RightItems>
-                                <Label Text="{Binding .}"></Label>
-                            </SwipeView>
+                                    <SwipeView.RightItems>
+                                        <SwipeItems>
+                                            <SwipeItem BackgroundColor="LightPink"
+                                                       Command="{Binding Path=BindingContext.Commands[DeleteValue], Source={x:Reference ListView}}" CommandParameter="{Binding .}"
+                                                       IconImageSource="{extensions:ImageResource MobileClient.Resources.delete.png}"/>
+                                        </SwipeItems>
+                                    </SwipeView.RightItems>
+                                    <Label VerticalTextAlignment="Center" Text="{Binding .}"></Label>
+                                </SwipeView>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>

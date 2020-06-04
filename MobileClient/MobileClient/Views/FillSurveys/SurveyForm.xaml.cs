@@ -42,7 +42,8 @@ namespace MobileClient.Views.FillSurveys
         private (Label, View, QuestionDto, Label) CreateControlAndLabelForQuestion(QuestionDto question)
         {
             var label = new Label() {Text = question.Index + ". " + question.QuestionText};
-            var validationLabel = new Label() {TextColor = Color.Red};
+            label.Style = (Style) Application.Current.Resources["FormLabel"];
+            var validationLabel = new Label() {TextColor = Color.Red, IsVisible = false};
             View control;
             switch (question.QuestionType)
             {
@@ -97,6 +98,7 @@ namespace MobileClient.Views.FillSurveys
             regexString = "^" + regexString + "$";
             var match = Regex.Match(control.Text, regexString);
             validationLabel.Text = !match.Success ? $"Text doesn't match criteria - {regexString}" : null;
+            validationLabel.IsVisible = !string.IsNullOrEmpty(validationLabel.Text);
         }
 
         private void ValidateNumeric(object sender, TextChangedEventArgs e)
@@ -111,6 +113,8 @@ namespace MobileClient.Views.FillSurveys
                 validationLabel.Text = "Number should be " + (minValue.HasValue ? "from " + minValue : null) + (maxValue.HasValue ? " to " + maxValue : null);
             else
                 validationLabel.Text = null;
+
+            validationLabel.IsVisible = !string.IsNullOrEmpty(validationLabel.Text);
         }
 
         private void ValidateDate(object sender, EventArgs e)
@@ -126,6 +130,8 @@ namespace MobileClient.Views.FillSurveys
                                                          + (maxValue.HasValue ? " to " + maxValue.Value.Date.ToString("dd/MM/yyyy") : null);
             else
                 validationLabel.Text = null;
+
+            validationLabel.IsVisible = !string.IsNullOrEmpty(validationLabel.Text);
         }
 
         private SurveyResponseDto CreateSurveyResponseDtoFromData()
@@ -170,7 +176,7 @@ namespace MobileClient.Views.FillSurveys
                 switch (questionDto.QuestionType)
                 {
                     case QuestionType.Text:
-                        ValidateDate(control, null);
+                        ValidateText(control, null);
                         break;
                     case QuestionType.Numeric:
                         ValidateNumeric(control, null);

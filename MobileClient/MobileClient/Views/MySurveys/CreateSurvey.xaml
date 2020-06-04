@@ -12,16 +12,16 @@
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Title" FontAttributes="Bold"></Label>
+            <Label Text="Title" FontAttributes="Bold" Style="{StaticResource FormLabel}"></Label>
             <Entry Text="{Binding Survey.Name}"/>
-            <Label Text="Questions" FontAttributes="Bold" ></Label>
+            <Label Text="Questions" FontAttributes="Bold" Style="{StaticResource FormLabel}"></Label>
             <ListView x:Name="ListView" ItemsSource="{Binding QuestionsList}" ItemTapped="ListView_OnItemTapped"><ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
                             <SwipeView>
                                 <SwipeView.RightItems>
                                     <SwipeItems>
-                                        <SwipeItem Text="Delete"
+                                        <SwipeItem
                                                    BackgroundColor="LightPink"
                                                    Command="{Binding Path=BindingContext.DeleteCommand, Source={x:Reference ListView}}" CommandParameter="{Binding .}"
                                                    IconImageSource="{extensions:ImageResource MobileClient.Resources.delete.png}"/>
@@ -34,9 +34,9 @@
                                         <ColumnDefinition Width="Auto" />
                                         <ColumnDefinition Width="Auto" />
                                     </Grid.ColumnDefinitions>
-                                    <Label Grid.Column="0" Text="{Binding Index, StringFormat='{0}.'}"></Label>
-                                    <Label Grid.Column="1" Text="{Binding QuestionText}"/>
-                                    <Label Grid.Column="2" Text="{Binding QuestionType, StringFormat='Type: {0}'}"/>
+                                    <Label VerticalTextAlignment="Center" Grid.Column="0" Text="{Binding Index, StringFormat='{0}.'}"></Label>
+                                    <Label VerticalTextAlignment="Center" Grid.Column="1" Text="{Binding QuestionText}"/>
+                                    <Label VerticalTextAlignment="Center" Grid.Column="2" Text="{Binding QuestionType, StringFormat='Type: {0}'}"/>
                                 </Grid>
                             </SwipeView>
                         </ViewCell>
