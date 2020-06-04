@@ -9,6 +9,7 @@ using MobileClient.Helpers;
 using MobileClient.Services;
 using MobileClient.Templates;
 using Newtonsoft.Json;
+using StudentSurveySystem.ApiClient.Client;
 using StudentSurveySystem.ApiClient.Model;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -40,7 +41,7 @@ namespace MobileClient.Views.FillSurveys
 
         private (Label, View, QuestionDto, Label) CreateControlAndLabelForQuestion(QuestionDto question)
         {
-            var label = new Label() {Text = question.QuestionText};
+            var label = new Label() {Text = question.Index + ". " + question.QuestionText};
             var validationLabel = new Label() {TextColor = Color.Red};
             View control;
             switch (question.QuestionType)
@@ -100,7 +101,7 @@ namespace MobileClient.Views.FillSurveys
 
         private void ValidateNumeric(object sender, TextChangedEventArgs e)
         {
-            var control = (Entry) sender;
+            var control = (Entry)sender;
             var (_, _, question, validationLabel) = _controlList.Find(x => x.Item2 == control);
             var minValue = question.ValidationConfig.MinNumericValue;
             var maxValue = question.ValidationConfig.MaxNumericValue;
@@ -182,12 +183,20 @@ namespace MobileClient.Views.FillSurveys
 
             if (_controlList.Any(x => x.Item4.Text != null))
                 return;
-            using (UserDialogs.Instance.Loading())
+            try
             {
-                await SystemApi.SurveyResponsesClient.SurveyResponsesPostAsync(CreateSurveyResponseDtoFromData());
+                using (UserDialogs.Instance.Loading())
+                {
+                    await SystemApi.SurveyResponsesClient.SurveyResponsesPostAsync(CreateSurveyResponseDtoFromData());
+                }
+
+                UserDialogs.Instance.Toast("Survey sent!", TimeSpan.FromSeconds(2));
+                await Navigation.PopAsync();
             }
-            UserDialogs.Instance.Toast("Survey sent!", TimeSpan.FromSeconds(2));
-            await Navigation.PopAsync();
+            catch(ApiException exception)
+            {
+                SystemApi.HandleException(exception);
+            }
         }
     }
 }
