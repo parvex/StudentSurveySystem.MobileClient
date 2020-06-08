@@ -30,6 +30,9 @@ namespace MobileClient.Views
                     case MenuItemType.MySurveys:
                         MenuPages.Add(id, new NavigationPage(new MySurveysList()));
                         break;
+                    case MenuItemType.MySurveyTemplates:
+                        MenuPages.Add(id, new NavigationPage(new MySurveyTemplates()));
+                        break;
                     case MenuItemType.FillSurveys:
                         MenuPages.Add(id, new NavigationPage(new SurveysToFillList()));
                         break;

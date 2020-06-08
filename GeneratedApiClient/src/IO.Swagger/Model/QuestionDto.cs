@@ -27,7 +27,7 @@ namespace IO.Swagger.Model
     /// QuestionDto
     /// </summary>
     [DataContract]
-    public partial class QuestionDto :  IEquatable<QuestionDto>, IValidatableObject
+        public partial class QuestionDto :  IEquatable<QuestionDto>, IValidatableObject
     {
         /// <summary>
         /// Gets or Sets QuestionType

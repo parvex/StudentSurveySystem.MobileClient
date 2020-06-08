@@ -4,131 +4,17 @@ All URIs are relative to *https://localhost:5001*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**SurveysActivateIdPost**](SurveysApi.md#surveysactivateidpost) | **POST** /Surveys/Activate/{id} | 
-[**SurveysDeactivateIdPost**](SurveysApi.md#surveysdeactivateidpost) | **POST** /Surveys/Deactivate/{id} | 
 [**SurveysGet**](SurveysApi.md#surveysget) | **GET** /Surveys | 
 [**SurveysIdDelete**](SurveysApi.md#surveysiddelete) | **DELETE** /Surveys/{id} | 
 [**SurveysIdGet**](SurveysApi.md#surveysidget) | **GET** /Surveys/{id} | 
 [**SurveysIdPut**](SurveysApi.md#surveysidput) | **PUT** /Surveys/{id} | 
 [**SurveysMyNotFilledFormGet**](SurveysApi.md#surveysmynotfilledformget) | **GET** /Surveys/MyNotFilledForm | 
+[**SurveysMySurveyTemplatesGet**](SurveysApi.md#surveysmysurveytemplatesget) | **GET** /Surveys/MySurveyTemplates | 
 [**SurveysMySurveysGet**](SurveysApi.md#surveysmysurveysget) | **GET** /Surveys/MySurveys | 
 [**SurveysPost**](SurveysApi.md#surveyspost) | **POST** /Surveys | 
 [**SurveysPut**](SurveysApi.md#surveysput) | **PUT** /Surveys | 
+[**SurveysStartSurveyFromTemplatePost**](SurveysApi.md#surveysstartsurveyfromtemplatepost) | **POST** /Surveys/StartSurveyFromTemplate | 
 
-<a name="surveysactivateidpost"></a>
-# **SurveysActivateIdPost**
-> void SurveysActivateIdPost (int? id)
-
-
-
-### Example
-```csharp
-using System;
-using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
-
-namespace Example
-{
-    public class SurveysActivateIdPostExample
-    {
-        public void main()
-        {
-
-            var apiInstance = new SurveysApi();
-            var id = 56;  // int? | 
-
-            try
-            {
-                apiInstance.SurveysActivateIdPost(id);
-            }
-            catch (Exception e)
-            {
-                Debug.Print("Exception when calling SurveysApi.SurveysActivateIdPost: " + e.Message );
-            }
-        }
-    }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **int?**|  | 
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-[Bearer](../README.md#Bearer)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: Not defined
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-<a name="surveysdeactivateidpost"></a>
-# **SurveysDeactivateIdPost**
-> void SurveysDeactivateIdPost (int? id)
-
-
-
-### Example
-```csharp
-using System;
-using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
-
-namespace Example
-{
-    public class SurveysDeactivateIdPostExample
-    {
-        public void main()
-        {
-
-            var apiInstance = new SurveysApi();
-            var id = 56;  // int? | 
-
-            try
-            {
-                apiInstance.SurveysDeactivateIdPost(id);
-            }
-            catch (Exception e)
-            {
-                Debug.Print("Exception when calling SurveysApi.SurveysDeactivateIdPost: " + e.Message );
-            }
-        }
-    }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **int?**|  | 
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-[Bearer](../README.md#Bearer)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: Not defined
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="surveysget"></a>
 # **SurveysGet**
 > List<SurveyDto> SurveysGet (string name = null, int? page = null, int? count = null)
@@ -427,6 +313,68 @@ Name | Type | Description  | Notes
  - **Accept**: text/plain, application/json, text/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+<a name="surveysmysurveytemplatesget"></a>
+# **SurveysMySurveyTemplatesGet**
+> List<SurveyDto> SurveysMySurveyTemplatesGet (string name = null, int? page = null, int? count = null)
+
+
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class SurveysMySurveyTemplatesGetExample
+    {
+        public void main()
+        {
+
+            var apiInstance = new SurveysApi();
+            var name = name_example;  // string |  (optional) 
+            var page = 56;  // int? |  (optional)  (default to 0)
+            var count = 56;  // int? |  (optional)  (default to 20)
+
+            try
+            {
+                List&lt;SurveyDto&gt; result = apiInstance.SurveysMySurveyTemplatesGet(name, page, count);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling SurveysApi.SurveysMySurveyTemplatesGet: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **string**|  | [optional] 
+ **page** | **int?**|  | [optional] [default to 0]
+ **count** | **int?**|  | [optional] [default to 20]
+
+### Return type
+
+[**List<SurveyDto>**](SurveyDto.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: text/plain, application/json, text/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="surveysmysurveysget"></a>
 # **SurveysMySurveysGet**
 > List<SurveyDto> SurveysMySurveysGet (string name = null, int? page = null, int? count = null)
@@ -603,5 +551,62 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json, text/json, application/_*+json
  - **Accept**: text/plain, application/json, text/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+<a name="surveysstartsurveyfromtemplatepost"></a>
+# **SurveysStartSurveyFromTemplatePost**
+> void SurveysStartSurveyFromTemplatePost (SurveyDto body = null)
+
+
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class SurveysStartSurveyFromTemplatePostExample
+    {
+        public void main()
+        {
+
+            var apiInstance = new SurveysApi();
+            var body = new SurveyDto(); // SurveyDto |  (optional) 
+
+            try
+            {
+                apiInstance.SurveysStartSurveyFromTemplatePost(body);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling SurveysApi.SurveysStartSurveyFromTemplatePost: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**SurveyDto**](SurveyDto.md)|  | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/json, application/_*+json
+ - **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

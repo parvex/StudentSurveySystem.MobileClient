@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **CourseId** | **int?** |  | [optional] 
 **Questions** | [**List&lt;QuestionDto&gt;**](QuestionDto.md) |  | 
 **Active** | **bool?** |  | [optional] 
+**IsTemplate** | **bool?** |  | [optional] 
 **Anonymous** | **bool?** |  | [optional] 
 **CourseName** | **string** |  | [optional] 
 **CreatorName** | **string** |  | [optional] 

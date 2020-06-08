@@ -50,6 +50,7 @@
                 </ListView.ItemTemplate>
             </ListView>
 
+            <Button Clicked="StartActiveSurvey_OnClicked" Text="Start active survey from template"></Button>
             <Button Clicked="Save_OnClicked" Text="Save"></Button>
         </StackLayout>
     </ContentPage.Content>

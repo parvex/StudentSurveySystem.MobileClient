@@ -25,10 +25,11 @@ namespace MobileClient.Views
             BindingContext = this;
         }
 
-        public CreateSurvey()
+        public CreateSurvey(bool isTemplate = false)
         {
             InitializeComponent();
             Survey = (SurveyDto) FormatterServices.GetUninitializedObject(typeof(SurveyDto));
+            Survey.IsTemplate = isTemplate;
             QuestionsList = new ObservableCollection<QuestionModel>();
             Initialize();
         }
@@ -81,6 +82,35 @@ namespace MobileClient.Views
                         await SystemApi.SurveysClient.SurveysIdPutAsync(Survey.Id, Survey);
                     else
                         await SystemApi.SurveysClient.SurveysPostAsync(Survey);
+
+                    await Navigation.PopAsync();
+                }
+                catch (ApiException exception)
+                {
+                    SystemApi.HandleException(exception);
+                }
+            }
+        }
+
+        private async void StartActiveSurvey_OnClicked(object sender, EventArgs e)
+        {
+            using (UserDialogs.Instance.Loading())
+            {
+                Survey.Questions = QuestionsList.Select(x =>
+                {
+                    var question = (QuestionDto)x;
+                    question.Index = x.Index;
+                    return (QuestionDto)x;
+                }).ToList();
+
+                try
+                {
+                    if (Survey.Id.HasValue)
+                        await SystemApi.SurveysClient.SurveysIdPutAsync(Survey.Id, Survey);
+                    else
+                        await SystemApi.SurveysClient.SurveysPostAsync(Survey);
+
+                    await SystemApi.SurveysClient.SurveysStartSurveyFromTemplatePostAsync(Survey);
 
                     await Navigation.PopAsync();
                 }

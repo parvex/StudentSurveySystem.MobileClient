@@ -40,6 +40,9 @@
     <Compile Update="Views\FillSurveys\SurveyForm.xaml.cs">
       <DependentUpon>SurveyForm.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\MySurveys\MySurveyTemplates.xaml.cs">
+      <DependentUpon>MySurveyTemplates.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\SurveyResponses\MySurveyResponsesList.xaml.cs">
       <DependentUpon>MySurveyResponsesList.xaml</DependentUpon>
     </Compile>

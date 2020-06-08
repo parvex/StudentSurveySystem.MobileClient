@@ -38,11 +38,12 @@ namespace IO.Swagger.Model
         /// <param name="courseId">courseId.</param>
         /// <param name="questions">questions (required).</param>
         /// <param name="active">active.</param>
+        /// <param name="isTemplate">isTemplate.</param>
         /// <param name="anonymous">anonymous.</param>
         /// <param name="courseName">courseName.</param>
         /// <param name="creatorName">creatorName.</param>
         /// <param name="endDate">endDate.</param>
-        public SurveyDto(int? id = default(int?), string name = default(string), int? creatorId = default(int?), int? courseId = default(int?), List<QuestionDto> questions = default(List<QuestionDto>), bool? active = default(bool?), bool? anonymous = default(bool?), string courseName = default(string), string creatorName = default(string), DateTime? endDate = default(DateTime?))
+        public SurveyDto(int? id = default(int?), string name = default(string), int? creatorId = default(int?), int? courseId = default(int?), List<QuestionDto> questions = default(List<QuestionDto>), bool? active = default(bool?), bool? isTemplate = default(bool?), bool? anonymous = default(bool?), string courseName = default(string), string creatorName = default(string), DateTime? endDate = default(DateTime?))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -66,6 +67,7 @@ namespace IO.Swagger.Model
             this.CreatorId = creatorId;
             this.CourseId = courseId;
             this.Active = active;
+            this.IsTemplate = isTemplate;
             this.Anonymous = anonymous;
             this.CourseName = courseName;
             this.CreatorName = creatorName;
@@ -109,6 +111,12 @@ namespace IO.Swagger.Model
         public bool? Active { get; set; }
 
         /// <summary>
+        /// Gets or Sets IsTemplate
+        /// </summary>
+        [DataMember(Name="isTemplate", EmitDefaultValue=false)]
+        public bool? IsTemplate { get; set; }
+
+        /// <summary>
         /// Gets or Sets Anonymous
         /// </summary>
         [DataMember(Name="anonymous", EmitDefaultValue=false)]
@@ -146,6 +154,7 @@ namespace IO.Swagger.Model
             sb.Append("  CourseId: ").Append(CourseId).Append("\n");
             sb.Append("  Questions: ").Append(Questions).Append("\n");
             sb.Append("  Active: ").Append(Active).Append("\n");
+            sb.Append("  IsTemplate: ").Append(IsTemplate).Append("\n");
             sb.Append("  Anonymous: ").Append(Anonymous).Append("\n");
             sb.Append("  CourseName: ").Append(CourseName).Append("\n");
             sb.Append("  CreatorName: ").Append(CreatorName).Append("\n");
@@ -216,6 +225,11 @@ namespace IO.Swagger.Model
                     this.Active.Equals(input.Active))
                 ) && 
                 (
+                    this.IsTemplate == input.IsTemplate ||
+                    (this.IsTemplate != null &&
+                    this.IsTemplate.Equals(input.IsTemplate))
+                ) && 
+                (
                     this.Anonymous == input.Anonymous ||
                     (this.Anonymous != null &&
                     this.Anonymous.Equals(input.Anonymous))
@@ -258,6 +272,8 @@ namespace IO.Swagger.Model
                     hashCode = hashCode * 59 + this.Questions.GetHashCode();
                 if (this.Active != null)
                     hashCode = hashCode * 59 + this.Active.GetHashCode();
+                if (this.IsTemplate != null)
+                    hashCode = hashCode * 59 + this.IsTemplate.GetHashCode();
                 if (this.Anonymous != null)
                     hashCode = hashCode * 59 + this.Anonymous.GetHashCode();
                 if (this.CourseName != null)

@@ -23,6 +23,7 @@ namespace MobileClient.Views
 
             if (UserHelper.User.UserRole == UserRole.Lecturer || UserHelper.User.UserRole == UserRole.Admin)
             {
+                menuItems.Add(new HomeMenuItem { Id = MenuItemType.MySurveyTemplates, Title = "My survey templates" });
                 menuItems.Add(new HomeMenuItem { Id = MenuItemType.MySurveys, Title = "My surveys" });
             }
 

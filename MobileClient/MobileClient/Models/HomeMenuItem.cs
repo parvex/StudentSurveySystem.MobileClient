@@ -4,10 +4,11 @@
     {
         FillSurveys,
         MySurveys,
+        MySurveyTemplates,
         MyResponses,
         AllResponses,
         About,
-        Logout
+        Logout,
     }
     public class HomeMenuItem
     {
