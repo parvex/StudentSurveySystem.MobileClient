@@ -1,4 +1,4 @@
-﻿using StudentSurveySystem.ApiClient.Model;
+﻿using IO.Swagger.Model;
 
 namespace MobileClient.Helpers
 {

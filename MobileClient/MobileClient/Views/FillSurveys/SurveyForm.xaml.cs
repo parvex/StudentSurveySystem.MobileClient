@@ -4,13 +4,12 @@ using System.Globalization;
 using System.Linq;
 using System.Text.RegularExpressions;
 using Acr.UserDialogs;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
 using MobileClient.Extensions;
-using MobileClient.Helpers;
 using MobileClient.Services;
 using MobileClient.Templates;
 using Newtonsoft.Json;
-using StudentSurveySystem.ApiClient.Client;
-using StudentSurveySystem.ApiClient.Model;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -138,7 +137,6 @@ namespace MobileClient.Views.FillSurveys
         {
             var surveyResponse = new SurveyResponseDto()
             {
-                RespondentId = UserHelper.User.Id.Value,
                 SurveyId = Survey.Id.Value,
                 Answers = new List<AnswerDto>()
             };

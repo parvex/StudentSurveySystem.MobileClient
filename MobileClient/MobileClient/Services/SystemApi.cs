@@ -1,14 +1,13 @@
 ﻿using System.Collections.Generic;
-using System.ComponentModel;
 using System.Text;
 using System.Threading.Tasks;
 using Acr.UserDialogs;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
 using MobileClient.Helpers;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using StudentSurveySystem.ApiClient.Api;
-using StudentSurveySystem.ApiClient.Client;
-using StudentSurveySystem.ApiClient.Model;
 
 
 namespace MobileClient.Services

@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using IO.Swagger.Model;
 using Mapster;
-using StudentSurveySystem.ApiClient.Model;
 
 namespace MobileClient.Views.MySurveys
 {

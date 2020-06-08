@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Acr.UserDialogs;
+using IO.Swagger.Model;
 using MobileClient.Services;
-using StudentSurveySystem.ApiClient.Model;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 

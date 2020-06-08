@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Collections.Specialized;
 using System.Linq;
 using Force.DeepCloner;
+using IO.Swagger.Model;
 using Mapster;
 using MobileClient.Extensions;
 using MobileClient.Models;
-using StudentSurveySystem.ApiClient.Model;
 using Xamarin.Forms;
 
 namespace MobileClient.Views.MySurveys
@@ -18,7 +17,7 @@ namespace MobileClient.Views.MySurveys
         private readonly ObservableCollection<QuestionVm> _questionList;
         private readonly QuestionVm _originalQuestion;
         private string _questionText;
-        public QuestionType? _questionType { get; set; }
+        public QuestionType _questionType { get; set; }
         /// <summary>
         /// Values for mutli or single select
         /// </summary>
@@ -39,7 +38,7 @@ namespace MobileClient.Views.MySurveys
         public List<string> QuestionTypes { get; } = Enum.GetNames(typeof(QuestionType)).Select(b => b.SplitCamelCase()).ToList();
         public AutoObsDictionary<string, string> ErrorDictionary { get; set; } = new AutoObsDictionary<string, string>();
 
-        public QuestionType? QuestionType
+        public QuestionType QuestionType
         {
             get => _questionType;
             set
@@ -52,22 +51,20 @@ namespace MobileClient.Views.MySurveys
 
                 switch (value)
                 {
-                    case StudentSurveySystem.ApiClient.Model.QuestionType.Text:
+                    case QuestionType.Text:
                         VisibleDictionary["Text"] = true;
                         break;
-                    case StudentSurveySystem.ApiClient.Model.QuestionType.SingleSelect:
-                    case StudentSurveySystem.ApiClient.Model.QuestionType.MultipleSelect:
+                    case QuestionType.SingleSelect:
+                    case QuestionType.MultipleSelect:
                         VisibleDictionary["MultipleSelect"] = true;
                         break;
-                    case StudentSurveySystem.ApiClient.Model.QuestionType.Numeric:
+                    case QuestionType.Numeric:
                         VisibleDictionary["Numeric"] = true;
                         break;
-                    case StudentSurveySystem.ApiClient.Model.QuestionType.Date:
+                    case QuestionType.Date:
                         VisibleDictionary["Date"] = true;
                         break;
-                    case StudentSurveySystem.ApiClient.Model.QuestionType.Boolean:
-                        break;
-                    case null:
+                    case QuestionType.Boolean:
                         break;
                     default:
                         ErrorDictionary["QuestionType"] = "Please select question type.";

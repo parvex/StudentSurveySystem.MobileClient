@@ -1,6 +1,6 @@
-﻿using MobileClient.Controllers;
+﻿using IO.Swagger.Model;
+using MobileClient.Controllers;
 using MobileClient.Services;
-using StudentSurveySystem.ApiClient.Model;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 

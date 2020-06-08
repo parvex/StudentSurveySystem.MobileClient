@@ -34,10 +34,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\StudentSurveySystem.Server\GeneratedApiClient\src\StudentSurveySystem.ApiClient\StudentSurveySystem.ApiClient.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Compile Update="Views\FillSurveys\SurveysToFillList.xaml.cs">
       <DependentUpon>SurveysToFillList.xaml</DependentUpon>
     </Compile>
@@ -102,5 +98,9 @@
 
   <ItemGroup>
     <Folder Include="Views\Shared\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\GeneratedApiClient\src\IO.Swagger\IO.Swagger.csproj" />
   </ItemGroup>
 </Project>

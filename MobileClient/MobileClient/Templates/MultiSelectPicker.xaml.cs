@@ -1,8 +1,5 @@
 ﻿using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
-using System.Windows.Input;
-using MobileClient.Helpers;
 using Xamarin.Forms;
 using Xamarin.Forms.MultiSelectListView;
 using Xamarin.Forms.Xaml;

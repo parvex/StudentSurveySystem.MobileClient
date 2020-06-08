@@ -1,8 +1,8 @@
 ﻿using System;
 using Acr.UserDialogs;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
 using MobileClient.Services;
-using StudentSurveySystem.ApiClient.Client;
-using StudentSurveySystem.ApiClient.Model;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;

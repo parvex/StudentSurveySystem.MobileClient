@@ -1,11 +1,10 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using IO.Swagger.Model;
 using Mapster;
 using MobileClient.Annotations;
-using MobileClient.Helpers;
 using MobileClient.Models;
-using StudentSurveySystem.ApiClient.Model;
 
 namespace MobileClient.Views.MySurveys
 {

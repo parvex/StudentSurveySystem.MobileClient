@@ -2,10 +2,10 @@
 using System.Collections.ObjectModel;
 using System.Linq;
 using Acr.UserDialogs;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
 using MobileClient.Services;
 using MobileClient.Views.MySurveys;
-using StudentSurveySystem.ApiClient.Client;
-using StudentSurveySystem.ApiClient.Model;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
