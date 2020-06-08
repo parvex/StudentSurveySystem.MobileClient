@@ -6,7 +6,7 @@
   },
   "servers": [
     {
-      "url": "https://localhost:44339"
+      "url": "https://localhost:5001"
     }
   ],
   "paths": {
@@ -1060,8 +1060,7 @@
           },
           "endDate": {
             "type": "string",
-            "format": "date-time",
-            "nullable": true
+            "format": "date-time"
           }
         },
         "additionalProperties": false

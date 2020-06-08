@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Runtime.Serialization;
 using Force.DeepCloner;
 using IO.Swagger.Model;
 using Mapster;
@@ -14,8 +15,8 @@ namespace MobileClient.Views.MySurveys
     public class QuestionViewModel : ViewModelBase
     {
 
-        private readonly ObservableCollection<QuestionVm> _questionList;
-        private readonly QuestionVm _originalQuestion;
+        private readonly ObservableCollection<QuestionModel> _questionList;
+        private readonly QuestionModel _originalQuestion;
         private string _questionText;
         public QuestionType _questionType { get; set; }
         /// <summary>
@@ -97,13 +98,13 @@ namespace MobileClient.Views.MySurveys
                 Values[index.Value] = value;
         }
 
-        public QuestionViewModel(ObservableCollection<QuestionVm> questionList) : this()
+        public QuestionViewModel(ObservableCollection<QuestionModel> questionList) : this()
         {
             _questionList = questionList;
             Index = (questionList.Count+1).ToString();
         }
 
-        public QuestionViewModel(QuestionVm question, ObservableCollection<QuestionVm> questionList) : this()
+        public QuestionViewModel(QuestionModel question, ObservableCollection<QuestionModel> questionList) : this()
         {
             _questionList = questionList;
             _originalQuestion = question;
@@ -123,7 +124,7 @@ namespace MobileClient.Views.MySurveys
             if (ErrorDictionary.Any(x => !string.IsNullOrEmpty(x.Value)))
                 return false;
 
-            QuestionVm question;
+            QuestionModel question;
             if (_originalQuestion != null)
             {
                 _questionList.Remove(_originalQuestion);
@@ -131,7 +132,7 @@ namespace MobileClient.Views.MySurveys
             }
             else
             {
-                question = new QuestionVm();
+                question = (QuestionModel) FormatterServices.GetUninitializedObject(typeof(QuestionModel));
             }
 
             question.Index = string.IsNullOrEmpty(Index) ? _questionList.Count : int.Parse(Index);

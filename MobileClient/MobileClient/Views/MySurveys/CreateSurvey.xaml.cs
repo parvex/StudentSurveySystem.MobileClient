@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Runtime.Serialization;
 using Acr.UserDialogs;
 using IO.Swagger.Client;
 using IO.Swagger.Model;
@@ -15,7 +16,7 @@ namespace MobileClient.Views
     public partial class CreateSurvey : ContentPage
     {
         public SurveyDto Survey { get; set; }
-        public ObservableCollection<QuestionVm> QuestionsList { get; set; }
+        public ObservableCollection<QuestionModel> QuestionsList { get; set; }
         public Command<object> DeleteCommand { get; set; }
 
         public void Initialize()
@@ -27,8 +28,8 @@ namespace MobileClient.Views
         public CreateSurvey()
         {
             InitializeComponent();
-            Survey = new SurveyDto();
-            QuestionsList = new ObservableCollection<QuestionVm>();
+            Survey = (SurveyDto) FormatterServices.GetUninitializedObject(typeof(SurveyDto));
+            QuestionsList = new ObservableCollection<QuestionModel>();
             Initialize();
         }
 
@@ -37,25 +38,25 @@ namespace MobileClient.Views
             InitializeComponent();
             Survey = survey;
             QuestionsList = survey.Questions != null
-                ? new ObservableCollection<QuestionVm>(survey.Questions.OrderBy(x => x.Index).Select(x => new QuestionVm(x)))
-                : new ObservableCollection<QuestionVm>();
+                ? new ObservableCollection<QuestionModel>(survey.Questions.OrderBy(x => x.Index).Select(x => new QuestionModel(x)))
+                : new ObservableCollection<QuestionModel>();
             Initialize();
         }
 
         private void AddQuestion_OnClicked(object sender, EventArgs e)
         {
-            var question = new QuestionDto();
+            var question = (QuestionDto) FormatterServices.GetUninitializedObject(typeof(QuestionDto));
             Navigation.PushAsync(new QuestionForm(QuestionsList));
         }
 
         private void ListView_OnItemTapped(object sender, ItemTappedEventArgs e)
         {
-            Navigation.PushAsync(new QuestionForm((QuestionVm)e.Item, QuestionsList));
+            Navigation.PushAsync(new QuestionForm((QuestionModel)e.Item, QuestionsList));
         }
 
         private void DeleteQuestion(object obj)
         {
-            var question = obj as QuestionVm;
+            var question = obj as QuestionModel;
             QuestionsList.Remove(question);
             for (int i = 0; i < QuestionsList.Count; ++i)
             {

@@ -44,7 +44,7 @@
                                        Text="{Binding CourseName, StringFormat='Course: {0}'}"/>
                                 <Label Grid.Row="2"
                                        Grid.Column="1"
-                                       Text="{Binding Active, StringFormat='Active: {0}'}"
+                                       Text="{Binding Anonymous, StringFormat='Anonymous: {0}'}"
                                        VerticalOptions="End" />
                             </Grid>
                         </ViewCell>

@@ -1,6 +1,6 @@
 # IO.Swagger.Api.UsersApi
 
-All URIs are relative to *https://localhost:44339*
+All URIs are relative to *https://localhost:5001*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------

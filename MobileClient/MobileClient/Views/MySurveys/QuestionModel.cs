@@ -5,25 +5,17 @@ using Mapster;
 
 namespace MobileClient.Views.MySurveys
 {
-    public class QuestionVm : QuestionDto, INotifyPropertyChanged
+    public class QuestionModel : QuestionDto, INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public QuestionVm()
+        public QuestionModel()
         {
         }
 
-        public QuestionVm(QuestionDto question)
+        public QuestionModel(QuestionDto question) : base(question.Id, question.Index, question.QuestionText, question.QuestionType, question.ValidationConfig, question.Values)
         {
-            this.Id = question.Id;
-            this.Index = question.Index;
-            this.QuestionText = question.QuestionText;
-            this.QuestionType = question.QuestionType;
-            this.ValidationConfig = question.ValidationConfig;
-            this.Values = question.Values;
         }
-
-        public new int? Index { get; set; }
 
         public QuestionDto ToDto()
         {
