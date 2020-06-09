@@ -18,8 +18,8 @@
             <DatePicker Date="{Binding Survey.EndDate}"></DatePicker>
             <Label Text="Anonymous" FontAttributes="Bold" Style="{StaticResource FormLabel}"></Label>
             <CheckBox IsChecked="{Binding Survey.Anonymous}"></CheckBox>
-            <Label Text="Is active" FontAttributes="Bold" Style="{StaticResource FormLabel}"></Label>
-            <CheckBox IsChecked="{Binding Survey.Active}"></CheckBox>
+            <Label Text="Is active" FontAttributes="Bold" Style="{StaticResource FormLabel}" IsVisible="{Binding Survey.IsTemplate, Converter={extensions:InverseBoolConverter}}"></Label>
+            <CheckBox IsChecked="{Binding Survey.Active}" IsVisible="{Binding Survey.IsTemplate, Converter={extensions:InverseBoolConverter}}"></CheckBox>
             <Label Text="Questions" FontAttributes="Bold" Style="{StaticResource FormLabel}"></Label>
             <ListView x:Name="ListView" ItemsSource="{Binding QuestionsList}" ItemTapped="ListView_OnItemTapped"><ListView.ItemTemplate>
                     <DataTemplate>
