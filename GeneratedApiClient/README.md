@@ -112,6 +112,7 @@ Class | Method | HTTP request | Description
 *SurveysApi* | [**SurveysStartSurveyFromTemplatePost**](docs/SurveysApi.md#surveysstartsurveyfromtemplatepost) | **POST** /Surveys/StartSurveyFromTemplate | 
 *UsersApi* | [**UsersAuthenticatePost**](docs/UsersApi.md#usersauthenticatepost) | **POST** /Users/Authenticate | 
 *UsersApi* | [**UsersIdGet**](docs/UsersApi.md#usersidget) | **GET** /Users/{id} | 
+*UsersApi* | [**UsersUpdateUserUsosDataPut**](docs/UsersApi.md#usersupdateuserusosdataput) | **PUT** /Users/UpdateUserUsosData | 
 *UsersApi* | [**UsersUsosAuthDataGet**](docs/UsersApi.md#usersusosauthdataget) | **GET** /Users/UsosAuthData | 
 *UsersApi* | [**UsersUsosPinAuthPost**](docs/UsersApi.md#usersusospinauthpost) | **POST** /Users/UsosPinAuth | 
 
@@ -120,9 +121,13 @@ Class | Method | HTTP request | Description
 
  - [Model.AnswerDto](docs/AnswerDto.md)
  - [Model.AuthenticateDto](docs/AuthenticateDto.md)
+ - [Model.Course](docs/Course.md)
+ - [Model.CourseLecturer](docs/CourseLecturer.md)
+ - [Model.CourseParticipant](docs/CourseParticipant.md)
  - [Model.CurrentUserDto](docs/CurrentUserDto.md)
  - [Model.QuestionDto](docs/QuestionDto.md)
  - [Model.QuestionType](docs/QuestionType.md)
+ - [Model.Semester](docs/Semester.md)
  - [Model.SurveyDto](docs/SurveyDto.md)
  - [Model.SurveyResponseDetailsDto](docs/SurveyResponseDetailsDto.md)
  - [Model.SurveyResponseDto](docs/SurveyResponseDto.md)

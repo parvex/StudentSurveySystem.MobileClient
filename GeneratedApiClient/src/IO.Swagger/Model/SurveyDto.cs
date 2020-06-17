@@ -141,6 +141,12 @@ namespace IO.Swagger.Model
         public DateTime? EndDate { get; set; }
 
         /// <summary>
+        /// Gets or Sets Today
+        /// </summary>
+        [DataMember(Name="today", EmitDefaultValue=false)]
+        public DateTime? Today { get; private set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -159,6 +165,7 @@ namespace IO.Swagger.Model
             sb.Append("  CourseName: ").Append(CourseName).Append("\n");
             sb.Append("  CreatorName: ").Append(CreatorName).Append("\n");
             sb.Append("  EndDate: ").Append(EndDate).Append("\n");
+            sb.Append("  Today: ").Append(Today).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -248,6 +255,11 @@ namespace IO.Swagger.Model
                     this.EndDate == input.EndDate ||
                     (this.EndDate != null &&
                     this.EndDate.Equals(input.EndDate))
+                ) && 
+                (
+                    this.Today == input.Today ||
+                    (this.Today != null &&
+                    this.Today.Equals(input.Today))
                 );
         }
 
@@ -282,6 +294,8 @@ namespace IO.Swagger.Model
                     hashCode = hashCode * 59 + this.CreatorName.GetHashCode();
                 if (this.EndDate != null)
                     hashCode = hashCode * 59 + this.EndDate.GetHashCode();
+                if (this.Today != null)
+                    hashCode = hashCode * 59 + this.Today.GetHashCode();
                 return hashCode;
             }
         }

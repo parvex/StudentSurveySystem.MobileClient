@@ -38,16 +38,14 @@ namespace IO.Swagger.Model
         /// Initializes a new instance of the <see cref="CurrentUserDto" /> class.
         /// </summary>
         /// <param name="id">id.</param>
-        /// <param name="usosId">usosId.</param>
         /// <param name="firstName">firstName.</param>
         /// <param name="lastName">lastName.</param>
         /// <param name="username">username.</param>
         /// <param name="userRole">userRole.</param>
         /// <param name="token">token.</param>
-        public CurrentUserDto(int? id = default(int?), int? usosId = default(int?), string firstName = default(string), string lastName = default(string), string username = default(string), UserRole? userRole = default(UserRole?), string token = default(string))
+        public CurrentUserDto(int? id = default(int?), string firstName = default(string), string lastName = default(string), string username = default(string), UserRole? userRole = default(UserRole?), string token = default(string))
         {
             this.Id = id;
-            this.UsosId = usosId;
             this.FirstName = firstName;
             this.LastName = lastName;
             this.Username = username;
@@ -60,12 +58,6 @@ namespace IO.Swagger.Model
         /// </summary>
         [DataMember(Name="id", EmitDefaultValue=false)]
         public int? Id { get; set; }
-
-        /// <summary>
-        /// Gets or Sets UsosId
-        /// </summary>
-        [DataMember(Name="usosId", EmitDefaultValue=false)]
-        public int? UsosId { get; set; }
 
         /// <summary>
         /// Gets or Sets FirstName
@@ -101,7 +93,6 @@ namespace IO.Swagger.Model
             var sb = new StringBuilder();
             sb.Append("class CurrentUserDto {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  UsosId: ").Append(UsosId).Append("\n");
             sb.Append("  FirstName: ").Append(FirstName).Append("\n");
             sb.Append("  LastName: ").Append(LastName).Append("\n");
             sb.Append("  Username: ").Append(Username).Append("\n");
@@ -147,11 +138,6 @@ namespace IO.Swagger.Model
                     this.Id.Equals(input.Id))
                 ) && 
                 (
-                    this.UsosId == input.UsosId ||
-                    (this.UsosId != null &&
-                    this.UsosId.Equals(input.UsosId))
-                ) && 
-                (
                     this.FirstName == input.FirstName ||
                     (this.FirstName != null &&
                     this.FirstName.Equals(input.FirstName))
@@ -189,8 +175,6 @@ namespace IO.Swagger.Model
                 int hashCode = 41;
                 if (this.Id != null)
                     hashCode = hashCode * 59 + this.Id.GetHashCode();
-                if (this.UsosId != null)
-                    hashCode = hashCode * 59 + this.UsosId.GetHashCode();
                 if (this.FirstName != null)
                     hashCode = hashCode * 59 + this.FirstName.GetHashCode();
                 if (this.LastName != null)

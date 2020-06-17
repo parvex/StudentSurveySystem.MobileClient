@@ -32,6 +32,7 @@ namespace MobileClient.Views
                 menuItems.Add(new HomeMenuItem{Id = MenuItemType.AllResponses, Title = "All responses"});
             }
 
+            menuItems.Add(new HomeMenuItem { Id = MenuItemType.UpdateUsosData, Title = "Update my courses from USOS" });
             menuItems.Add(new HomeMenuItem { Id = MenuItemType.About, Title = "About" });
             menuItems.Add(new HomeMenuItem { Id = MenuItemType.Logout, Title = "Logout" });
 

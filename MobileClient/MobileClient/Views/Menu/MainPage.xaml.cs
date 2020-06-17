@@ -1,5 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using Acr.UserDialogs;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
 using MobileClient.Models;
 using MobileClient.Services;
 using MobileClient.Views.MySurveys;
@@ -41,6 +44,12 @@ namespace MobileClient.Views
                         break;
                     case MenuItemType.AllResponses:
                         MenuPages.Add(id, new NavigationPage(new AllResponses()));
+                        break;
+                    case MenuItemType.UpdateUsosData:
+                        using (UserDialogs.Instance.Loading())
+                        {
+                            await SystemApi.UsersClient.UsersUpdateUserUsosDataPutAsync();
+                        }
                         break;
                     case MenuItemType.About:
                         MenuPages.Add(id, new NavigationPage(new AboutPage()));

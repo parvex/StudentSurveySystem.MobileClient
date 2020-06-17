@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**UsersAuthenticatePost**](UsersApi.md#usersauthenticatepost) | **POST** /Users/Authenticate | 
 [**UsersIdGet**](UsersApi.md#usersidget) | **GET** /Users/{id} | 
+[**UsersUpdateUserUsosDataPut**](UsersApi.md#usersupdateuserusosdataput) | **PUT** /Users/UpdateUserUsosData | 
 [**UsersUsosAuthDataGet**](UsersApi.md#usersusosauthdataget) | **GET** /Users/UsosAuthData | 
 [**UsersUsosPinAuthPost**](UsersApi.md#usersusospinauthpost) | **POST** /Users/UsosPinAuth | 
 
@@ -123,6 +124,59 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: text/plain, application/json, text/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+<a name="usersupdateuserusosdataput"></a>
+# **UsersUpdateUserUsosDataPut**
+> void UsersUpdateUserUsosDataPut ()
+
+
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class UsersUpdateUserUsosDataPutExample
+    {
+        public void main()
+        {
+
+            var apiInstance = new UsersApi();
+
+            try
+            {
+                apiInstance.UsersUpdateUserUsosDataPut();
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling UsersApi.UsersUpdateUserUsosDataPut: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="usersusosauthdataget"></a>

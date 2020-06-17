@@ -38,23 +38,25 @@ namespace IO.Swagger.Model
         /// Initializes a new instance of the <see cref="User" /> class.
         /// </summary>
         /// <param name="id">id.</param>
-        /// <param name="usosId">usosId.</param>
         /// <param name="firstName">firstName.</param>
         /// <param name="lastName">lastName.</param>
         /// <param name="username">username.</param>
         /// <param name="passwordHash">passwordHash.</param>
         /// <param name="passwordSalt">passwordSalt.</param>
         /// <param name="userRole">userRole.</param>
-        public User(int? id = default(int?), int? usosId = default(int?), string firstName = default(string), string lastName = default(string), string username = default(string), byte[] passwordHash = default(byte[]), byte[] passwordSalt = default(byte[]), UserRole? userRole = default(UserRole?))
+        /// <param name="courseParticipants">courseParticipants.</param>
+        /// <param name="courseLecturers">courseLecturers.</param>
+        public User(int? id = default(int?), string firstName = default(string), string lastName = default(string), string username = default(string), byte[] passwordHash = default(byte[]), byte[] passwordSalt = default(byte[]), UserRole? userRole = default(UserRole?), List<CourseParticipant> courseParticipants = default(List<CourseParticipant>), List<CourseLecturer> courseLecturers = default(List<CourseLecturer>))
         {
             this.Id = id;
-            this.UsosId = usosId;
             this.FirstName = firstName;
             this.LastName = lastName;
             this.Username = username;
             this.PasswordHash = passwordHash;
             this.PasswordSalt = passwordSalt;
             this.UserRole = userRole;
+            this.CourseParticipants = courseParticipants;
+            this.CourseLecturers = courseLecturers;
         }
         
         /// <summary>
@@ -62,12 +64,6 @@ namespace IO.Swagger.Model
         /// </summary>
         [DataMember(Name="id", EmitDefaultValue=false)]
         public int? Id { get; set; }
-
-        /// <summary>
-        /// Gets or Sets UsosId
-        /// </summary>
-        [DataMember(Name="usosId", EmitDefaultValue=false)]
-        public int? UsosId { get; set; }
 
         /// <summary>
         /// Gets or Sets FirstName
@@ -101,6 +97,18 @@ namespace IO.Swagger.Model
 
 
         /// <summary>
+        /// Gets or Sets CourseParticipants
+        /// </summary>
+        [DataMember(Name="courseParticipants", EmitDefaultValue=false)]
+        public List<CourseParticipant> CourseParticipants { get; set; }
+
+        /// <summary>
+        /// Gets or Sets CourseLecturers
+        /// </summary>
+        [DataMember(Name="courseLecturers", EmitDefaultValue=false)]
+        public List<CourseLecturer> CourseLecturers { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -109,13 +117,14 @@ namespace IO.Swagger.Model
             var sb = new StringBuilder();
             sb.Append("class User {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  UsosId: ").Append(UsosId).Append("\n");
             sb.Append("  FirstName: ").Append(FirstName).Append("\n");
             sb.Append("  LastName: ").Append(LastName).Append("\n");
             sb.Append("  Username: ").Append(Username).Append("\n");
             sb.Append("  PasswordHash: ").Append(PasswordHash).Append("\n");
             sb.Append("  PasswordSalt: ").Append(PasswordSalt).Append("\n");
             sb.Append("  UserRole: ").Append(UserRole).Append("\n");
+            sb.Append("  CourseParticipants: ").Append(CourseParticipants).Append("\n");
+            sb.Append("  CourseLecturers: ").Append(CourseLecturers).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -156,11 +165,6 @@ namespace IO.Swagger.Model
                     this.Id.Equals(input.Id))
                 ) && 
                 (
-                    this.UsosId == input.UsosId ||
-                    (this.UsosId != null &&
-                    this.UsosId.Equals(input.UsosId))
-                ) && 
-                (
                     this.FirstName == input.FirstName ||
                     (this.FirstName != null &&
                     this.FirstName.Equals(input.FirstName))
@@ -189,6 +193,18 @@ namespace IO.Swagger.Model
                     this.UserRole == input.UserRole ||
                     (this.UserRole != null &&
                     this.UserRole.Equals(input.UserRole))
+                ) && 
+                (
+                    this.CourseParticipants == input.CourseParticipants ||
+                    this.CourseParticipants != null &&
+                    input.CourseParticipants != null &&
+                    this.CourseParticipants.SequenceEqual(input.CourseParticipants)
+                ) && 
+                (
+                    this.CourseLecturers == input.CourseLecturers ||
+                    this.CourseLecturers != null &&
+                    input.CourseLecturers != null &&
+                    this.CourseLecturers.SequenceEqual(input.CourseLecturers)
                 );
         }
 
@@ -203,8 +219,6 @@ namespace IO.Swagger.Model
                 int hashCode = 41;
                 if (this.Id != null)
                     hashCode = hashCode * 59 + this.Id.GetHashCode();
-                if (this.UsosId != null)
-                    hashCode = hashCode * 59 + this.UsosId.GetHashCode();
                 if (this.FirstName != null)
                     hashCode = hashCode * 59 + this.FirstName.GetHashCode();
                 if (this.LastName != null)
@@ -217,6 +231,10 @@ namespace IO.Swagger.Model
                     hashCode = hashCode * 59 + this.PasswordSalt.GetHashCode();
                 if (this.UserRole != null)
                     hashCode = hashCode * 59 + this.UserRole.GetHashCode();
+                if (this.CourseParticipants != null)
+                    hashCode = hashCode * 59 + this.CourseParticipants.GetHashCode();
+                if (this.CourseLecturers != null)
+                    hashCode = hashCode * 59 + this.CourseLecturers.GetHashCode();
                 return hashCode;
             }
         }

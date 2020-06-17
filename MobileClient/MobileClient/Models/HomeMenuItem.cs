@@ -9,6 +9,7 @@
         AllResponses,
         About,
         Logout,
+        UpdateUsosData
     }
     public class HomeMenuItem
     {
