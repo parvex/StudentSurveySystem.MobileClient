@@ -3,14 +3,16 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:extensions="clr-namespace:MobileClient.Extensions;assembly=MobileClient"
              mc:Ignorable="d"
              x:Class="MobileClient.Views.AboutPage"
              Title="About">
     <ContentPage.Content>
         <StackLayout>
             <Label Text="Student survey system mobile app" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
+            <Image Source="{extensions:ImageResource MobileClient.Resources.surveylogo.png}" HeightRequest="150"></Image>
             <Label Text="Icons made by freepik from https://www.flaticon.com/"
-                VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
+                   VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

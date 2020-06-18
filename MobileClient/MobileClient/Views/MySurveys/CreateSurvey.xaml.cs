@@ -134,8 +134,11 @@ namespace MobileClient.Views
             using (UserDialogs.Instance.Loading())
             {
                 Semesters = await SystemApi.SurveysClient.SurveysGetSemestersAndMyCoursesGetAsync();
-                SelectedSemester = Semesters.First(x => x.Courses != null && x.Courses.Any(c => c.Id == Survey.CourseId));
-                SelectedCourse = Semesters.SelectMany(x => x.Courses).First(x => x.Id == Survey.CourseId);
+                if (isNew)
+                {
+                    SelectedSemester = Semesters.First(x => x.Courses != null && x.Courses.Any(c => c.Id == Survey.CourseId));
+                    SelectedCourse = Semesters.SelectMany(x => x.Courses).First(x => x.Id == Survey.CourseId);
+                }
             }
         }
     }

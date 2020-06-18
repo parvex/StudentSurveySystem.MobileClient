@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
+using Acr.UserDialogs;
 using IO.Swagger.Model;
 using MobileClient.Extensions;
 using MobileClient.Helpers;
 using MobileClient.Models;
+using MobileClient.Services;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -13,6 +15,7 @@ namespace MobileClient.Views
     {
         MainPage RootPage { get => Application.Current.MainPage as MainPage; }
         List<HomeMenuItem> menuItems;
+        public HomeMenuItem LastSelectedMenuItem { get; set; }
         public MenuPage()
         {
             InitializeComponent();
@@ -36,8 +39,6 @@ namespace MobileClient.Views
             menuItems.Add(new HomeMenuItem { Id = MenuItemType.UpdateUsosData, Title = "Get courses from USOS", IconSource = ImageHelper.GetImageFromResource("MobileClient.Resources.update.png") });
             menuItems.Add(new HomeMenuItem { Id = MenuItemType.About, Title = "About", IconSource = ImageHelper.GetImageFromResource("MobileClient.Resources.info.png") });
             menuItems.Add(new HomeMenuItem { Id = MenuItemType.Logout, Title = "Logout", IconSource = ImageHelper.GetImageFromResource("MobileClient.Resources.exit.png") });
-
-
             ListViewMenu.ItemsSource = menuItems;
 
             ListViewMenu.SelectedItem = menuItems[0];
@@ -47,6 +48,17 @@ namespace MobileClient.Views
                     return;
 
                 var id = ((HomeMenuItem)e.SelectedItem).Id;
+                if (id == MenuItemType.UpdateUsosData)
+                {
+                    using (UserDialogs.Instance.Loading())
+                    {
+                        await SystemApi.UsersClient.UsersUpdateUserUsosDataPutAsync();
+                        ListViewMenu.SelectedItem = LastSelectedMenuItem;
+                    }
+                    return;
+                }
+
+                LastSelectedMenuItem = (HomeMenuItem) e.SelectedItem;
                 await RootPage.NavigateFromMenu(id);
             };
         }

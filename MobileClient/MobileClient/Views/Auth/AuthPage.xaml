@@ -11,7 +11,7 @@
     <ContentPage.Content>
         <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
             <Label Text="Student survey system mobile" VerticalOptions="Center" HorizontalOptions="Center" FontSize="24" TextColor="Black"></Label>
-            <Image Source="{extensions:ImageResource MobileClient.Resources.surveyicon.png}" HeightRequest="150"></Image>
+            <Image Source="{extensions:ImageResource MobileClient.Resources.surveylogo.png}" HeightRequest="150"></Image>
             <Label Margin="0, 40, 0, 0" Text="Usos login" VerticalOptions="Center" HorizontalOptions="Center" FontSize="24"></Label>
             <Label x:Name="AuthErrorLabel" IsVisible="False" Text="Wrong auth data!" TextColor="DarkRed"></Label>
             <Button Text="Usos auth" Clicked="Button_UsosAuth" />
