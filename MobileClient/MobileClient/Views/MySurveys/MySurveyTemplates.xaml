@@ -39,7 +39,7 @@
                                         <ColumnDefinition Width="Auto" />
                                     </Grid.ColumnDefinitions>
                                     <Image Grid.RowSpan="3"
-                                           Source="{extensions:ImageResource MobileClient.Resources.survey.png}"
+                                           Source="{extensions:ImageResource MobileClient.Resources.template.png}"
                                            HeightRequest="60"
                                            WidthRequest="72" />
                                     <Label Grid.Column="1"

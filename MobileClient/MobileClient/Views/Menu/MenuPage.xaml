@@ -3,18 +3,26 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:extensions="clr-namespace:MobileClient.Extensions;assembly=MobileClient"
              mc:Ignorable="d"
              x:Class="MobileClient.Views.MenuPage"
              Title="Menu">
 
     <StackLayout VerticalOptions="FillAndExpand">
+        <Image Source="{extensions:ImageResource MobileClient.Resources.politechnika.jpg}" HeightRequest="240"></Image>
         <ListView x:Name="ListViewMenu"
                   HasUnevenRows="True">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
                         <Grid Padding="10">
-                            <Label Text="{Binding Title}" d:Text="{Binding .}" FontSize="20"/>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="9*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+
+                            <Image Grid.Column="0" Source="{Binding IconSource}" HeightRequest="30"></Image>
+                            <Label Grid.Column="1" Text="{Binding Title}" d:Text="{Binding .}" FontSize="20"/>
                         </Grid>
                     </ViewCell>
                 </DataTemplate>

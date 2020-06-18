@@ -16,5 +16,7 @@
         public MenuItemType Id { get; set; }
 
         public string Title { get; set; }
+
+        public object IconSource { get; set; }
     }
 }

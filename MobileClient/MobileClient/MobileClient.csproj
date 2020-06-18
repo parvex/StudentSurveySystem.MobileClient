@@ -8,13 +8,31 @@
   <ItemGroup>
     <None Remove="appsettings.json" />
     <None Remove="Resources\delete.png" />
+    <None Remove="Resources\exit.png" />
+    <None Remove="Resources\info.png" />
+    <None Remove="Resources\pen.png" />
+    <None Remove="Resources\politechnika.jpg" />
+    <None Remove="Resources\response.png" />
     <None Remove="Resources\survey.png" />
+    <None Remove="Resources\surveyicon.png" />
+    <None Remove="Resources\surveylogo.png" />
+    <None Remove="Resources\template.png" />
+    <None Remove="Resources\update.png" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="appsettings.json" />
     <EmbeddedResource Include="Resources\delete.png" />
+    <EmbeddedResource Include="Resources\exit.png" />
+    <EmbeddedResource Include="Resources\info.png" />
+    <EmbeddedResource Include="Resources\pen.png" />
+    <EmbeddedResource Include="Resources\politechnika.jpg" />
+    <EmbeddedResource Include="Resources\response.png" />
     <EmbeddedResource Include="Resources\survey.png" />
+    <EmbeddedResource Include="Resources\surveyicon.png" />
+    <EmbeddedResource Include="Resources\surveylogo.png" />
+    <EmbeddedResource Include="Resources\template.png" />
+    <EmbeddedResource Include="Resources\update.png" />
   </ItemGroup>
 
   <ItemGroup>

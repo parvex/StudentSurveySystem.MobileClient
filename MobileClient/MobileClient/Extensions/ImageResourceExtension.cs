@@ -23,4 +23,20 @@ namespace MobileClient.Extensions
             return imageSource;
         }
     }
+
+
+    public class ImageHelper
+    {
+        public static object GetImageFromResource(string source)
+        {
+            if (source == null)
+            {
+                return null;
+            }
+
+            var imageSource = ImageSource.FromResource(source, typeof(ImageHelper).GetTypeInfo().Assembly);
+
+            return imageSource;
+        }
+    }
 }

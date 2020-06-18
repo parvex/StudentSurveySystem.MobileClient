@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using IO.Swagger.Model;
+using MobileClient.Extensions;
 using MobileClient.Helpers;
 using MobileClient.Models;
 using Xamarin.Forms;
@@ -18,13 +19,13 @@ namespace MobileClient.Views
 
             menuItems = new List<HomeMenuItem>();
 
-            menuItems.Add(new HomeMenuItem { Id = MenuItemType.FillSurveys, Title = "Fill surveys" });
-            menuItems.Add(new HomeMenuItem { Id = MenuItemType.MyResponses, Title = "My responses" });
+            menuItems.Add(new HomeMenuItem { Id = MenuItemType.FillSurveys, Title = "Fill surveys", IconSource = ImageHelper.GetImageFromResource("MobileClient.Resources.pen.png") });
+            menuItems.Add(new HomeMenuItem { Id = MenuItemType.MyResponses, Title = "My responses", IconSource = ImageHelper.GetImageFromResource("MobileClient.Resources.response.png") });
 
             if (UserHelper.User.UserRole == UserRole.Lecturer || UserHelper.User.UserRole == UserRole.Admin)
             {
-                menuItems.Add(new HomeMenuItem { Id = MenuItemType.MySurveyTemplates, Title = "My survey templates" });
-                menuItems.Add(new HomeMenuItem { Id = MenuItemType.MySurveys, Title = "My surveys" });
+                menuItems.Add(new HomeMenuItem { Id = MenuItemType.MySurveyTemplates, Title = "My survey templates" , IconSource = ImageHelper.GetImageFromResource("MobileClient.Resources.template.png") });
+                menuItems.Add(new HomeMenuItem { Id = MenuItemType.MySurveys, Title = "My surveys", IconSource = ImageHelper.GetImageFromResource("MobileClient.Resources.surveyicon.png") });
             }
 
             if (UserHelper.User.UserRole == UserRole.Admin)
@@ -32,9 +33,9 @@ namespace MobileClient.Views
                 menuItems.Add(new HomeMenuItem{Id = MenuItemType.AllResponses, Title = "All responses"});
             }
 
-            menuItems.Add(new HomeMenuItem { Id = MenuItemType.UpdateUsosData, Title = "Update my courses from USOS" });
-            menuItems.Add(new HomeMenuItem { Id = MenuItemType.About, Title = "About" });
-            menuItems.Add(new HomeMenuItem { Id = MenuItemType.Logout, Title = "Logout" });
+            menuItems.Add(new HomeMenuItem { Id = MenuItemType.UpdateUsosData, Title = "Get courses from USOS", IconSource = ImageHelper.GetImageFromResource("MobileClient.Resources.update.png") });
+            menuItems.Add(new HomeMenuItem { Id = MenuItemType.About, Title = "About", IconSource = ImageHelper.GetImageFromResource("MobileClient.Resources.info.png") });
+            menuItems.Add(new HomeMenuItem { Id = MenuItemType.Logout, Title = "Logout", IconSource = ImageHelper.GetImageFromResource("MobileClient.Resources.exit.png") });
 
 
             ListViewMenu.ItemsSource = menuItems;
