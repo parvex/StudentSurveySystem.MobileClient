@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Runtime.Serialization;
+using System.Threading.Tasks;
 using Acr.UserDialogs;
+using IO.Swagger.Api;
 using IO.Swagger.Client;
 using IO.Swagger.Model;
 using MobileClient.Services;
@@ -19,9 +22,14 @@ namespace MobileClient.Views
         public ObservableCollection<QuestionModel> QuestionsList { get; set; }
         public Command<object> DeleteCommand { get; set; }
 
-        public void Initialize()
+        public List<SemesterDto> Semesters { get; set; }
+        public SemesterDto SelectedSemester { get; set; }
+        public CourseDto SelectedCourse { get; set; }
+
+        public void Initialize(bool isNew = false)
         {
             DeleteCommand = new Command<object>(DeleteQuestion);
+            LoadData(isNew);
             BindingContext = this;
         }
 
@@ -75,7 +83,7 @@ namespace MobileClient.Views
                     question.Index = x.Index;
                     return (QuestionDto) x;
                 }).ToList();
-
+                Survey.CourseId = SelectedCourse?.Id;
                 try
                 {
                     if (Survey.Id.HasValue)
@@ -102,7 +110,7 @@ namespace MobileClient.Views
                     question.Index = x.Index;
                     return (QuestionDto)x;
                 }).ToList();
-
+                Survey.CourseId = SelectedCourse?.Id;
                 try
                 {
                     if (Survey.Id.HasValue)
@@ -118,6 +126,16 @@ namespace MobileClient.Views
                 {
                     SystemApi.HandleException(exception);
                 }
+            }
+        }
+
+        private async Task LoadData(bool isNew = false)
+        {
+            using (UserDialogs.Instance.Loading())
+            {
+                Semesters = await SystemApi.SurveysClient.SurveysGetSemestersAndMyCoursesGetAsync();
+                SelectedSemester = Semesters.First(x => x.Courses != null && x.Courses.Any(c => c.Id == Survey.CourseId));
+                SelectedCourse = Semesters.SelectMany(x => x.Courses).First(x => x.Id == Survey.CourseId);
             }
         }
     }

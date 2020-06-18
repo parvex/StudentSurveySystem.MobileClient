@@ -11,47 +11,57 @@
         <ToolbarItem Text="Add question" Clicked="AddQuestion_OnClicked" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Title" FontAttributes="Bold" Style="{StaticResource FormLabel}"></Label>
-            <Entry Text="{Binding Survey.Name}"/>
-            <Label Text="End date" FontAttributes="Bold" Style="{StaticResource FormLabel}"></Label>
-            <DatePicker Date="{Binding Survey.EndDate}"></DatePicker>
-            <Label Text="Anonymous" FontAttributes="Bold" Style="{StaticResource FormLabel}"></Label>
-            <CheckBox IsChecked="{Binding Survey.Anonymous}"></CheckBox>
-            <Label Text="Is active" FontAttributes="Bold" Style="{StaticResource FormLabel}" IsVisible="{Binding Survey.IsTemplate, Converter={extensions:InverseBoolConverter}}"></Label>
-            <CheckBox IsChecked="{Binding Survey.Active}" IsVisible="{Binding Survey.IsTemplate, Converter={extensions:InverseBoolConverter}}"></CheckBox>
-            <Label Text="Questions" FontAttributes="Bold" Style="{StaticResource FormLabel}"></Label>
-            <ListView x:Name="ListView" ItemsSource="{Binding QuestionsList}" ItemTapped="ListView_OnItemTapped"><ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <SwipeView>
-                                <SwipeView.RightItems>
-                                    <SwipeItems>
-                                        <SwipeItem
-                                                   BackgroundColor="LightPink"
-                                                   Command="{Binding Path=BindingContext.DeleteCommand, Source={x:Reference ListView}}" CommandParameter="{Binding .}"
-                                                   IconImageSource="{extensions:ImageResource MobileClient.Resources.delete.png}"/>
-                                    </SwipeItems>
-                                </SwipeView.RightItems>
-                                <Grid Padding="5">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto" />
-                                        <ColumnDefinition Width="Auto" />
-                                        <ColumnDefinition Width="Auto" />
-                                        <ColumnDefinition Width="Auto" />
-                                    </Grid.ColumnDefinitions>
-                                    <Label VerticalTextAlignment="Center" Grid.Column="0" Text="{Binding Index, StringFormat='{0}.'}"></Label>
-                                    <Label VerticalTextAlignment="Center" Grid.Column="1" Text="{Binding QuestionText}"/>
-                                    <Label VerticalTextAlignment="Center" Grid.Column="2" Text="{Binding QuestionType, StringFormat='Type: {0}'}"/>
-                                </Grid>
-                            </SwipeView>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-
-            <Button Clicked="StartActiveSurvey_OnClicked" Text="Start active survey from template"></Button>
-            <Button Clicked="Save_OnClicked" Text="Save"></Button>
-        </StackLayout>
+        <ScrollView>
+            <StackLayout>
+                <Label Text="Title" FontAttributes="Bold" Style="{StaticResource FormLabel}"></Label>
+                <Entry Text="{Binding Survey.Name}"/>
+                <Label Text="End date" FontAttributes="Bold" Style="{StaticResource FormLabel}"></Label>
+                <DatePicker Date="{Binding Survey.EndDate}"></DatePicker>
+                <Label Text="Anonymous" FontAttributes="Bold" Style="{StaticResource FormLabel}"></Label>
+                <CheckBox IsChecked="{Binding Survey.Anonymous}"></CheckBox>
+                <Label Text="Is active" FontAttributes="Bold" Style="{StaticResource FormLabel}" IsVisible="{Binding Survey.IsTemplate, Converter={extensions:InverseBoolConverter}}"></Label>
+                <CheckBox IsChecked="{Binding Survey.Active}" IsVisible="{Binding Survey.IsTemplate, Converter={extensions:InverseBoolConverter}}"></CheckBox>
+                <Label Text="Semester" FontAttributes="Bold" Style="{StaticResource FormLabel}"></Label>
+                <Picker ItemsSource="{Binding Semesters}"
+                        ItemDisplayBinding="{Binding Name}"
+                        SelectedItem="{Binding SelectedSemester}"></Picker>            
+                <Label Text="Course" FontAttributes="Bold" Style="{StaticResource FormLabel}"></Label>
+                <Picker ItemsSource="{Binding SelectedSemester.Courses}" 
+                        ItemDisplayBinding="{Binding Name}"
+                        SelectedItem="{Binding SelectedCourse}"></Picker>
+                <Label Text="Questions" FontAttributes="Bold" Style="{StaticResource FormLabel}"></Label>
+                <ListView x:Name="ListView" ItemsSource="{Binding QuestionsList}" ItemTapped="ListView_OnItemTapped" HeightRequest="200">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <SwipeView>
+                                    <SwipeView.RightItems>
+                                        <SwipeItems>
+                                            <SwipeItem
+                                                       BackgroundColor="LightPink"
+                                                       Command="{Binding Path=BindingContext.DeleteCommand, Source={x:Reference ListView}}" CommandParameter="{Binding .}"
+                                                       IconImageSource="{extensions:ImageResource MobileClient.Resources.delete.png}"/>
+                                        </SwipeItems>
+                                    </SwipeView.RightItems>
+                                    <Grid Padding="5">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <Label VerticalTextAlignment="Center" Grid.Column="0" Text="{Binding Index, StringFormat='{0}.'}"></Label>
+                                        <Label VerticalTextAlignment="Center" Grid.Column="1" Text="{Binding QuestionText}"/>
+                                        <Label VerticalTextAlignment="Center" Grid.Column="2" Text="{Binding QuestionType, StringFormat='Type: {0}'}"/>
+                                    </Grid>
+                                </SwipeView>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <Button Clicked="Save_OnClicked" Text="Save"></Button>
+                <Button IsVisible="{Binding Survey.IsTemplate}" Clicked="StartActiveSurvey_OnClicked" Text="Start active survey from template"></Button>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

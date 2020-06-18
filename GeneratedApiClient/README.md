@@ -101,6 +101,7 @@ Class | Method | HTTP request | Description
 *SurveyResponsesApi* | [**SurveyResponsesMyCompletedGet**](docs/SurveyResponsesApi.md#surveyresponsesmycompletedget) | **GET** /SurveyResponses/MyCompleted | 
 *SurveyResponsesApi* | [**SurveyResponsesPost**](docs/SurveyResponsesApi.md#surveyresponsespost) | **POST** /SurveyResponses | 
 *SurveysApi* | [**SurveysGet**](docs/SurveysApi.md#surveysget) | **GET** /Surveys | 
+*SurveysApi* | [**SurveysGetSemestersAndMyCoursesGet**](docs/SurveysApi.md#surveysgetsemestersandmycoursesget) | **GET** /Surveys/GetSemestersAndMyCourses | 
 *SurveysApi* | [**SurveysIdDelete**](docs/SurveysApi.md#surveysiddelete) | **DELETE** /Surveys/{id} | 
 *SurveysApi* | [**SurveysIdGet**](docs/SurveysApi.md#surveysidget) | **GET** /Surveys/{id} | 
 *SurveysApi* | [**SurveysIdPut**](docs/SurveysApi.md#surveysidput) | **PUT** /Surveys/{id} | 
@@ -122,12 +123,14 @@ Class | Method | HTTP request | Description
  - [Model.AnswerDto](docs/AnswerDto.md)
  - [Model.AuthenticateDto](docs/AuthenticateDto.md)
  - [Model.Course](docs/Course.md)
+ - [Model.CourseDto](docs/CourseDto.md)
  - [Model.CourseLecturer](docs/CourseLecturer.md)
  - [Model.CourseParticipant](docs/CourseParticipant.md)
  - [Model.CurrentUserDto](docs/CurrentUserDto.md)
  - [Model.QuestionDto](docs/QuestionDto.md)
  - [Model.QuestionType](docs/QuestionType.md)
  - [Model.Semester](docs/Semester.md)
+ - [Model.SemesterDto](docs/SemesterDto.md)
  - [Model.SurveyDto](docs/SurveyDto.md)
  - [Model.SurveyResponseDetailsDto](docs/SurveyResponseDetailsDto.md)
  - [Model.SurveyResponseDto](docs/SurveyResponseDto.md)

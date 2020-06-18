@@ -29,6 +29,8 @@ namespace MobileClient.Views.MySurveys
             {
                 if (_questionList.Any(x => x.QuestionText == value && !x.Equals(_originalQuestion)))
                     ErrorDictionary["QuestionText"] = "Question named like this already exists.";
+                else if (string.IsNullOrEmpty(value))
+                    ErrorDictionary["QuestionText"] = "Please specify question text.";
                 else
                     ErrorDictionary["QuestionText"] = "";
 
@@ -88,6 +90,8 @@ namespace MobileClient.Views.MySurveys
             QuestionTypes.Insert(0, "Select type");
             Commands["DeleteValue"] = new Command((object selectedItem) => { var item = (string) selectedItem; Values.Remove(item); });
             ValidationConfig = new ValidationConfigVm {ErrorDictionary = ErrorDictionary};
+            ErrorDictionary["QuestionType"] = "Please select question type.";
+            ErrorDictionary["QuestionText"] = "Please specify question text.";
         }
 
         public void AddOrUpdateValue(string value, int? index = null)

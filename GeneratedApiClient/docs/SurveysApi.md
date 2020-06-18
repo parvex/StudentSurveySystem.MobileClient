@@ -5,6 +5,7 @@ All URIs are relative to *https://localhost:5001*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**SurveysGet**](SurveysApi.md#surveysget) | **GET** /Surveys | 
+[**SurveysGetSemestersAndMyCoursesGet**](SurveysApi.md#surveysgetsemestersandmycoursesget) | **GET** /Surveys/GetSemestersAndMyCourses | 
 [**SurveysIdDelete**](SurveysApi.md#surveysiddelete) | **DELETE** /Surveys/{id} | 
 [**SurveysIdGet**](SurveysApi.md#surveysidget) | **GET** /Surveys/{id} | 
 [**SurveysIdPut**](SurveysApi.md#surveysidput) | **PUT** /Surveys/{id} | 
@@ -66,6 +67,60 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**List<SurveyDto>**](SurveyDto.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: text/plain, application/json, text/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+<a name="surveysgetsemestersandmycoursesget"></a>
+# **SurveysGetSemestersAndMyCoursesGet**
+> List<SemesterDto> SurveysGetSemestersAndMyCoursesGet ()
+
+
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class SurveysGetSemestersAndMyCoursesGetExample
+    {
+        public void main()
+        {
+
+            var apiInstance = new SurveysApi();
+
+            try
+            {
+                List&lt;SemesterDto&gt; result = apiInstance.SurveysGetSemestersAndMyCoursesGet();
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling SurveysApi.SurveysGetSemestersAndMyCoursesGet: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**List<SemesterDto>**](SemesterDto.md)
 
 ### Authorization
 
