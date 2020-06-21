@@ -42,12 +42,12 @@ namespace MobileClient.Views
             Initialize();
         }
 
-        public CreateSurvey(SurveyDto survey)
+        public CreateSurvey(int id)
         {
             InitializeComponent();
-            Survey = survey;
-            QuestionsList = survey.Questions != null
-                ? new ObservableCollection<QuestionModel>(survey.Questions.OrderBy(x => x.Index).Select(x => new QuestionModel(x)))
+            Survey = SystemApi.SurveysClient.SurveysIdGet(id);
+            QuestionsList = Survey.Questions != null
+                ? new ObservableCollection<QuestionModel>(Survey.Questions.OrderBy(x => x.Index).Select(x => new QuestionModel(x)))
                 : new ObservableCollection<QuestionModel>();
             Initialize();
         }
@@ -134,7 +134,7 @@ namespace MobileClient.Views
             using (UserDialogs.Instance.Loading())
             {
                 Semesters = await SystemApi.SurveysClient.SurveysGetSemestersAndMyCoursesGetAsync();
-                if (isNew)
+                if (!isNew)
                 {
                     SelectedSemester = Semesters.First(x => x.Courses != null && x.Courses.Any(c => c.Id == Survey.CourseId));
                     SelectedCourse = Semesters.SelectMany(x => x.Courses).First(x => x.Id == Survey.CourseId);

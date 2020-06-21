@@ -10,13 +10,13 @@ namespace MobileClient.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SurveysToFillList : ContentPage
     {
-        public ListViewController<SurveyDto> ListViewController { get; set; }
+        public ListViewController<SurveyListItemDto> ListViewController { get; set; }
 
         public SurveysToFillList()
         {
             InitializeComponent();
             BindingContext = this;
-            ListViewController = new ListViewController<SurveyDto>(SystemApi.SurveysClient.SurveysMyNotFilledFormGetAsync, ListView, SearchBar);
+            ListViewController = new ListViewController<SurveyListItemDto>(SystemApi.SurveysClient.SurveysMyNotFilledFormGetAsync, ListView, SearchBar);
         }
 
         protected override void OnAppearing()
@@ -27,7 +27,7 @@ namespace MobileClient.Views
 
         private void ListView_OnItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            Navigation.PushAsync(new SurveyForm((SurveyDto) e.SelectedItem));
+            Navigation.PushAsync(new SurveyForm(((SurveyListItemDto) e.SelectedItem).Id.Value));
         }
     }
 }

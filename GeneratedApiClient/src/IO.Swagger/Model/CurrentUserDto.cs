@@ -43,7 +43,8 @@ namespace IO.Swagger.Model
         /// <param name="username">username.</param>
         /// <param name="userRole">userRole.</param>
         /// <param name="token">token.</param>
-        public CurrentUserDto(int? id = default(int?), string firstName = default(string), string lastName = default(string), string username = default(string), UserRole? userRole = default(UserRole?), string token = default(string))
+        /// <param name="tokenExpirationDate">tokenExpirationDate.</param>
+        public CurrentUserDto(int? id = default(int?), string firstName = default(string), string lastName = default(string), string username = default(string), UserRole? userRole = default(UserRole?), string token = default(string), DateTime? tokenExpirationDate = default(DateTime?))
         {
             this.Id = id;
             this.FirstName = firstName;
@@ -51,6 +52,7 @@ namespace IO.Swagger.Model
             this.Username = username;
             this.UserRole = userRole;
             this.Token = token;
+            this.TokenExpirationDate = tokenExpirationDate;
         }
         
         /// <summary>
@@ -85,6 +87,12 @@ namespace IO.Swagger.Model
         public string Token { get; set; }
 
         /// <summary>
+        /// Gets or Sets TokenExpirationDate
+        /// </summary>
+        [DataMember(Name="tokenExpirationDate", EmitDefaultValue=false)]
+        public DateTime? TokenExpirationDate { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -98,6 +106,7 @@ namespace IO.Swagger.Model
             sb.Append("  Username: ").Append(Username).Append("\n");
             sb.Append("  UserRole: ").Append(UserRole).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
+            sb.Append("  TokenExpirationDate: ").Append(TokenExpirationDate).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -161,6 +170,11 @@ namespace IO.Swagger.Model
                     this.Token == input.Token ||
                     (this.Token != null &&
                     this.Token.Equals(input.Token))
+                ) && 
+                (
+                    this.TokenExpirationDate == input.TokenExpirationDate ||
+                    (this.TokenExpirationDate != null &&
+                    this.TokenExpirationDate.Equals(input.TokenExpirationDate))
                 );
         }
 
@@ -185,6 +199,8 @@ namespace IO.Swagger.Model
                     hashCode = hashCode * 59 + this.UserRole.GetHashCode();
                 if (this.Token != null)
                     hashCode = hashCode * 59 + this.Token.GetHashCode();
+                if (this.TokenExpirationDate != null)
+                    hashCode = hashCode * 59 + this.TokenExpirationDate.GetHashCode();
                 return hashCode;
             }
         }

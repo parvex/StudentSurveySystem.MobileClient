@@ -21,12 +21,12 @@ namespace MobileClient.Views.FillSurveys
         private SurveyDto Survey { get; set; }
         private readonly List<(Label, View, QuestionDto, Label)> _controlList = new List<(Label, View, QuestionDto, Label)>();
 
-        public SurveyForm(SurveyDto survey)
+        public SurveyForm(int surveyId)
         {
             InitializeComponent();
             BindingContext = this;
-            Survey = survey;
-            SurveyNameLabel.Text = survey.Name;
+            Survey = SystemApi.SurveysClient.SurveysIdGet(surveyId);
+            SurveyNameLabel.Text = Survey.Name;
             Survey.Questions = Survey.Questions.OrderBy(x => x.Index).ToList();
             foreach (var question in Survey.Questions)
             {

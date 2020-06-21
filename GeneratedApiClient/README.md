@@ -132,6 +132,7 @@ Class | Method | HTTP request | Description
  - [Model.Semester](docs/Semester.md)
  - [Model.SemesterDto](docs/SemesterDto.md)
  - [Model.SurveyDto](docs/SurveyDto.md)
+ - [Model.SurveyListItemDto](docs/SurveyListItemDto.md)
  - [Model.SurveyResponseDetailsDto](docs/SurveyResponseDetailsDto.md)
  - [Model.SurveyResponseDto](docs/SurveyResponseDto.md)
  - [Model.User](docs/User.md)

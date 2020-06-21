@@ -18,7 +18,7 @@ Method | HTTP request | Description
 
 <a name="surveysget"></a>
 # **SurveysGet**
-> List<SurveyDto> SurveysGet (string name = null, int? page = null, int? count = null)
+> List<SurveyListItemDto> SurveysGet (string name = null, int? page = null, int? count = null)
 
 
 
@@ -44,7 +44,7 @@ namespace Example
 
             try
             {
-                List&lt;SurveyDto&gt; result = apiInstance.SurveysGet(name, page, count);
+                List&lt;SurveyListItemDto&gt; result = apiInstance.SurveysGet(name, page, count);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -66,7 +66,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**List<SurveyDto>**](SurveyDto.md)
+[**List<SurveyListItemDto>**](SurveyListItemDto.md)
 
 ### Authorization
 
@@ -308,7 +308,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="surveysmynotfilledformget"></a>
 # **SurveysMyNotFilledFormGet**
-> List<SurveyDto> SurveysMyNotFilledFormGet (string name = null, int? page = null, int? count = null)
+> List<SurveyListItemDto> SurveysMyNotFilledFormGet (string name = null, int? page = null, int? count = null)
 
 
 
@@ -334,7 +334,7 @@ namespace Example
 
             try
             {
-                List&lt;SurveyDto&gt; result = apiInstance.SurveysMyNotFilledFormGet(name, page, count);
+                List&lt;SurveyListItemDto&gt; result = apiInstance.SurveysMyNotFilledFormGet(name, page, count);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -356,7 +356,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**List<SurveyDto>**](SurveyDto.md)
+[**List<SurveyListItemDto>**](SurveyListItemDto.md)
 
 ### Authorization
 
@@ -370,7 +370,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="surveysmysurveytemplatesget"></a>
 # **SurveysMySurveyTemplatesGet**
-> List<SurveyDto> SurveysMySurveyTemplatesGet (string name = null, int? page = null, int? count = null)
+> List<SurveyListItemDto> SurveysMySurveyTemplatesGet (string name = null, int? page = null, int? count = null)
 
 
 
@@ -396,7 +396,7 @@ namespace Example
 
             try
             {
-                List&lt;SurveyDto&gt; result = apiInstance.SurveysMySurveyTemplatesGet(name, page, count);
+                List&lt;SurveyListItemDto&gt; result = apiInstance.SurveysMySurveyTemplatesGet(name, page, count);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -418,7 +418,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**List<SurveyDto>**](SurveyDto.md)
+[**List<SurveyListItemDto>**](SurveyListItemDto.md)
 
 ### Authorization
 
@@ -432,7 +432,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="surveysmysurveysget"></a>
 # **SurveysMySurveysGet**
-> List<SurveyDto> SurveysMySurveysGet (string name = null, int? page = null, int? count = null)
+> List<SurveyListItemDto> SurveysMySurveysGet (string name = null, int? page = null, int? count = null)
 
 
 
@@ -458,7 +458,7 @@ namespace Example
 
             try
             {
-                List&lt;SurveyDto&gt; result = apiInstance.SurveysMySurveysGet(name, page, count);
+                List&lt;SurveyListItemDto&gt; result = apiInstance.SurveysMySurveysGet(name, page, count);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -480,7 +480,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**List<SurveyDto>**](SurveyDto.md)
+[**List<SurveyListItemDto>**](SurveyListItemDto.md)
 
 ### Authorization
 

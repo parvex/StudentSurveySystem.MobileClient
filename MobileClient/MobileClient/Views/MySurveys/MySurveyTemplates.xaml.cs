@@ -10,12 +10,12 @@ namespace MobileClient.Views.MySurveys
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MySurveyTemplates : ContentPage
     {
-        public ListViewController<SurveyDto> ListViewController;
+        public ListViewController<SurveyListItemDto> ListViewController;
 
         public MySurveyTemplates()
         {
             InitializeComponent();
-            ListViewController = new ListViewController<SurveyDto>(SystemApi.SurveysClient.SurveysMySurveyTemplatesGetAsync, ListView, SearchBar);
+            ListViewController = new ListViewController<SurveyListItemDto>(SystemApi.SurveysClient.SurveysMySurveyTemplatesGetAsync, ListView, SearchBar);
             BindingContext = this;
         }
 
@@ -32,7 +32,7 @@ namespace MobileClient.Views.MySurveys
 
         private void ListView_OnItemTapped(object sender, ItemTappedEventArgs e)
         {
-            Navigation.PushAsync(new CreateSurvey((SurveyDto)e.Item));
+            Navigation.PushAsync(new CreateSurvey(((SurveyListItemDto)e.Item).Id.Value));
         }
     }
 }

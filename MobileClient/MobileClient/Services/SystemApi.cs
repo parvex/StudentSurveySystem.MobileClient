@@ -48,7 +48,7 @@ namespace MobileClient.Services
             var result = await UsersClient.UsersUsosPinAuthPostAsync(usosAuthDto);
             ApiConfiguration.AddDefaultHeader("Authorization", "Bearer " + result.Token);
             UserHelper.User = result;
-            return result;
+            return result; 
         }
 
 

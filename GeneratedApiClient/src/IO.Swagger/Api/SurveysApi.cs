@@ -33,8 +33,8 @@ namespace IO.Swagger.Api
         /// <param name="name"> (optional)</param>
         /// <param name="page"> (optional, default to 0)</param>
         /// <param name="count"> (optional, default to 20)</param>
-        /// <returns>List&lt;SurveyDto&gt;</returns>
-        List<SurveyDto> SurveysGet (string name = null, int? page = null, int? count = null);
+        /// <returns>List&lt;SurveyListItemDto&gt;</returns>
+        List<SurveyListItemDto> SurveysGet (string name = null, int? page = null, int? count = null);
 
         /// <summary>
         /// 
@@ -46,8 +46,8 @@ namespace IO.Swagger.Api
         /// <param name="name"> (optional)</param>
         /// <param name="page"> (optional, default to 0)</param>
         /// <param name="count"> (optional, default to 20)</param>
-        /// <returns>ApiResponse of List&lt;SurveyDto&gt;</returns>
-        ApiResponse<List<SurveyDto>> SurveysGetWithHttpInfo (string name = null, int? page = null, int? count = null);
+        /// <returns>ApiResponse of List&lt;SurveyListItemDto&gt;</returns>
+        ApiResponse<List<SurveyListItemDto>> SurveysGetWithHttpInfo (string name = null, int? page = null, int? count = null);
         /// <summary>
         /// 
         /// </summary>
@@ -142,8 +142,8 @@ namespace IO.Swagger.Api
         /// <param name="name"> (optional)</param>
         /// <param name="page"> (optional, default to 0)</param>
         /// <param name="count"> (optional, default to 20)</param>
-        /// <returns>List&lt;SurveyDto&gt;</returns>
-        List<SurveyDto> SurveysMyNotFilledFormGet (string name = null, int? page = null, int? count = null);
+        /// <returns>List&lt;SurveyListItemDto&gt;</returns>
+        List<SurveyListItemDto> SurveysMyNotFilledFormGet (string name = null, int? page = null, int? count = null);
 
         /// <summary>
         /// 
@@ -155,8 +155,8 @@ namespace IO.Swagger.Api
         /// <param name="name"> (optional)</param>
         /// <param name="page"> (optional, default to 0)</param>
         /// <param name="count"> (optional, default to 20)</param>
-        /// <returns>ApiResponse of List&lt;SurveyDto&gt;</returns>
-        ApiResponse<List<SurveyDto>> SurveysMyNotFilledFormGetWithHttpInfo (string name = null, int? page = null, int? count = null);
+        /// <returns>ApiResponse of List&lt;SurveyListItemDto&gt;</returns>
+        ApiResponse<List<SurveyListItemDto>> SurveysMyNotFilledFormGetWithHttpInfo (string name = null, int? page = null, int? count = null);
         /// <summary>
         /// 
         /// </summary>
@@ -167,8 +167,8 @@ namespace IO.Swagger.Api
         /// <param name="name"> (optional)</param>
         /// <param name="page"> (optional, default to 0)</param>
         /// <param name="count"> (optional, default to 20)</param>
-        /// <returns>List&lt;SurveyDto&gt;</returns>
-        List<SurveyDto> SurveysMySurveyTemplatesGet (string name = null, int? page = null, int? count = null);
+        /// <returns>List&lt;SurveyListItemDto&gt;</returns>
+        List<SurveyListItemDto> SurveysMySurveyTemplatesGet (string name = null, int? page = null, int? count = null);
 
         /// <summary>
         /// 
@@ -180,8 +180,8 @@ namespace IO.Swagger.Api
         /// <param name="name"> (optional)</param>
         /// <param name="page"> (optional, default to 0)</param>
         /// <param name="count"> (optional, default to 20)</param>
-        /// <returns>ApiResponse of List&lt;SurveyDto&gt;</returns>
-        ApiResponse<List<SurveyDto>> SurveysMySurveyTemplatesGetWithHttpInfo (string name = null, int? page = null, int? count = null);
+        /// <returns>ApiResponse of List&lt;SurveyListItemDto&gt;</returns>
+        ApiResponse<List<SurveyListItemDto>> SurveysMySurveyTemplatesGetWithHttpInfo (string name = null, int? page = null, int? count = null);
         /// <summary>
         /// 
         /// </summary>
@@ -192,8 +192,8 @@ namespace IO.Swagger.Api
         /// <param name="name"> (optional)</param>
         /// <param name="page"> (optional, default to 0)</param>
         /// <param name="count"> (optional, default to 20)</param>
-        /// <returns>List&lt;SurveyDto&gt;</returns>
-        List<SurveyDto> SurveysMySurveysGet (string name = null, int? page = null, int? count = null);
+        /// <returns>List&lt;SurveyListItemDto&gt;</returns>
+        List<SurveyListItemDto> SurveysMySurveysGet (string name = null, int? page = null, int? count = null);
 
         /// <summary>
         /// 
@@ -205,8 +205,8 @@ namespace IO.Swagger.Api
         /// <param name="name"> (optional)</param>
         /// <param name="page"> (optional, default to 0)</param>
         /// <param name="count"> (optional, default to 20)</param>
-        /// <returns>ApiResponse of List&lt;SurveyDto&gt;</returns>
-        ApiResponse<List<SurveyDto>> SurveysMySurveysGetWithHttpInfo (string name = null, int? page = null, int? count = null);
+        /// <returns>ApiResponse of List&lt;SurveyListItemDto&gt;</returns>
+        ApiResponse<List<SurveyListItemDto>> SurveysMySurveysGetWithHttpInfo (string name = null, int? page = null, int? count = null);
         /// <summary>
         /// 
         /// </summary>
@@ -282,8 +282,8 @@ namespace IO.Swagger.Api
         /// <param name="name"> (optional)</param>
         /// <param name="page"> (optional, default to 0)</param>
         /// <param name="count"> (optional, default to 20)</param>
-        /// <returns>Task of List&lt;SurveyDto&gt;</returns>
-        System.Threading.Tasks.Task<List<SurveyDto>> SurveysGetAsync (string name = null, int? page = null, int? count = null);
+        /// <returns>Task of List&lt;SurveyListItemDto&gt;</returns>
+        System.Threading.Tasks.Task<List<SurveyListItemDto>> SurveysGetAsync (string name = null, int? page = null, int? count = null);
 
         /// <summary>
         /// 
@@ -295,8 +295,8 @@ namespace IO.Swagger.Api
         /// <param name="name"> (optional)</param>
         /// <param name="page"> (optional, default to 0)</param>
         /// <param name="count"> (optional, default to 20)</param>
-        /// <returns>Task of ApiResponse (List&lt;SurveyDto&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<SurveyDto>>> SurveysGetAsyncWithHttpInfo (string name = null, int? page = null, int? count = null);
+        /// <returns>Task of ApiResponse (List&lt;SurveyListItemDto&gt;)</returns>
+        System.Threading.Tasks.Task<ApiResponse<List<SurveyListItemDto>>> SurveysGetAsyncWithHttpInfo (string name = null, int? page = null, int? count = null);
         /// <summary>
         /// 
         /// </summary>
@@ -391,8 +391,8 @@ namespace IO.Swagger.Api
         /// <param name="name"> (optional)</param>
         /// <param name="page"> (optional, default to 0)</param>
         /// <param name="count"> (optional, default to 20)</param>
-        /// <returns>Task of List&lt;SurveyDto&gt;</returns>
-        System.Threading.Tasks.Task<List<SurveyDto>> SurveysMyNotFilledFormGetAsync (string name = null, int? page = null, int? count = null);
+        /// <returns>Task of List&lt;SurveyListItemDto&gt;</returns>
+        System.Threading.Tasks.Task<List<SurveyListItemDto>> SurveysMyNotFilledFormGetAsync (string name = null, int? page = null, int? count = null);
 
         /// <summary>
         /// 
@@ -404,8 +404,8 @@ namespace IO.Swagger.Api
         /// <param name="name"> (optional)</param>
         /// <param name="page"> (optional, default to 0)</param>
         /// <param name="count"> (optional, default to 20)</param>
-        /// <returns>Task of ApiResponse (List&lt;SurveyDto&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<SurveyDto>>> SurveysMyNotFilledFormGetAsyncWithHttpInfo (string name = null, int? page = null, int? count = null);
+        /// <returns>Task of ApiResponse (List&lt;SurveyListItemDto&gt;)</returns>
+        System.Threading.Tasks.Task<ApiResponse<List<SurveyListItemDto>>> SurveysMyNotFilledFormGetAsyncWithHttpInfo (string name = null, int? page = null, int? count = null);
         /// <summary>
         /// 
         /// </summary>
@@ -416,8 +416,8 @@ namespace IO.Swagger.Api
         /// <param name="name"> (optional)</param>
         /// <param name="page"> (optional, default to 0)</param>
         /// <param name="count"> (optional, default to 20)</param>
-        /// <returns>Task of List&lt;SurveyDto&gt;</returns>
-        System.Threading.Tasks.Task<List<SurveyDto>> SurveysMySurveyTemplatesGetAsync (string name = null, int? page = null, int? count = null);
+        /// <returns>Task of List&lt;SurveyListItemDto&gt;</returns>
+        System.Threading.Tasks.Task<List<SurveyListItemDto>> SurveysMySurveyTemplatesGetAsync (string name = null, int? page = null, int? count = null);
 
         /// <summary>
         /// 
@@ -429,8 +429,8 @@ namespace IO.Swagger.Api
         /// <param name="name"> (optional)</param>
         /// <param name="page"> (optional, default to 0)</param>
         /// <param name="count"> (optional, default to 20)</param>
-        /// <returns>Task of ApiResponse (List&lt;SurveyDto&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<SurveyDto>>> SurveysMySurveyTemplatesGetAsyncWithHttpInfo (string name = null, int? page = null, int? count = null);
+        /// <returns>Task of ApiResponse (List&lt;SurveyListItemDto&gt;)</returns>
+        System.Threading.Tasks.Task<ApiResponse<List<SurveyListItemDto>>> SurveysMySurveyTemplatesGetAsyncWithHttpInfo (string name = null, int? page = null, int? count = null);
         /// <summary>
         /// 
         /// </summary>
@@ -441,8 +441,8 @@ namespace IO.Swagger.Api
         /// <param name="name"> (optional)</param>
         /// <param name="page"> (optional, default to 0)</param>
         /// <param name="count"> (optional, default to 20)</param>
-        /// <returns>Task of List&lt;SurveyDto&gt;</returns>
-        System.Threading.Tasks.Task<List<SurveyDto>> SurveysMySurveysGetAsync (string name = null, int? page = null, int? count = null);
+        /// <returns>Task of List&lt;SurveyListItemDto&gt;</returns>
+        System.Threading.Tasks.Task<List<SurveyListItemDto>> SurveysMySurveysGetAsync (string name = null, int? page = null, int? count = null);
 
         /// <summary>
         /// 
@@ -454,8 +454,8 @@ namespace IO.Swagger.Api
         /// <param name="name"> (optional)</param>
         /// <param name="page"> (optional, default to 0)</param>
         /// <param name="count"> (optional, default to 20)</param>
-        /// <returns>Task of ApiResponse (List&lt;SurveyDto&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<SurveyDto>>> SurveysMySurveysGetAsyncWithHttpInfo (string name = null, int? page = null, int? count = null);
+        /// <returns>Task of ApiResponse (List&lt;SurveyListItemDto&gt;)</returns>
+        System.Threading.Tasks.Task<ApiResponse<List<SurveyListItemDto>>> SurveysMySurveysGetAsyncWithHttpInfo (string name = null, int? page = null, int? count = null);
         /// <summary>
         /// 
         /// </summary>
@@ -637,10 +637,10 @@ namespace IO.Swagger.Api
         /// <param name="name"> (optional)</param>
         /// <param name="page"> (optional, default to 0)</param>
         /// <param name="count"> (optional, default to 20)</param>
-        /// <returns>List&lt;SurveyDto&gt;</returns>
-        public List<SurveyDto> SurveysGet (string name = null, int? page = null, int? count = null)
+        /// <returns>List&lt;SurveyListItemDto&gt;</returns>
+        public List<SurveyListItemDto> SurveysGet (string name = null, int? page = null, int? count = null)
         {
-             ApiResponse<List<SurveyDto>> localVarResponse = SurveysGetWithHttpInfo(name, page, count);
+             ApiResponse<List<SurveyListItemDto>> localVarResponse = SurveysGetWithHttpInfo(name, page, count);
              return localVarResponse.Data;
         }
 
@@ -651,8 +651,8 @@ namespace IO.Swagger.Api
         /// <param name="name"> (optional)</param>
         /// <param name="page"> (optional, default to 0)</param>
         /// <param name="count"> (optional, default to 20)</param>
-        /// <returns>ApiResponse of List&lt;SurveyDto&gt;</returns>
-        public ApiResponse< List<SurveyDto> > SurveysGetWithHttpInfo (string name = null, int? page = null, int? count = null)
+        /// <returns>ApiResponse of List&lt;SurveyListItemDto&gt;</returns>
+        public ApiResponse< List<SurveyListItemDto> > SurveysGetWithHttpInfo (string name = null, int? page = null, int? count = null)
         {
 
             var localVarPath = "/Surveys";
@@ -701,9 +701,9 @@ namespace IO.Swagger.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<List<SurveyDto>>(localVarStatusCode,
+            return new ApiResponse<List<SurveyListItemDto>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (List<SurveyDto>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<SurveyDto>)));
+                (List<SurveyListItemDto>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<SurveyListItemDto>)));
         }
 
         /// <summary>
@@ -713,10 +713,10 @@ namespace IO.Swagger.Api
         /// <param name="name"> (optional)</param>
         /// <param name="page"> (optional, default to 0)</param>
         /// <param name="count"> (optional, default to 20)</param>
-        /// <returns>Task of List&lt;SurveyDto&gt;</returns>
-        public async System.Threading.Tasks.Task<List<SurveyDto>> SurveysGetAsync (string name = null, int? page = null, int? count = null)
+        /// <returns>Task of List&lt;SurveyListItemDto&gt;</returns>
+        public async System.Threading.Tasks.Task<List<SurveyListItemDto>> SurveysGetAsync (string name = null, int? page = null, int? count = null)
         {
-             ApiResponse<List<SurveyDto>> localVarResponse = await SurveysGetAsyncWithHttpInfo(name, page, count);
+             ApiResponse<List<SurveyListItemDto>> localVarResponse = await SurveysGetAsyncWithHttpInfo(name, page, count);
              return localVarResponse.Data;
 
         }
@@ -728,8 +728,8 @@ namespace IO.Swagger.Api
         /// <param name="name"> (optional)</param>
         /// <param name="page"> (optional, default to 0)</param>
         /// <param name="count"> (optional, default to 20)</param>
-        /// <returns>Task of ApiResponse (List&lt;SurveyDto&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<SurveyDto>>> SurveysGetAsyncWithHttpInfo (string name = null, int? page = null, int? count = null)
+        /// <returns>Task of ApiResponse (List&lt;SurveyListItemDto&gt;)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<List<SurveyListItemDto>>> SurveysGetAsyncWithHttpInfo (string name = null, int? page = null, int? count = null)
         {
 
             var localVarPath = "/Surveys";
@@ -778,9 +778,9 @@ namespace IO.Swagger.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<List<SurveyDto>>(localVarStatusCode,
+            return new ApiResponse<List<SurveyListItemDto>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (List<SurveyDto>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<SurveyDto>)));
+                (List<SurveyListItemDto>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<SurveyListItemDto>)));
         }
 
         /// <summary>
@@ -1376,10 +1376,10 @@ namespace IO.Swagger.Api
         /// <param name="name"> (optional)</param>
         /// <param name="page"> (optional, default to 0)</param>
         /// <param name="count"> (optional, default to 20)</param>
-        /// <returns>List&lt;SurveyDto&gt;</returns>
-        public List<SurveyDto> SurveysMyNotFilledFormGet (string name = null, int? page = null, int? count = null)
+        /// <returns>List&lt;SurveyListItemDto&gt;</returns>
+        public List<SurveyListItemDto> SurveysMyNotFilledFormGet (string name = null, int? page = null, int? count = null)
         {
-             ApiResponse<List<SurveyDto>> localVarResponse = SurveysMyNotFilledFormGetWithHttpInfo(name, page, count);
+             ApiResponse<List<SurveyListItemDto>> localVarResponse = SurveysMyNotFilledFormGetWithHttpInfo(name, page, count);
              return localVarResponse.Data;
         }
 
@@ -1390,8 +1390,8 @@ namespace IO.Swagger.Api
         /// <param name="name"> (optional)</param>
         /// <param name="page"> (optional, default to 0)</param>
         /// <param name="count"> (optional, default to 20)</param>
-        /// <returns>ApiResponse of List&lt;SurveyDto&gt;</returns>
-        public ApiResponse< List<SurveyDto> > SurveysMyNotFilledFormGetWithHttpInfo (string name = null, int? page = null, int? count = null)
+        /// <returns>ApiResponse of List&lt;SurveyListItemDto&gt;</returns>
+        public ApiResponse< List<SurveyListItemDto> > SurveysMyNotFilledFormGetWithHttpInfo (string name = null, int? page = null, int? count = null)
         {
 
             var localVarPath = "/Surveys/MyNotFilledForm";
@@ -1440,9 +1440,9 @@ namespace IO.Swagger.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<List<SurveyDto>>(localVarStatusCode,
+            return new ApiResponse<List<SurveyListItemDto>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (List<SurveyDto>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<SurveyDto>)));
+                (List<SurveyListItemDto>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<SurveyListItemDto>)));
         }
 
         /// <summary>
@@ -1452,10 +1452,10 @@ namespace IO.Swagger.Api
         /// <param name="name"> (optional)</param>
         /// <param name="page"> (optional, default to 0)</param>
         /// <param name="count"> (optional, default to 20)</param>
-        /// <returns>Task of List&lt;SurveyDto&gt;</returns>
-        public async System.Threading.Tasks.Task<List<SurveyDto>> SurveysMyNotFilledFormGetAsync (string name = null, int? page = null, int? count = null)
+        /// <returns>Task of List&lt;SurveyListItemDto&gt;</returns>
+        public async System.Threading.Tasks.Task<List<SurveyListItemDto>> SurveysMyNotFilledFormGetAsync (string name = null, int? page = null, int? count = null)
         {
-             ApiResponse<List<SurveyDto>> localVarResponse = await SurveysMyNotFilledFormGetAsyncWithHttpInfo(name, page, count);
+             ApiResponse<List<SurveyListItemDto>> localVarResponse = await SurveysMyNotFilledFormGetAsyncWithHttpInfo(name, page, count);
              return localVarResponse.Data;
 
         }
@@ -1467,8 +1467,8 @@ namespace IO.Swagger.Api
         /// <param name="name"> (optional)</param>
         /// <param name="page"> (optional, default to 0)</param>
         /// <param name="count"> (optional, default to 20)</param>
-        /// <returns>Task of ApiResponse (List&lt;SurveyDto&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<SurveyDto>>> SurveysMyNotFilledFormGetAsyncWithHttpInfo (string name = null, int? page = null, int? count = null)
+        /// <returns>Task of ApiResponse (List&lt;SurveyListItemDto&gt;)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<List<SurveyListItemDto>>> SurveysMyNotFilledFormGetAsyncWithHttpInfo (string name = null, int? page = null, int? count = null)
         {
 
             var localVarPath = "/Surveys/MyNotFilledForm";
@@ -1517,9 +1517,9 @@ namespace IO.Swagger.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<List<SurveyDto>>(localVarStatusCode,
+            return new ApiResponse<List<SurveyListItemDto>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (List<SurveyDto>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<SurveyDto>)));
+                (List<SurveyListItemDto>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<SurveyListItemDto>)));
         }
 
         /// <summary>
@@ -1529,10 +1529,10 @@ namespace IO.Swagger.Api
         /// <param name="name"> (optional)</param>
         /// <param name="page"> (optional, default to 0)</param>
         /// <param name="count"> (optional, default to 20)</param>
-        /// <returns>List&lt;SurveyDto&gt;</returns>
-        public List<SurveyDto> SurveysMySurveyTemplatesGet (string name = null, int? page = null, int? count = null)
+        /// <returns>List&lt;SurveyListItemDto&gt;</returns>
+        public List<SurveyListItemDto> SurveysMySurveyTemplatesGet (string name = null, int? page = null, int? count = null)
         {
-             ApiResponse<List<SurveyDto>> localVarResponse = SurveysMySurveyTemplatesGetWithHttpInfo(name, page, count);
+             ApiResponse<List<SurveyListItemDto>> localVarResponse = SurveysMySurveyTemplatesGetWithHttpInfo(name, page, count);
              return localVarResponse.Data;
         }
 
@@ -1543,8 +1543,8 @@ namespace IO.Swagger.Api
         /// <param name="name"> (optional)</param>
         /// <param name="page"> (optional, default to 0)</param>
         /// <param name="count"> (optional, default to 20)</param>
-        /// <returns>ApiResponse of List&lt;SurveyDto&gt;</returns>
-        public ApiResponse< List<SurveyDto> > SurveysMySurveyTemplatesGetWithHttpInfo (string name = null, int? page = null, int? count = null)
+        /// <returns>ApiResponse of List&lt;SurveyListItemDto&gt;</returns>
+        public ApiResponse< List<SurveyListItemDto> > SurveysMySurveyTemplatesGetWithHttpInfo (string name = null, int? page = null, int? count = null)
         {
 
             var localVarPath = "/Surveys/MySurveyTemplates";
@@ -1593,9 +1593,9 @@ namespace IO.Swagger.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<List<SurveyDto>>(localVarStatusCode,
+            return new ApiResponse<List<SurveyListItemDto>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (List<SurveyDto>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<SurveyDto>)));
+                (List<SurveyListItemDto>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<SurveyListItemDto>)));
         }
 
         /// <summary>
@@ -1605,10 +1605,10 @@ namespace IO.Swagger.Api
         /// <param name="name"> (optional)</param>
         /// <param name="page"> (optional, default to 0)</param>
         /// <param name="count"> (optional, default to 20)</param>
-        /// <returns>Task of List&lt;SurveyDto&gt;</returns>
-        public async System.Threading.Tasks.Task<List<SurveyDto>> SurveysMySurveyTemplatesGetAsync (string name = null, int? page = null, int? count = null)
+        /// <returns>Task of List&lt;SurveyListItemDto&gt;</returns>
+        public async System.Threading.Tasks.Task<List<SurveyListItemDto>> SurveysMySurveyTemplatesGetAsync (string name = null, int? page = null, int? count = null)
         {
-             ApiResponse<List<SurveyDto>> localVarResponse = await SurveysMySurveyTemplatesGetAsyncWithHttpInfo(name, page, count);
+             ApiResponse<List<SurveyListItemDto>> localVarResponse = await SurveysMySurveyTemplatesGetAsyncWithHttpInfo(name, page, count);
              return localVarResponse.Data;
 
         }
@@ -1620,8 +1620,8 @@ namespace IO.Swagger.Api
         /// <param name="name"> (optional)</param>
         /// <param name="page"> (optional, default to 0)</param>
         /// <param name="count"> (optional, default to 20)</param>
-        /// <returns>Task of ApiResponse (List&lt;SurveyDto&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<SurveyDto>>> SurveysMySurveyTemplatesGetAsyncWithHttpInfo (string name = null, int? page = null, int? count = null)
+        /// <returns>Task of ApiResponse (List&lt;SurveyListItemDto&gt;)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<List<SurveyListItemDto>>> SurveysMySurveyTemplatesGetAsyncWithHttpInfo (string name = null, int? page = null, int? count = null)
         {
 
             var localVarPath = "/Surveys/MySurveyTemplates";
@@ -1670,9 +1670,9 @@ namespace IO.Swagger.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<List<SurveyDto>>(localVarStatusCode,
+            return new ApiResponse<List<SurveyListItemDto>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (List<SurveyDto>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<SurveyDto>)));
+                (List<SurveyListItemDto>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<SurveyListItemDto>)));
         }
 
         /// <summary>
@@ -1682,10 +1682,10 @@ namespace IO.Swagger.Api
         /// <param name="name"> (optional)</param>
         /// <param name="page"> (optional, default to 0)</param>
         /// <param name="count"> (optional, default to 20)</param>
-        /// <returns>List&lt;SurveyDto&gt;</returns>
-        public List<SurveyDto> SurveysMySurveysGet (string name = null, int? page = null, int? count = null)
+        /// <returns>List&lt;SurveyListItemDto&gt;</returns>
+        public List<SurveyListItemDto> SurveysMySurveysGet (string name = null, int? page = null, int? count = null)
         {
-             ApiResponse<List<SurveyDto>> localVarResponse = SurveysMySurveysGetWithHttpInfo(name, page, count);
+             ApiResponse<List<SurveyListItemDto>> localVarResponse = SurveysMySurveysGetWithHttpInfo(name, page, count);
              return localVarResponse.Data;
         }
 
@@ -1696,8 +1696,8 @@ namespace IO.Swagger.Api
         /// <param name="name"> (optional)</param>
         /// <param name="page"> (optional, default to 0)</param>
         /// <param name="count"> (optional, default to 20)</param>
-        /// <returns>ApiResponse of List&lt;SurveyDto&gt;</returns>
-        public ApiResponse< List<SurveyDto> > SurveysMySurveysGetWithHttpInfo (string name = null, int? page = null, int? count = null)
+        /// <returns>ApiResponse of List&lt;SurveyListItemDto&gt;</returns>
+        public ApiResponse< List<SurveyListItemDto> > SurveysMySurveysGetWithHttpInfo (string name = null, int? page = null, int? count = null)
         {
 
             var localVarPath = "/Surveys/MySurveys";
@@ -1746,9 +1746,9 @@ namespace IO.Swagger.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<List<SurveyDto>>(localVarStatusCode,
+            return new ApiResponse<List<SurveyListItemDto>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (List<SurveyDto>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<SurveyDto>)));
+                (List<SurveyListItemDto>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<SurveyListItemDto>)));
         }
 
         /// <summary>
@@ -1758,10 +1758,10 @@ namespace IO.Swagger.Api
         /// <param name="name"> (optional)</param>
         /// <param name="page"> (optional, default to 0)</param>
         /// <param name="count"> (optional, default to 20)</param>
-        /// <returns>Task of List&lt;SurveyDto&gt;</returns>
-        public async System.Threading.Tasks.Task<List<SurveyDto>> SurveysMySurveysGetAsync (string name = null, int? page = null, int? count = null)
+        /// <returns>Task of List&lt;SurveyListItemDto&gt;</returns>
+        public async System.Threading.Tasks.Task<List<SurveyListItemDto>> SurveysMySurveysGetAsync (string name = null, int? page = null, int? count = null)
         {
-             ApiResponse<List<SurveyDto>> localVarResponse = await SurveysMySurveysGetAsyncWithHttpInfo(name, page, count);
+             ApiResponse<List<SurveyListItemDto>> localVarResponse = await SurveysMySurveysGetAsyncWithHttpInfo(name, page, count);
              return localVarResponse.Data;
 
         }
@@ -1773,8 +1773,8 @@ namespace IO.Swagger.Api
         /// <param name="name"> (optional)</param>
         /// <param name="page"> (optional, default to 0)</param>
         /// <param name="count"> (optional, default to 20)</param>
-        /// <returns>Task of ApiResponse (List&lt;SurveyDto&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<SurveyDto>>> SurveysMySurveysGetAsyncWithHttpInfo (string name = null, int? page = null, int? count = null)
+        /// <returns>Task of ApiResponse (List&lt;SurveyListItemDto&gt;)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<List<SurveyListItemDto>>> SurveysMySurveysGetAsyncWithHttpInfo (string name = null, int? page = null, int? count = null)
         {
 
             var localVarPath = "/Surveys/MySurveys";
@@ -1823,9 +1823,9 @@ namespace IO.Swagger.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<List<SurveyDto>>(localVarStatusCode,
+            return new ApiResponse<List<SurveyListItemDto>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (List<SurveyDto>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<SurveyDto>)));
+                (List<SurveyListItemDto>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<SurveyListItemDto>)));
         }
 
         /// <summary>

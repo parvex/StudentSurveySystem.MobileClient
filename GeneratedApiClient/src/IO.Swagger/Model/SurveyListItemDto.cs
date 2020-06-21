@@ -24,56 +24,26 @@ using SwaggerDateConverter = IO.Swagger.Client.SwaggerDateConverter;
 namespace IO.Swagger.Model
 {
     /// <summary>
-    /// SurveyDto
+    /// SurveyListItemDto
     /// </summary>
     [DataContract]
-        public partial class SurveyDto :  IEquatable<SurveyDto>, IValidatableObject
+        public partial class SurveyListItemDto :  IEquatable<SurveyListItemDto>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="SurveyDto" /> class.
+        /// Initializes a new instance of the <see cref="SurveyListItemDto" /> class.
         /// </summary>
         /// <param name="id">id.</param>
-        /// <param name="name">name (required).</param>
-        /// <param name="creatorId">creatorId.</param>
-        /// <param name="courseId">courseId (required).</param>
-        /// <param name="questions">questions (required).</param>
+        /// <param name="name">name.</param>
         /// <param name="active">active.</param>
         /// <param name="isTemplate">isTemplate.</param>
         /// <param name="anonymous">anonymous.</param>
         /// <param name="courseName">courseName.</param>
         /// <param name="creatorName">creatorName.</param>
         /// <param name="endDate">endDate.</param>
-        public SurveyDto(int? id = default(int?), string name = default(string), int? creatorId = default(int?), int? courseId = default(int?), List<QuestionDto> questions = default(List<QuestionDto>), bool? active = default(bool?), bool? isTemplate = default(bool?), bool? anonymous = default(bool?), string courseName = default(string), string creatorName = default(string), DateTime? endDate = default(DateTime?))
+        public SurveyListItemDto(int? id = default(int?), string name = default(string), bool? active = default(bool?), bool? isTemplate = default(bool?), bool? anonymous = default(bool?), string courseName = default(string), string creatorName = default(string), DateTime? endDate = default(DateTime?))
         {
-            // to ensure "name" is required (not null)
-            if (name == null)
-            {
-                throw new InvalidDataException("name is a required property for SurveyDto and cannot be null");
-            }
-            else
-            {
-                this.Name = name;
-            }
-            // to ensure "courseId" is required (not null)
-            if (courseId == null)
-            {
-                throw new InvalidDataException("courseId is a required property for SurveyDto and cannot be null");
-            }
-            else
-            {
-                this.CourseId = courseId;
-            }
-            // to ensure "questions" is required (not null)
-            if (questions == null)
-            {
-                throw new InvalidDataException("questions is a required property for SurveyDto and cannot be null");
-            }
-            else
-            {
-                this.Questions = questions;
-            }
             this.Id = id;
-            this.CreatorId = creatorId;
+            this.Name = name;
             this.Active = active;
             this.IsTemplate = isTemplate;
             this.Anonymous = anonymous;
@@ -93,24 +63,6 @@ namespace IO.Swagger.Model
         /// </summary>
         [DataMember(Name="name", EmitDefaultValue=false)]
         public string Name { get; set; }
-
-        /// <summary>
-        /// Gets or Sets CreatorId
-        /// </summary>
-        [DataMember(Name="creatorId", EmitDefaultValue=false)]
-        public int? CreatorId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets CourseId
-        /// </summary>
-        [DataMember(Name="courseId", EmitDefaultValue=false)]
-        public int? CourseId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Questions
-        /// </summary>
-        [DataMember(Name="questions", EmitDefaultValue=false)]
-        public List<QuestionDto> Questions { get; set; }
 
         /// <summary>
         /// Gets or Sets Active
@@ -149,31 +101,21 @@ namespace IO.Swagger.Model
         public DateTime? EndDate { get; set; }
 
         /// <summary>
-        /// Gets or Sets Today
-        /// </summary>
-        [DataMember(Name="today", EmitDefaultValue=false)]
-        public DateTime? Today { get; private set; }
-
-        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class SurveyDto {\n");
+            sb.Append("class SurveyListItemDto {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  CreatorId: ").Append(CreatorId).Append("\n");
-            sb.Append("  CourseId: ").Append(CourseId).Append("\n");
-            sb.Append("  Questions: ").Append(Questions).Append("\n");
             sb.Append("  Active: ").Append(Active).Append("\n");
             sb.Append("  IsTemplate: ").Append(IsTemplate).Append("\n");
             sb.Append("  Anonymous: ").Append(Anonymous).Append("\n");
             sb.Append("  CourseName: ").Append(CourseName).Append("\n");
             sb.Append("  CreatorName: ").Append(CreatorName).Append("\n");
             sb.Append("  EndDate: ").Append(EndDate).Append("\n");
-            sb.Append("  Today: ").Append(Today).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -194,15 +136,15 @@ namespace IO.Swagger.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as SurveyDto);
+            return this.Equals(input as SurveyListItemDto);
         }
 
         /// <summary>
-        /// Returns true if SurveyDto instances are equal
+        /// Returns true if SurveyListItemDto instances are equal
         /// </summary>
-        /// <param name="input">Instance of SurveyDto to be compared</param>
+        /// <param name="input">Instance of SurveyListItemDto to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(SurveyDto input)
+        public bool Equals(SurveyListItemDto input)
         {
             if (input == null)
                 return false;
@@ -217,22 +159,6 @@ namespace IO.Swagger.Model
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
-                ) && 
-                (
-                    this.CreatorId == input.CreatorId ||
-                    (this.CreatorId != null &&
-                    this.CreatorId.Equals(input.CreatorId))
-                ) && 
-                (
-                    this.CourseId == input.CourseId ||
-                    (this.CourseId != null &&
-                    this.CourseId.Equals(input.CourseId))
-                ) && 
-                (
-                    this.Questions == input.Questions ||
-                    this.Questions != null &&
-                    input.Questions != null &&
-                    this.Questions.SequenceEqual(input.Questions)
                 ) && 
                 (
                     this.Active == input.Active ||
@@ -263,11 +189,6 @@ namespace IO.Swagger.Model
                     this.EndDate == input.EndDate ||
                     (this.EndDate != null &&
                     this.EndDate.Equals(input.EndDate))
-                ) && 
-                (
-                    this.Today == input.Today ||
-                    (this.Today != null &&
-                    this.Today.Equals(input.Today))
                 );
         }
 
@@ -284,12 +205,6 @@ namespace IO.Swagger.Model
                     hashCode = hashCode * 59 + this.Id.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
-                if (this.CreatorId != null)
-                    hashCode = hashCode * 59 + this.CreatorId.GetHashCode();
-                if (this.CourseId != null)
-                    hashCode = hashCode * 59 + this.CourseId.GetHashCode();
-                if (this.Questions != null)
-                    hashCode = hashCode * 59 + this.Questions.GetHashCode();
                 if (this.Active != null)
                     hashCode = hashCode * 59 + this.Active.GetHashCode();
                 if (this.IsTemplate != null)
@@ -302,8 +217,6 @@ namespace IO.Swagger.Model
                     hashCode = hashCode * 59 + this.CreatorName.GetHashCode();
                 if (this.EndDate != null)
                     hashCode = hashCode * 59 + this.EndDate.GetHashCode();
-                if (this.Today != null)
-                    hashCode = hashCode * 59 + this.Today.GetHashCode();
                 return hashCode;
             }
         }

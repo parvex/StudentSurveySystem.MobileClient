@@ -7,6 +7,8 @@ namespace MobileClient
 {
     public partial class App : Application
     {
+        public static string AppName { get; } = "StudentSurveySystemMobile";
+
 
         public App()
         {
