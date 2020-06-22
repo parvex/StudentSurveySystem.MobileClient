@@ -4,7 +4,6 @@ All URIs are relative to *https://localhost:5001*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**SurveysGet**](SurveysApi.md#surveysget) | **GET** /Surveys | 
 [**SurveysGetSemestersAndMyCoursesGet**](SurveysApi.md#surveysgetsemestersandmycoursesget) | **GET** /Surveys/GetSemestersAndMyCourses | 
 [**SurveysIdDelete**](SurveysApi.md#surveysiddelete) | **DELETE** /Surveys/{id} | 
 [**SurveysIdGet**](SurveysApi.md#surveysidget) | **GET** /Surveys/{id} | 
@@ -16,68 +15,6 @@ Method | HTTP request | Description
 [**SurveysPut**](SurveysApi.md#surveysput) | **PUT** /Surveys | 
 [**SurveysStartSurveyFromTemplatePost**](SurveysApi.md#surveysstartsurveyfromtemplatepost) | **POST** /Surveys/StartSurveyFromTemplate | 
 
-<a name="surveysget"></a>
-# **SurveysGet**
-> List<SurveyListItemDto> SurveysGet (string name = null, int? page = null, int? count = null)
-
-
-
-### Example
-```csharp
-using System;
-using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
-
-namespace Example
-{
-    public class SurveysGetExample
-    {
-        public void main()
-        {
-
-            var apiInstance = new SurveysApi();
-            var name = name_example;  // string |  (optional) 
-            var page = 56;  // int? |  (optional)  (default to 0)
-            var count = 56;  // int? |  (optional)  (default to 20)
-
-            try
-            {
-                List&lt;SurveyListItemDto&gt; result = apiInstance.SurveysGet(name, page, count);
-                Debug.WriteLine(result);
-            }
-            catch (Exception e)
-            {
-                Debug.Print("Exception when calling SurveysApi.SurveysGet: " + e.Message );
-            }
-        }
-    }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **name** | **string**|  | [optional] 
- **page** | **int?**|  | [optional] [default to 0]
- **count** | **int?**|  | [optional] [default to 20]
-
-### Return type
-
-[**List<SurveyListItemDto>**](SurveyListItemDto.md)
-
-### Authorization
-
-[Bearer](../README.md#Bearer)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: text/plain, application/json, text/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="surveysgetsemestersandmycoursesget"></a>
 # **SurveysGetSemestersAndMyCoursesGet**
 > List<SemesterDto> SurveysGetSemestersAndMyCoursesGet ()

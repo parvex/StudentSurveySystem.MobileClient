@@ -39,7 +39,7 @@ namespace MobileClient.Views
             Survey = (SurveyDto) FormatterServices.GetUninitializedObject(typeof(SurveyDto));
             Survey.IsTemplate = isTemplate;
             QuestionsList = new ObservableCollection<QuestionModel>();
-            Initialize();
+            Initialize(true);
         }
 
         public CreateSurvey(int id)
@@ -49,7 +49,7 @@ namespace MobileClient.Views
             QuestionsList = Survey.Questions != null
                 ? new ObservableCollection<QuestionModel>(Survey.Questions.OrderBy(x => x.Index).Select(x => new QuestionModel(x)))
                 : new ObservableCollection<QuestionModel>();
-            Initialize();
+            Initialize(false);
         }
 
         private void AddQuestion_OnClicked(object sender, EventArgs e)

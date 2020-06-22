@@ -10,7 +10,7 @@ namespace MobileClient.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AllResponses : ContentPage
     {
-        public IList<SurveyResponseDetailsDto> SurveyResponses { get; set; } = new List<SurveyResponseDetailsDto>();
+        public IList<SurveyResponseListItemDto> SurveyResponses { get; set; } = new List<SurveyResponseListItemDto>();
 
         public AllResponses()
         {
@@ -29,7 +29,7 @@ namespace MobileClient.Views
 
         private void ListView_OnItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            Navigation.PushAsync(new CompletedSurveyDetailsPage(e.SelectedItem as SurveyResponseDetailsDto));
+            Navigation.PushAsync(new CompletedSurveyDetailsPage((e.SelectedItem as SurveyResponseListItemDto).Id.Value));
         }
     }
 }

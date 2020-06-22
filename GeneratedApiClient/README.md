@@ -71,18 +71,16 @@ namespace Example
         {
 
             var apiInstance = new SurveyResponsesApi();
-            var name = name_example;  // string |  (optional) 
-            var page = 56;  // int? |  (optional)  (default to 0)
-            var count = 56;  // int? |  (optional)  (default to 20)
+            var id = 56;  // int? | 
 
             try
             {
-                List<SurveyResponseDetailsDto> result = apiInstance.SurveyResponsesGet(name, page, count);
+                SurveyResponseDetailsDto result = apiInstance.SurveyResponsesDetailsIdGet(id);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
             {
-                Debug.Print("Exception when calling SurveyResponsesApi.SurveyResponsesGet: " + e.Message );
+                Debug.Print("Exception when calling SurveyResponsesApi.SurveyResponsesDetailsIdGet: " + e.Message );
             }
         }
     }
@@ -96,11 +94,12 @@ All URIs are relative to *https://localhost:5001*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*SurveyResponsesApi* | [**SurveyResponsesDetailsIdGet**](docs/SurveyResponsesApi.md#surveyresponsesdetailsidget) | **GET** /SurveyResponses/details/{id} | 
 *SurveyResponsesApi* | [**SurveyResponsesGet**](docs/SurveyResponsesApi.md#surveyresponsesget) | **GET** /SurveyResponses | 
 *SurveyResponsesApi* | [**SurveyResponsesIdGet**](docs/SurveyResponsesApi.md#surveyresponsesidget) | **GET** /SurveyResponses/{id} | 
 *SurveyResponsesApi* | [**SurveyResponsesMyCompletedGet**](docs/SurveyResponsesApi.md#surveyresponsesmycompletedget) | **GET** /SurveyResponses/MyCompleted | 
 *SurveyResponsesApi* | [**SurveyResponsesPost**](docs/SurveyResponsesApi.md#surveyresponsespost) | **POST** /SurveyResponses | 
-*SurveysApi* | [**SurveysGet**](docs/SurveysApi.md#surveysget) | **GET** /Surveys | 
+*SurveyResponsesApi* | [**SurveyResponsesSurveyResultsIdGet**](docs/SurveyResponsesApi.md#surveyresponsessurveyresultsidget) | **GET** /SurveyResponses/SurveyResults/{id} | 
 *SurveysApi* | [**SurveysGetSemestersAndMyCoursesGet**](docs/SurveysApi.md#surveysgetsemestersandmycoursesget) | **GET** /Surveys/GetSemestersAndMyCourses | 
 *SurveysApi* | [**SurveysIdDelete**](docs/SurveysApi.md#surveysiddelete) | **DELETE** /Surveys/{id} | 
 *SurveysApi* | [**SurveysIdGet**](docs/SurveysApi.md#surveysidget) | **GET** /Surveys/{id} | 
@@ -121,13 +120,16 @@ Class | Method | HTTP request | Description
 ## Documentation for Models
 
  - [Model.AnswerDto](docs/AnswerDto.md)
+ - [Model.AnswerPercentage](docs/AnswerPercentage.md)
  - [Model.AuthenticateDto](docs/AuthenticateDto.md)
  - [Model.Course](docs/Course.md)
  - [Model.CourseDto](docs/CourseDto.md)
  - [Model.CourseLecturer](docs/CourseLecturer.md)
  - [Model.CourseParticipant](docs/CourseParticipant.md)
  - [Model.CurrentUserDto](docs/CurrentUserDto.md)
+ - [Model.QuestionAnswerDto](docs/QuestionAnswerDto.md)
  - [Model.QuestionDto](docs/QuestionDto.md)
+ - [Model.QuestionResultsDto](docs/QuestionResultsDto.md)
  - [Model.QuestionType](docs/QuestionType.md)
  - [Model.Semester](docs/Semester.md)
  - [Model.SemesterDto](docs/SemesterDto.md)
@@ -135,6 +137,8 @@ Class | Method | HTTP request | Description
  - [Model.SurveyListItemDto](docs/SurveyListItemDto.md)
  - [Model.SurveyResponseDetailsDto](docs/SurveyResponseDetailsDto.md)
  - [Model.SurveyResponseDto](docs/SurveyResponseDto.md)
+ - [Model.SurveyResponseListItemDto](docs/SurveyResponseListItemDto.md)
+ - [Model.SurveyResultsDto](docs/SurveyResultsDto.md)
  - [Model.User](docs/User.md)
  - [Model.UserRole](docs/UserRole.md)
  - [Model.UsosAuthDto](docs/UsosAuthDto.md)

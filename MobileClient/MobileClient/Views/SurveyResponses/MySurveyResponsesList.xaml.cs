@@ -9,13 +9,13 @@ namespace MobileClient.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CompletedSurveysPage : ContentPage
     {
-        public ListViewController<SurveyResponseDetailsDto> ListViewController { get; set; }
+        public ListViewController<SurveyResponseListItemDto> ListViewController { get; set; }
 
         public CompletedSurveysPage()
         {
             InitializeComponent();
             BindingContext = this;
-            ListViewController = new ListViewController<SurveyResponseDetailsDto>(SystemApi.SurveyResponsesClient.SurveyResponsesMyCompletedGetAsync, ListView, SearchBar);
+            ListViewController = new ListViewController<SurveyResponseListItemDto>(SystemApi.SurveyResponsesClient.SurveyResponsesMyCompletedGetAsync, ListView, SearchBar);
         }
 
         protected override async void OnAppearing()
@@ -26,7 +26,7 @@ namespace MobileClient.Views
 
         private void ListView_OnItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            Navigation.PushAsync(new CompletedSurveyDetailsPage((SurveyResponseDetailsDto) e.SelectedItem));
+            Navigation.PushAsync(new CompletedSurveyDetailsPage(((SurveyResponseListItemDto) e.SelectedItem).Id.Value));
         }
     }
 }
