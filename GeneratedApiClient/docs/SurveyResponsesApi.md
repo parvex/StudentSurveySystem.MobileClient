@@ -1,6 +1,6 @@
 # IO.Swagger.Api.SurveyResponsesApi
 
-All URIs are relative to *https://localhost:5001*
+All URIs are relative to *https://studentsurveysystemserver.azurewebsites.net*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -135,7 +135,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="surveyresponsesidget"></a>
 # **SurveyResponsesIdGet**
-> SurveyResponseDto SurveyResponsesIdGet (int? id)
+> SurveyResponseDetailsDto SurveyResponsesIdGet (int? id)
 
 
 
@@ -159,7 +159,7 @@ namespace Example
 
             try
             {
-                SurveyResponseDto result = apiInstance.SurveyResponsesIdGet(id);
+                SurveyResponseDetailsDto result = apiInstance.SurveyResponsesIdGet(id);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -179,7 +179,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SurveyResponseDto**](SurveyResponseDto.md)
+[**SurveyResponseDetailsDto**](SurveyResponseDetailsDto.md)
 
 ### Authorization
 

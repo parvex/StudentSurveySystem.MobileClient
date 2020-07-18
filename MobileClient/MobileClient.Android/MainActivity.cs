@@ -17,7 +17,7 @@ namespace MobileClient.Droid
             Intent.CategoryBrowsable
         },
         DataScheme = "https",
-        DataHost = "server20200331200409.azurewebsites.net",
+        DataHost = "studentsurveysystem.azurewebsites.net",
         DataPathPrefix = "/",
         AutoVerify = true
         )

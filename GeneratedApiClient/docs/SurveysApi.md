@@ -1,6 +1,6 @@
 # IO.Swagger.Api.SurveysApi
 
-All URIs are relative to *https://localhost:5001*
+All URIs are relative to *https://studentsurveysystemserver.azurewebsites.net*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------

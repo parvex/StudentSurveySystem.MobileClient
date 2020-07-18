@@ -79,8 +79,8 @@ namespace IO.Swagger.Api
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>SurveyResponseDto</returns>
-        SurveyResponseDto SurveyResponsesIdGet (int? id);
+        /// <returns>SurveyResponseDetailsDto</returns>
+        SurveyResponseDetailsDto SurveyResponsesIdGet (int? id);
 
         /// <summary>
         /// 
@@ -90,8 +90,8 @@ namespace IO.Swagger.Api
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>ApiResponse of SurveyResponseDto</returns>
-        ApiResponse<SurveyResponseDto> SurveyResponsesIdGetWithHttpInfo (int? id);
+        /// <returns>ApiResponse of SurveyResponseDetailsDto</returns>
+        ApiResponse<SurveyResponseDetailsDto> SurveyResponsesIdGetWithHttpInfo (int? id);
         /// <summary>
         /// 
         /// </summary>
@@ -217,8 +217,8 @@ namespace IO.Swagger.Api
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>Task of SurveyResponseDto</returns>
-        System.Threading.Tasks.Task<SurveyResponseDto> SurveyResponsesIdGetAsync (int? id);
+        /// <returns>Task of SurveyResponseDetailsDto</returns>
+        System.Threading.Tasks.Task<SurveyResponseDetailsDto> SurveyResponsesIdGetAsync (int? id);
 
         /// <summary>
         /// 
@@ -228,8 +228,8 @@ namespace IO.Swagger.Api
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>Task of ApiResponse (SurveyResponseDto)</returns>
-        System.Threading.Tasks.Task<ApiResponse<SurveyResponseDto>> SurveyResponsesIdGetAsyncWithHttpInfo (int? id);
+        /// <returns>Task of ApiResponse (SurveyResponseDetailsDto)</returns>
+        System.Threading.Tasks.Task<ApiResponse<SurveyResponseDetailsDto>> SurveyResponsesIdGetAsyncWithHttpInfo (int? id);
         /// <summary>
         /// 
         /// </summary>
@@ -719,10 +719,10 @@ namespace IO.Swagger.Api
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>SurveyResponseDto</returns>
-        public SurveyResponseDto SurveyResponsesIdGet (int? id)
+        /// <returns>SurveyResponseDetailsDto</returns>
+        public SurveyResponseDetailsDto SurveyResponsesIdGet (int? id)
         {
-             ApiResponse<SurveyResponseDto> localVarResponse = SurveyResponsesIdGetWithHttpInfo(id);
+             ApiResponse<SurveyResponseDetailsDto> localVarResponse = SurveyResponsesIdGetWithHttpInfo(id);
              return localVarResponse.Data;
         }
 
@@ -731,8 +731,8 @@ namespace IO.Swagger.Api
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>ApiResponse of SurveyResponseDto</returns>
-        public ApiResponse< SurveyResponseDto > SurveyResponsesIdGetWithHttpInfo (int? id)
+        /// <returns>ApiResponse of SurveyResponseDetailsDto</returns>
+        public ApiResponse< SurveyResponseDetailsDto > SurveyResponsesIdGetWithHttpInfo (int? id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -782,9 +782,9 @@ namespace IO.Swagger.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<SurveyResponseDto>(localVarStatusCode,
+            return new ApiResponse<SurveyResponseDetailsDto>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (SurveyResponseDto) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SurveyResponseDto)));
+                (SurveyResponseDetailsDto) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SurveyResponseDetailsDto)));
         }
 
         /// <summary>
@@ -792,10 +792,10 @@ namespace IO.Swagger.Api
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>Task of SurveyResponseDto</returns>
-        public async System.Threading.Tasks.Task<SurveyResponseDto> SurveyResponsesIdGetAsync (int? id)
+        /// <returns>Task of SurveyResponseDetailsDto</returns>
+        public async System.Threading.Tasks.Task<SurveyResponseDetailsDto> SurveyResponsesIdGetAsync (int? id)
         {
-             ApiResponse<SurveyResponseDto> localVarResponse = await SurveyResponsesIdGetAsyncWithHttpInfo(id);
+             ApiResponse<SurveyResponseDetailsDto> localVarResponse = await SurveyResponsesIdGetAsyncWithHttpInfo(id);
              return localVarResponse.Data;
 
         }
@@ -805,8 +805,8 @@ namespace IO.Swagger.Api
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>Task of ApiResponse (SurveyResponseDto)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<SurveyResponseDto>> SurveyResponsesIdGetAsyncWithHttpInfo (int? id)
+        /// <returns>Task of ApiResponse (SurveyResponseDetailsDto)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<SurveyResponseDetailsDto>> SurveyResponsesIdGetAsyncWithHttpInfo (int? id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -856,9 +856,9 @@ namespace IO.Swagger.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<SurveyResponseDto>(localVarStatusCode,
+            return new ApiResponse<SurveyResponseDetailsDto>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (SurveyResponseDto) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SurveyResponseDto)));
+                (SurveyResponseDetailsDto) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SurveyResponseDetailsDto)));
         }
 
         /// <summary>
