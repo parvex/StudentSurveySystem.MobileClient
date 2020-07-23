@@ -27,9 +27,9 @@ namespace MobileClient.Views.MySurveys
             get => _questionText; 
             set
             {
-                if (_questionList.Any(x => x.QuestionText == value && !x.Equals(_originalQuestion)))
-                    ErrorDictionary["QuestionText"] = "Question named like this already exists.";
-                else if (string.IsNullOrEmpty(value))
+                //if (_questionList.Any(x => x.QuestionText == value && !x.Equals(_originalQuestion)))
+                //    ErrorDictionary["QuestionText"] = "Question named like this already exists.";
+                if (string.IsNullOrEmpty(value))
                     ErrorDictionary["QuestionText"] = "Please specify question text.";
                 else
                     ErrorDictionary["QuestionText"] = "";
