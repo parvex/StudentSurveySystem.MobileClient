@@ -14,7 +14,7 @@
                        Placeholder="Search here to filter"/>
             <ListView x:Name="ListView"
                       HasUnevenRows="true"
-                      ItemSelected="ListView_OnItemSelected">
+                      ItemTapped="ListView_OnItemSelected">
                 <ListView.Behaviors>
                     <extended:InfiniteScrollBehavior />
                 </ListView.Behaviors>

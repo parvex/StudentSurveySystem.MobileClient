@@ -11,7 +11,7 @@
         <StackLayout>
             <ListView x:Name="ListView"
                       HasUnevenRows="true"
-                      ItemSelected="ListView_OnItemSelected">
+                      ItemTapped="ListView_OnItemSelected">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>

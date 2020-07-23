@@ -1,4 +1,5 @@
-﻿using IO.Swagger.Model;
+﻿using System.Threading.Tasks;
+using IO.Swagger.Model;
 using MobileClient.Controllers;
 using MobileClient.Services;
 using MobileClient.Views.FillSurveys;
@@ -25,9 +26,14 @@ namespace MobileClient.Views
             base.OnAppearing();
         }
 
-        private void ListView_OnItemSelected(object sender, SelectedItemChangedEventArgs e)
+        private void ListView_OnItemTapped(object sender, ItemTappedEventArgs e)
         {
-            Navigation.PushAsync(new SurveyForm(((SurveyListItemDto) e.SelectedItem).Id.Value));
+            Navigation.PushAsync(new SurveyForm(((SurveyListItemDto) e.Item).Id.Value));
+        }
+
+        public async Task Reload()
+        {
+            await ListViewController.LoadData();
         }
     }
 }

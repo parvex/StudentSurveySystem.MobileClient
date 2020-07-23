@@ -31,7 +31,7 @@ namespace MobileClient.Controllers
             LoadData(SearchBar.Text);
         }
 
-        public async void LoadData(string filter = "")
+        public async Task LoadData(string filter = "")
         {
             using (UserDialogs.Instance.Loading("Loading"))
             {

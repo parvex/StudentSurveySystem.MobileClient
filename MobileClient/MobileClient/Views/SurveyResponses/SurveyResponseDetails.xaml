@@ -9,6 +9,7 @@
     <ContentPage.Content>
         <StackLayout x:Name="SurveyDetailsLayout">
             <Label Text="{Binding SurveyResponse.SurveyName}" FontSize="Large" FontAttributes="Bold" HorizontalTextAlignment="Center"></Label>
+            <Label IsVisible="{Binding Anonymous}" Text="Survey is anonymous so we can't connect its data to you" Margin="0, 10, 0, 0" FontSize="Medium" HorizontalTextAlignment="Center"></Label>
             <ListView ItemsSource="{Binding SurveyResponse.Answers}">
                 <ListView.ItemTemplate>
                     <DataTemplate>

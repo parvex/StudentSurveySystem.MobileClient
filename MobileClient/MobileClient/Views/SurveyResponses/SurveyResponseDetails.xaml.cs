@@ -14,6 +14,7 @@ namespace MobileClient.Views
     public partial class CompletedSurveyDetailsPage : ContentPage
     {
         public SurveyResponseDetailsDto SurveyResponse { get; set; }
+        public bool Anonymous { get; set; }
 
         public CompletedSurveyDetailsPage(int id)
         {
@@ -24,14 +25,21 @@ namespace MobileClient.Views
 
         private void ProcessValuesToShow()
         {
-            foreach (var answer in SurveyResponse.Answers)
+            if (SurveyResponse.Answers == null || SurveyResponse.Answers.Count == 0)
             {
-                if (answer.QuestionType == QuestionType.MultipleSelect)
-                    answer.Value = String.Join(", ", JsonConvert.DeserializeObject<List<string>>(answer.Value));
-                else if (answer.QuestionType == QuestionType.Date)
-                    answer.Value = DateTime.ParseExact(answer.Value, "MM/dd/yyyy hh:mm:ss", CultureInfo.InvariantCulture).ToString("dd/MM/yyyy");
-                else if (answer.QuestionType == QuestionType.Boolean)
-                    answer.Value = answer.Value == "True" ? "yes" : "no"; 
+                Anonymous = true;
+            }
+            else
+            {
+                foreach (var answer in SurveyResponse.Answers)
+                {
+                    if (answer.QuestionType == QuestionType.MultipleSelect)
+                        answer.Value = String.Join(", ", JsonConvert.DeserializeObject<List<string>>(answer.Value));
+                    else if (answer.QuestionType == QuestionType.Date && answer.Value != null)
+                        answer.Value = DateTime.ParseExact(answer.Value, "MM/dd/yyyy hh:mm:ss", CultureInfo.InvariantCulture).ToString("dd/MM/yyyy");
+                    else if (answer.QuestionType == QuestionType.Boolean)
+                        answer.Value = answer.Value == "True" ? "yes" : "no";
+                }
             }
         }
 

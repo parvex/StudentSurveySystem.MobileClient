@@ -27,9 +27,9 @@ namespace MobileClient.Views
             }
         }
 
-        private void ListView_OnItemSelected(object sender, SelectedItemChangedEventArgs e)
+        private void ListView_OnItemSelected(object sender, ItemTappedEventArgs e)
         {
-            Navigation.PushAsync(new CompletedSurveyDetailsPage((e.SelectedItem as SurveyResponseListItemDto).Id.Value));
+            Navigation.PushAsync(new CompletedSurveyDetailsPage((e.Item as SurveyResponseListItemDto).Id.Value));
         }
     }
 }

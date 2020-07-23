@@ -48,6 +48,7 @@ namespace MobileClient.Views.FillSurveys
             {
                 case QuestionType.Text:
                     var text = new Entry();
+                    text.Text = "";
                     text.TextChanged += ValidateText;
                     control = text;
                     break;
@@ -195,6 +196,7 @@ namespace MobileClient.Views.FillSurveys
                 }
 
                 UserDialogs.Instance.Toast("Survey sent!", TimeSpan.FromSeconds(2));
+                //((SurveysToFillList)Navigation.NavigationStack[1]).Reload();
                 await Navigation.PopAsync();
             }
             catch(ApiException exception)
