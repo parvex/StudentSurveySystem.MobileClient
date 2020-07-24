@@ -373,6 +373,7 @@ namespace IO.Swagger.Api
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
+                "application/json-patch+json", 
                 "application/json", 
                 "text/json", 
                 "application/_*+json"
@@ -454,6 +455,7 @@ namespace IO.Swagger.Api
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
+                "application/json-patch+json", 
                 "application/json", 
                 "text/json", 
                 "application/_*+json"
@@ -949,6 +951,7 @@ namespace IO.Swagger.Api
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
+                "application/json-patch+json", 
                 "application/json", 
                 "text/json", 
                 "application/_*+json"
@@ -1030,6 +1033,7 @@ namespace IO.Swagger.Api
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
+                "application/json-patch+json", 
                 "application/json", 
                 "text/json", 
                 "application/_*+json"
