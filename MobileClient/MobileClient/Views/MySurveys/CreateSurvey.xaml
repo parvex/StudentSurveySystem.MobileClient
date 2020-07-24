@@ -16,7 +16,7 @@
                 <Label Text="Title" FontAttributes="Bold" Style="{StaticResource FormLabel}"></Label>
                 <Entry Text="{Binding Survey.Name}"/>
                 <Label Text="End date" FontAttributes="Bold" Style="{StaticResource FormLabel}"></Label>
-                <DatePicker MinimumDate="{Binding MinimumDate}" Date="{Binding Survey.EndDate}"></DatePicker>
+                <DatePicker Format="dd/MM/yyyy"  MinimumDate="{Binding MinimumDate}" Date="{Binding Survey.EndDate}"></DatePicker>
                 <Label Text="Anonymous" FontAttributes="Bold" Style="{StaticResource FormLabel}"></Label>
                 <CheckBox IsChecked="{Binding Survey.Anonymous}"></CheckBox>
                 <Label Text="Semester" FontAttributes="Bold" Style="{StaticResource FormLabel}"></Label>

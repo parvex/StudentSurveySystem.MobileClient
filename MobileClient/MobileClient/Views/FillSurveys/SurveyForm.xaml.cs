@@ -159,7 +159,7 @@ namespace MobileClient.Views.FillSurveys
             else if (question.QuestionType == QuestionType.Text || question.QuestionType == QuestionType.Numeric)
                 answer.Value = ((Entry)control).Text;
             else if (question.QuestionType == QuestionType.Date)
-                answer.Value = ((NullableDateView)control).NullableDate?.ToString(CultureInfo.InvariantCulture) ?? null;
+                answer.Value = ((NullableDateView)control).NullableDate?.SetHours(0, 0, 0, 0).ToString(CultureInfo.InvariantCulture);
             else if (question.QuestionType == QuestionType.MultipleSelect)
                 answer.Value = JsonConvert.SerializeObject(((MultiSelectPicker)control).SelectedValues);
             else if (question.QuestionType == QuestionType.SingleSelect)

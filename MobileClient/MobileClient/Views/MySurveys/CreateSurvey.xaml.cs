@@ -27,7 +27,7 @@ namespace MobileClient.Views
         public SemesterDto SelectedSemester { get; set; }
         public CourseDto SelectedCourse { get; set; }
 
-        public DateTime MinimumDate => DateTime.Now.ChangeTime(0, 0 ,0, 0);
+        public DateTime MinimumDate => DateTime.Now.SetHours(0, 0 ,0, 0);
 
         public void Initialize(bool isNew = false)
         {
@@ -85,6 +85,7 @@ namespace MobileClient.Views
         {
             using (UserDialogs.Instance.Loading())
             {
+                Survey.EndDate = Survey.EndDate.Value.SetHours(23, 59, 59, 999);
                 Survey.Questions = QuestionsList.Select(x =>
                 {
                     var question = (QuestionDto)x;
@@ -94,13 +95,7 @@ namespace MobileClient.Views
                 Survey.CourseId = SelectedCourse?.Id;
                 try
                 {
-                    if (Survey.Id.HasValue)
-                        await SystemApi.SurveysClient.SurveysIdPutAsync(Survey.Id, Survey);
-                    else
-                        await SystemApi.SurveysClient.SurveysPostAsync(Survey);
-
                     await SystemApi.SurveysClient.SurveysStartSurveyFromTemplatePostAsync(Survey);
-
                     await Navigation.PopAsync();
                 }
                 catch (ApiException exception)
@@ -132,6 +127,7 @@ namespace MobileClient.Views
         {
             using (UserDialogs.Instance.Loading())
             {
+                Survey.EndDate = Survey.EndDate.Value.SetHours(23, 59, 59, 999);
                 Survey.Questions = QuestionsList.Select(x =>
                 {
                     var question = (QuestionDto)x;
