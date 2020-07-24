@@ -1,6 +1,6 @@
 # IO.Swagger.Api.UsersApi
 
-All URIs are relative to *https://studentsurveysystemserver.azurewebsites.net*
+All URIs are relative to *https://localhost:5001*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -181,7 +181,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="usersusosauthdataget"></a>
 # **UsersUsosAuthDataGet**
-> UsosAuthDto UsersUsosAuthDataGet ()
+> UsosAuthDto UsersUsosAuthDataGet (bool? web = null)
 
 
 
@@ -201,10 +201,11 @@ namespace Example
         {
 
             var apiInstance = new UsersApi();
+            var web = true;  // bool? |  (optional)  (default to false)
 
             try
             {
-                UsosAuthDto result = apiInstance.UsersUsosAuthDataGet();
+                UsosAuthDto result = apiInstance.UsersUsosAuthDataGet(web);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -217,7 +218,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **web** | **bool?**|  | [optional] [default to false]
 
 ### Return type
 

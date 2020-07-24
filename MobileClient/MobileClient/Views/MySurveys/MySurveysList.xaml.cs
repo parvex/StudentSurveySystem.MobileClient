@@ -33,7 +33,8 @@ namespace MobileClient.Views.MySurveys
 
         private void ListView_OnItemTapped(object sender, ItemTappedEventArgs e)
         {
-            Navigation.PushAsync(new CreateSurvey(((SurveyListItemDto)e.Item).Id.Value));
+            if(((SurveyListItemDto) e.Item).Status == SurveyStatus.Draft)
+                Navigation.PushAsync(new CreateSurvey(((SurveyListItemDto)e.Item).Id.Value));
         }
     }
 }

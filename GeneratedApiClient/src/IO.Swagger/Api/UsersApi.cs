@@ -91,8 +91,9 @@ namespace IO.Swagger.Api
         /// 
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="web"> (optional, default to false)</param>
         /// <returns>UsosAuthDto</returns>
-        UsosAuthDto UsersUsosAuthDataGet ();
+        UsosAuthDto UsersUsosAuthDataGet (bool? web = null);
 
         /// <summary>
         /// 
@@ -101,8 +102,9 @@ namespace IO.Swagger.Api
         /// 
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="web"> (optional, default to false)</param>
         /// <returns>ApiResponse of UsosAuthDto</returns>
-        ApiResponse<UsosAuthDto> UsersUsosAuthDataGetWithHttpInfo ();
+        ApiResponse<UsosAuthDto> UsersUsosAuthDataGetWithHttpInfo (bool? web = null);
         /// <summary>
         /// 
         /// </summary>
@@ -194,8 +196,9 @@ namespace IO.Swagger.Api
         /// 
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="web"> (optional, default to false)</param>
         /// <returns>Task of UsosAuthDto</returns>
-        System.Threading.Tasks.Task<UsosAuthDto> UsersUsosAuthDataGetAsync ();
+        System.Threading.Tasks.Task<UsosAuthDto> UsersUsosAuthDataGetAsync (bool? web = null);
 
         /// <summary>
         /// 
@@ -204,8 +207,9 @@ namespace IO.Swagger.Api
         /// 
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="web"> (optional, default to false)</param>
         /// <returns>Task of ApiResponse (UsosAuthDto)</returns>
-        System.Threading.Tasks.Task<ApiResponse<UsosAuthDto>> UsersUsosAuthDataGetAsyncWithHttpInfo ();
+        System.Threading.Tasks.Task<ApiResponse<UsosAuthDto>> UsersUsosAuthDataGetAsyncWithHttpInfo (bool? web = null);
         /// <summary>
         /// 
         /// </summary>
@@ -777,10 +781,11 @@ namespace IO.Swagger.Api
         ///  
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="web"> (optional, default to false)</param>
         /// <returns>UsosAuthDto</returns>
-        public UsosAuthDto UsersUsosAuthDataGet ()
+        public UsosAuthDto UsersUsosAuthDataGet (bool? web = null)
         {
-             ApiResponse<UsosAuthDto> localVarResponse = UsersUsosAuthDataGetWithHttpInfo();
+             ApiResponse<UsosAuthDto> localVarResponse = UsersUsosAuthDataGetWithHttpInfo(web);
              return localVarResponse.Data;
         }
 
@@ -788,8 +793,9 @@ namespace IO.Swagger.Api
         ///  
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="web"> (optional, default to false)</param>
         /// <returns>ApiResponse of UsosAuthDto</returns>
-        public ApiResponse< UsosAuthDto > UsersUsosAuthDataGetWithHttpInfo ()
+        public ApiResponse< UsosAuthDto > UsersUsosAuthDataGetWithHttpInfo (bool? web = null)
         {
 
             var localVarPath = "/Users/UsosAuthData";
@@ -815,6 +821,7 @@ namespace IO.Swagger.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (web != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "web", web)); // query parameter
             // authentication (Bearer) required
             // bearer required
             if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
@@ -844,10 +851,11 @@ namespace IO.Swagger.Api
         ///  
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="web"> (optional, default to false)</param>
         /// <returns>Task of UsosAuthDto</returns>
-        public async System.Threading.Tasks.Task<UsosAuthDto> UsersUsosAuthDataGetAsync ()
+        public async System.Threading.Tasks.Task<UsosAuthDto> UsersUsosAuthDataGetAsync (bool? web = null)
         {
-             ApiResponse<UsosAuthDto> localVarResponse = await UsersUsosAuthDataGetAsyncWithHttpInfo();
+             ApiResponse<UsosAuthDto> localVarResponse = await UsersUsosAuthDataGetAsyncWithHttpInfo(web);
              return localVarResponse.Data;
 
         }
@@ -856,8 +864,9 @@ namespace IO.Swagger.Api
         ///  
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="web"> (optional, default to false)</param>
         /// <returns>Task of ApiResponse (UsosAuthDto)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<UsosAuthDto>> UsersUsosAuthDataGetAsyncWithHttpInfo ()
+        public async System.Threading.Tasks.Task<ApiResponse<UsosAuthDto>> UsersUsosAuthDataGetAsyncWithHttpInfo (bool? web = null)
         {
 
             var localVarPath = "/Users/UsosAuthData";
@@ -883,6 +892,7 @@ namespace IO.Swagger.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (web != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "web", web)); // query parameter
             // authentication (Bearer) required
             // bearer required
             if (!String.IsNullOrEmpty(this.Configuration.AccessToken))

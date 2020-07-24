@@ -1,6 +1,6 @@
 # IO.Swagger.Api.SurveysApi
 
-All URIs are relative to *https://studentsurveysystemserver.azurewebsites.net*
+All URIs are relative to *https://localhost:5001*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -186,7 +186,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="surveysidput"></a>
 # **SurveysIdPut**
-> void SurveysIdPut (int? id, SurveyDto body = null)
+> void SurveysIdPut (int? id, SurveyDto body = null, bool? activate = null)
 
 
 
@@ -208,10 +208,11 @@ namespace Example
             var apiInstance = new SurveysApi();
             var id = 56;  // int? | 
             var body = new SurveyDto(); // SurveyDto |  (optional) 
+            var activate = true;  // bool? |  (optional)  (default to false)
 
             try
             {
-                apiInstance.SurveysIdPut(id, body);
+                apiInstance.SurveysIdPut(id, body, activate);
             }
             catch (Exception e)
             {
@@ -228,6 +229,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int?**|  | 
  **body** | [**SurveyDto**](SurveyDto.md)|  | [optional] 
+ **activate** | **bool?**|  | [optional] [default to false]
 
 ### Return type
 
@@ -431,7 +433,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="surveyspost"></a>
 # **SurveysPost**
-> SurveyDto SurveysPost (SurveyDto body = null)
+> SurveyDto SurveysPost (SurveyDto body = null, bool? activate = null)
 
 
 
@@ -452,10 +454,11 @@ namespace Example
 
             var apiInstance = new SurveysApi();
             var body = new SurveyDto(); // SurveyDto |  (optional) 
+            var activate = true;  // bool? |  (optional)  (default to false)
 
             try
             {
-                SurveyDto result = apiInstance.SurveysPost(body);
+                SurveyDto result = apiInstance.SurveysPost(body, activate);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -472,6 +475,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**SurveyDto**](SurveyDto.md)|  | [optional] 
+ **activate** | **bool?**|  | [optional] [default to false]
 
 ### Return type
 
@@ -489,7 +493,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="surveysput"></a>
 # **SurveysPut**
-> SurveyDto SurveysPut (SurveyDto body = null)
+> SurveyDto SurveysPut (SurveyDto body = null, bool? activate = null)
 
 
 
@@ -510,10 +514,11 @@ namespace Example
 
             var apiInstance = new SurveysApi();
             var body = new SurveyDto(); // SurveyDto |  (optional) 
+            var activate = true;  // bool? |  (optional)  (default to false)
 
             try
             {
-                SurveyDto result = apiInstance.SurveysPut(body);
+                SurveyDto result = apiInstance.SurveysPut(body, activate);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -530,6 +535,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**SurveyDto**](SurveyDto.md)|  | [optional] 
+ **activate** | **bool?**|  | [optional] [default to false]
 
 ### Return type
 

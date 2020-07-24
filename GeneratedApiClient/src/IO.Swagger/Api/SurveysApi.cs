@@ -93,8 +93,9 @@ namespace IO.Swagger.Api
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="body"> (optional)</param>
+        /// <param name="activate"> (optional, default to false)</param>
         /// <returns></returns>
-        void SurveysIdPut (int? id, SurveyDto body = null);
+        void SurveysIdPut (int? id, SurveyDto body = null, bool? activate = null);
 
         /// <summary>
         /// 
@@ -105,8 +106,9 @@ namespace IO.Swagger.Api
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="body"> (optional)</param>
+        /// <param name="activate"> (optional, default to false)</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> SurveysIdPutWithHttpInfo (int? id, SurveyDto body = null);
+        ApiResponse<Object> SurveysIdPutWithHttpInfo (int? id, SurveyDto body = null, bool? activate = null);
         /// <summary>
         /// 
         /// </summary>
@@ -190,8 +192,9 @@ namespace IO.Swagger.Api
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
+        /// <param name="activate"> (optional, default to false)</param>
         /// <returns>SurveyDto</returns>
-        SurveyDto SurveysPost (SurveyDto body = null);
+        SurveyDto SurveysPost (SurveyDto body = null, bool? activate = null);
 
         /// <summary>
         /// 
@@ -201,8 +204,9 @@ namespace IO.Swagger.Api
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
+        /// <param name="activate"> (optional, default to false)</param>
         /// <returns>ApiResponse of SurveyDto</returns>
-        ApiResponse<SurveyDto> SurveysPostWithHttpInfo (SurveyDto body = null);
+        ApiResponse<SurveyDto> SurveysPostWithHttpInfo (SurveyDto body = null, bool? activate = null);
         /// <summary>
         /// 
         /// </summary>
@@ -211,8 +215,9 @@ namespace IO.Swagger.Api
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
+        /// <param name="activate"> (optional, default to false)</param>
         /// <returns>SurveyDto</returns>
-        SurveyDto SurveysPut (SurveyDto body = null);
+        SurveyDto SurveysPut (SurveyDto body = null, bool? activate = null);
 
         /// <summary>
         /// 
@@ -222,8 +227,9 @@ namespace IO.Swagger.Api
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
+        /// <param name="activate"> (optional, default to false)</param>
         /// <returns>ApiResponse of SurveyDto</returns>
-        ApiResponse<SurveyDto> SurveysPutWithHttpInfo (SurveyDto body = null);
+        ApiResponse<SurveyDto> SurveysPutWithHttpInfo (SurveyDto body = null, bool? activate = null);
         /// <summary>
         /// 
         /// </summary>
@@ -317,8 +323,9 @@ namespace IO.Swagger.Api
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="body"> (optional)</param>
+        /// <param name="activate"> (optional, default to false)</param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task SurveysIdPutAsync (int? id, SurveyDto body = null);
+        System.Threading.Tasks.Task SurveysIdPutAsync (int? id, SurveyDto body = null, bool? activate = null);
 
         /// <summary>
         /// 
@@ -329,8 +336,9 @@ namespace IO.Swagger.Api
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="body"> (optional)</param>
+        /// <param name="activate"> (optional, default to false)</param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> SurveysIdPutAsyncWithHttpInfo (int? id, SurveyDto body = null);
+        System.Threading.Tasks.Task<ApiResponse<Object>> SurveysIdPutAsyncWithHttpInfo (int? id, SurveyDto body = null, bool? activate = null);
         /// <summary>
         /// 
         /// </summary>
@@ -414,8 +422,9 @@ namespace IO.Swagger.Api
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
+        /// <param name="activate"> (optional, default to false)</param>
         /// <returns>Task of SurveyDto</returns>
-        System.Threading.Tasks.Task<SurveyDto> SurveysPostAsync (SurveyDto body = null);
+        System.Threading.Tasks.Task<SurveyDto> SurveysPostAsync (SurveyDto body = null, bool? activate = null);
 
         /// <summary>
         /// 
@@ -425,8 +434,9 @@ namespace IO.Swagger.Api
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
+        /// <param name="activate"> (optional, default to false)</param>
         /// <returns>Task of ApiResponse (SurveyDto)</returns>
-        System.Threading.Tasks.Task<ApiResponse<SurveyDto>> SurveysPostAsyncWithHttpInfo (SurveyDto body = null);
+        System.Threading.Tasks.Task<ApiResponse<SurveyDto>> SurveysPostAsyncWithHttpInfo (SurveyDto body = null, bool? activate = null);
         /// <summary>
         /// 
         /// </summary>
@@ -435,8 +445,9 @@ namespace IO.Swagger.Api
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
+        /// <param name="activate"> (optional, default to false)</param>
         /// <returns>Task of SurveyDto</returns>
-        System.Threading.Tasks.Task<SurveyDto> SurveysPutAsync (SurveyDto body = null);
+        System.Threading.Tasks.Task<SurveyDto> SurveysPutAsync (SurveyDto body = null, bool? activate = null);
 
         /// <summary>
         /// 
@@ -446,8 +457,9 @@ namespace IO.Swagger.Api
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
+        /// <param name="activate"> (optional, default to false)</param>
         /// <returns>Task of ApiResponse (SurveyDto)</returns>
-        System.Threading.Tasks.Task<ApiResponse<SurveyDto>> SurveysPutAsyncWithHttpInfo (SurveyDto body = null);
+        System.Threading.Tasks.Task<ApiResponse<SurveyDto>> SurveysPutAsyncWithHttpInfo (SurveyDto body = null, bool? activate = null);
         /// <summary>
         /// 
         /// </summary>
@@ -1007,10 +1019,11 @@ namespace IO.Swagger.Api
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="body"> (optional)</param>
+        /// <param name="activate"> (optional, default to false)</param>
         /// <returns></returns>
-        public void SurveysIdPut (int? id, SurveyDto body = null)
+        public void SurveysIdPut (int? id, SurveyDto body = null, bool? activate = null)
         {
-             SurveysIdPutWithHttpInfo(id, body);
+             SurveysIdPutWithHttpInfo(id, body, activate);
         }
 
         /// <summary>
@@ -1019,8 +1032,9 @@ namespace IO.Swagger.Api
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="body"> (optional)</param>
+        /// <param name="activate"> (optional, default to false)</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> SurveysIdPutWithHttpInfo (int? id, SurveyDto body = null)
+        public ApiResponse<Object> SurveysIdPutWithHttpInfo (int? id, SurveyDto body = null, bool? activate = null)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1050,6 +1064,7 @@ namespace IO.Swagger.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (id != null) localVarPathParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // path parameter
+            if (activate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "activate", activate)); // query parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
                 localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
@@ -1089,10 +1104,11 @@ namespace IO.Swagger.Api
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="body"> (optional)</param>
+        /// <param name="activate"> (optional, default to false)</param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task SurveysIdPutAsync (int? id, SurveyDto body = null)
+        public async System.Threading.Tasks.Task SurveysIdPutAsync (int? id, SurveyDto body = null, bool? activate = null)
         {
-             await SurveysIdPutAsyncWithHttpInfo(id, body);
+             await SurveysIdPutAsyncWithHttpInfo(id, body, activate);
 
         }
 
@@ -1102,8 +1118,9 @@ namespace IO.Swagger.Api
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="body"> (optional)</param>
+        /// <param name="activate"> (optional, default to false)</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> SurveysIdPutAsyncWithHttpInfo (int? id, SurveyDto body = null)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> SurveysIdPutAsyncWithHttpInfo (int? id, SurveyDto body = null, bool? activate = null)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1133,6 +1150,7 @@ namespace IO.Swagger.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (id != null) localVarPathParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // path parameter
+            if (activate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "activate", activate)); // query parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
                 localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
@@ -1630,10 +1648,11 @@ namespace IO.Swagger.Api
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
+        /// <param name="activate"> (optional, default to false)</param>
         /// <returns>SurveyDto</returns>
-        public SurveyDto SurveysPost (SurveyDto body = null)
+        public SurveyDto SurveysPost (SurveyDto body = null, bool? activate = null)
         {
-             ApiResponse<SurveyDto> localVarResponse = SurveysPostWithHttpInfo(body);
+             ApiResponse<SurveyDto> localVarResponse = SurveysPostWithHttpInfo(body, activate);
              return localVarResponse.Data;
         }
 
@@ -1642,8 +1661,9 @@ namespace IO.Swagger.Api
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
+        /// <param name="activate"> (optional, default to false)</param>
         /// <returns>ApiResponse of SurveyDto</returns>
-        public ApiResponse< SurveyDto > SurveysPostWithHttpInfo (SurveyDto body = null)
+        public ApiResponse< SurveyDto > SurveysPostWithHttpInfo (SurveyDto body = null, bool? activate = null)
         {
 
             var localVarPath = "/Surveys";
@@ -1672,6 +1692,7 @@ namespace IO.Swagger.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (activate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "activate", activate)); // query parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
                 localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
@@ -1710,10 +1731,11 @@ namespace IO.Swagger.Api
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
+        /// <param name="activate"> (optional, default to false)</param>
         /// <returns>Task of SurveyDto</returns>
-        public async System.Threading.Tasks.Task<SurveyDto> SurveysPostAsync (SurveyDto body = null)
+        public async System.Threading.Tasks.Task<SurveyDto> SurveysPostAsync (SurveyDto body = null, bool? activate = null)
         {
-             ApiResponse<SurveyDto> localVarResponse = await SurveysPostAsyncWithHttpInfo(body);
+             ApiResponse<SurveyDto> localVarResponse = await SurveysPostAsyncWithHttpInfo(body, activate);
              return localVarResponse.Data;
 
         }
@@ -1723,8 +1745,9 @@ namespace IO.Swagger.Api
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
+        /// <param name="activate"> (optional, default to false)</param>
         /// <returns>Task of ApiResponse (SurveyDto)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<SurveyDto>> SurveysPostAsyncWithHttpInfo (SurveyDto body = null)
+        public async System.Threading.Tasks.Task<ApiResponse<SurveyDto>> SurveysPostAsyncWithHttpInfo (SurveyDto body = null, bool? activate = null)
         {
 
             var localVarPath = "/Surveys";
@@ -1753,6 +1776,7 @@ namespace IO.Swagger.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (activate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "activate", activate)); // query parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
                 localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
@@ -1791,10 +1815,11 @@ namespace IO.Swagger.Api
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
+        /// <param name="activate"> (optional, default to false)</param>
         /// <returns>SurveyDto</returns>
-        public SurveyDto SurveysPut (SurveyDto body = null)
+        public SurveyDto SurveysPut (SurveyDto body = null, bool? activate = null)
         {
-             ApiResponse<SurveyDto> localVarResponse = SurveysPutWithHttpInfo(body);
+             ApiResponse<SurveyDto> localVarResponse = SurveysPutWithHttpInfo(body, activate);
              return localVarResponse.Data;
         }
 
@@ -1803,8 +1828,9 @@ namespace IO.Swagger.Api
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
+        /// <param name="activate"> (optional, default to false)</param>
         /// <returns>ApiResponse of SurveyDto</returns>
-        public ApiResponse< SurveyDto > SurveysPutWithHttpInfo (SurveyDto body = null)
+        public ApiResponse< SurveyDto > SurveysPutWithHttpInfo (SurveyDto body = null, bool? activate = null)
         {
 
             var localVarPath = "/Surveys";
@@ -1833,6 +1859,7 @@ namespace IO.Swagger.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (activate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "activate", activate)); // query parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
                 localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
@@ -1871,10 +1898,11 @@ namespace IO.Swagger.Api
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
+        /// <param name="activate"> (optional, default to false)</param>
         /// <returns>Task of SurveyDto</returns>
-        public async System.Threading.Tasks.Task<SurveyDto> SurveysPutAsync (SurveyDto body = null)
+        public async System.Threading.Tasks.Task<SurveyDto> SurveysPutAsync (SurveyDto body = null, bool? activate = null)
         {
-             ApiResponse<SurveyDto> localVarResponse = await SurveysPutAsyncWithHttpInfo(body);
+             ApiResponse<SurveyDto> localVarResponse = await SurveysPutAsyncWithHttpInfo(body, activate);
              return localVarResponse.Data;
 
         }
@@ -1884,8 +1912,9 @@ namespace IO.Swagger.Api
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
+        /// <param name="activate"> (optional, default to false)</param>
         /// <returns>Task of ApiResponse (SurveyDto)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<SurveyDto>> SurveysPutAsyncWithHttpInfo (SurveyDto body = null)
+        public async System.Threading.Tasks.Task<ApiResponse<SurveyDto>> SurveysPutAsyncWithHttpInfo (SurveyDto body = null, bool? activate = null)
         {
 
             var localVarPath = "/Surveys";
@@ -1914,6 +1943,7 @@ namespace IO.Swagger.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (activate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "activate", activate)); // query parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
                 localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter

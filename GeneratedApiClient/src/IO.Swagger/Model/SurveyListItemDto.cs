@@ -30,6 +30,11 @@ namespace IO.Swagger.Model
         public partial class SurveyListItemDto :  IEquatable<SurveyListItemDto>, IValidatableObject
     {
         /// <summary>
+        /// Gets or Sets Status
+        /// </summary>
+        [DataMember(Name="status", EmitDefaultValue=false)]
+        public SurveyStatus? Status { get; set; }
+        /// <summary>
         /// Initializes a new instance of the <see cref="SurveyListItemDto" /> class.
         /// </summary>
         /// <param name="id">id.</param>
@@ -40,7 +45,8 @@ namespace IO.Swagger.Model
         /// <param name="courseName">courseName.</param>
         /// <param name="creatorName">creatorName.</param>
         /// <param name="endDate">endDate.</param>
-        public SurveyListItemDto(int? id = default(int?), string name = default(string), bool? active = default(bool?), bool? isTemplate = default(bool?), bool? anonymous = default(bool?), string courseName = default(string), string creatorName = default(string), DateTime? endDate = default(DateTime?))
+        /// <param name="status">status.</param>
+        public SurveyListItemDto(int? id = default(int?), string name = default(string), bool? active = default(bool?), bool? isTemplate = default(bool?), bool? anonymous = default(bool?), string courseName = default(string), string creatorName = default(string), DateTime? endDate = default(DateTime?), SurveyStatus? status = default(SurveyStatus?))
         {
             this.Id = id;
             this.Name = name;
@@ -50,6 +56,7 @@ namespace IO.Swagger.Model
             this.CourseName = courseName;
             this.CreatorName = creatorName;
             this.EndDate = endDate;
+            this.Status = status;
         }
         
         /// <summary>
@@ -100,6 +107,7 @@ namespace IO.Swagger.Model
         [DataMember(Name="endDate", EmitDefaultValue=false)]
         public DateTime? EndDate { get; set; }
 
+
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -116,6 +124,7 @@ namespace IO.Swagger.Model
             sb.Append("  CourseName: ").Append(CourseName).Append("\n");
             sb.Append("  CreatorName: ").Append(CreatorName).Append("\n");
             sb.Append("  EndDate: ").Append(EndDate).Append("\n");
+            sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -189,6 +198,11 @@ namespace IO.Swagger.Model
                     this.EndDate == input.EndDate ||
                     (this.EndDate != null &&
                     this.EndDate.Equals(input.EndDate))
+                ) && 
+                (
+                    this.Status == input.Status ||
+                    (this.Status != null &&
+                    this.Status.Equals(input.Status))
                 );
         }
 
@@ -217,6 +231,8 @@ namespace IO.Swagger.Model
                     hashCode = hashCode * 59 + this.CreatorName.GetHashCode();
                 if (this.EndDate != null)
                     hashCode = hashCode * 59 + this.EndDate.GetHashCode();
+                if (this.Status != null)
+                    hashCode = hashCode * 59 + this.Status.GetHashCode();
                 return hashCode;
             }
         }

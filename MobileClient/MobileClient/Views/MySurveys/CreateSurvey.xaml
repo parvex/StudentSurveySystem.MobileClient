@@ -16,11 +16,9 @@
                 <Label Text="Title" FontAttributes="Bold" Style="{StaticResource FormLabel}"></Label>
                 <Entry Text="{Binding Survey.Name}"/>
                 <Label Text="End date" FontAttributes="Bold" Style="{StaticResource FormLabel}"></Label>
-                <DatePicker Date="{Binding Survey.EndDate}"></DatePicker>
+                <DatePicker MinimumDate="{Binding MinimumDate}" Date="{Binding Survey.EndDate}"></DatePicker>
                 <Label Text="Anonymous" FontAttributes="Bold" Style="{StaticResource FormLabel}"></Label>
                 <CheckBox IsChecked="{Binding Survey.Anonymous}"></CheckBox>
-                <Label Text="Is active" FontAttributes="Bold" Style="{StaticResource FormLabel}" IsVisible="{Binding Survey.IsTemplate, Converter={extensions:InverseBoolConverter}}"></Label>
-                <CheckBox IsChecked="{Binding Survey.Active}" IsVisible="{Binding Survey.IsTemplate, Converter={extensions:InverseBoolConverter}}"></CheckBox>
                 <Label Text="Semester" FontAttributes="Bold" Style="{StaticResource FormLabel}"></Label>
                 <Picker ItemsSource="{Binding Semesters}"
                         ItemDisplayBinding="{Binding Name}"
@@ -60,6 +58,7 @@
                     </ListView.ItemTemplate>
                 </ListView>
                 <Button Clicked="Save_OnClicked" Text="Save"></Button>
+                <Button IsVisible="{Binding Survey.IsTemplate, Converter={extensions:InverseBoolConverter}}" Clicked="Activate_OnClicked" Text="Activate survey"></Button>
                 <Button IsVisible="{Binding Survey.IsTemplate}" Clicked="StartActiveSurvey_OnClicked" Text="Start active survey from template"></Button>
             </StackLayout>
         </ScrollView>

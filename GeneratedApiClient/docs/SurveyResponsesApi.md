@@ -1,6 +1,6 @@
 # IO.Swagger.Api.SurveyResponsesApi
 
-All URIs are relative to *https://studentsurveysystemserver.azurewebsites.net*
+All URIs are relative to *https://localhost:5001*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**SurveyResponsesGet**](SurveyResponsesApi.md#surveyresponsesget) | **GET** /SurveyResponses | 
 [**SurveyResponsesIdGet**](SurveyResponsesApi.md#surveyresponsesidget) | **GET** /SurveyResponses/{id} | 
 [**SurveyResponsesMyCompletedGet**](SurveyResponsesApi.md#surveyresponsesmycompletedget) | **GET** /SurveyResponses/MyCompleted | 
+[**SurveyResponsesMySurveyResultsGet**](SurveyResponsesApi.md#surveyresponsesmysurveyresultsget) | **GET** /SurveyResponses/MySurveyResults | 
 [**SurveyResponsesPost**](SurveyResponsesApi.md#surveyresponsespost) | **POST** /SurveyResponses | 
 [**SurveyResponsesSurveyResultsIdGet**](SurveyResponsesApi.md#surveyresponsessurveyresultsidget) | **GET** /SurveyResponses/SurveyResults/{id} | 
 
@@ -242,6 +243,68 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**List<SurveyResponseListItemDto>**](SurveyResponseListItemDto.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: text/plain, application/json, text/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+<a name="surveyresponsesmysurveyresultsget"></a>
+# **SurveyResponsesMySurveyResultsGet**
+> List<SurveyListItemDto> SurveyResponsesMySurveyResultsGet (string name = null, int? page = null, int? count = null)
+
+
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class SurveyResponsesMySurveyResultsGetExample
+    {
+        public void main()
+        {
+
+            var apiInstance = new SurveyResponsesApi();
+            var name = name_example;  // string |  (optional) 
+            var page = 56;  // int? |  (optional)  (default to 0)
+            var count = 56;  // int? |  (optional)  (default to 20)
+
+            try
+            {
+                List&lt;SurveyListItemDto&gt; result = apiInstance.SurveyResponsesMySurveyResultsGet(name, page, count);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling SurveyResponsesApi.SurveyResponsesMySurveyResultsGet: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **string**|  | [optional] 
+ **page** | **int?**|  | [optional] [default to 0]
+ **count** | **int?**|  | [optional] [default to 20]
+
+### Return type
+
+[**List<SurveyListItemDto>**](SurveyListItemDto.md)
 
 ### Authorization
 

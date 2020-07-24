@@ -9,6 +9,12 @@
              x:Class="MobileClient.Views.MySurveys.MySurveysList"
              Title="My surveys">
 
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <extensions:StatusColorConverter x:Key="StatusColorConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Add" Clicked="AddItem_Clicked" />
     </ContentPage.ToolbarItems>
@@ -28,7 +34,7 @@
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <Grid Padding="5">
+                                <Grid BackgroundColor="{Binding Status, Converter={StaticResource StatusColorConverter}}"  Padding="5">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="Auto" />
                                         <RowDefinition Height="Auto" />
@@ -51,7 +57,7 @@
                                            Text="{Binding CourseName, StringFormat='Course: {0}'}"/>
                                     <Label Grid.Row="2"
                                            Grid.Column="1"
-                                           Text="{Binding Active, StringFormat='Active: {0}'}"
+                                           Text="{Binding Status, StringFormat='Status: {0}'}"
                                            VerticalOptions="End" />
                                     <Label Grid.Row="3"
                                            Grid.Column="1"

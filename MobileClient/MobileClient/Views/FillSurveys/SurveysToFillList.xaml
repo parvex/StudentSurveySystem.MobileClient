@@ -27,6 +27,7 @@
                                     <RowDefinition Height="Auto" />
                                     <RowDefinition Height="Auto" />
                                     <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
                                 </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto" />
@@ -45,6 +46,10 @@
                                 <Label Grid.Row="2"
                                        Grid.Column="1"
                                        Text="{Binding Anonymous, StringFormat='Anonymous: {0}'}"
+                                       VerticalOptions="End" />
+                                <Label Grid.Row="3"
+                                       Grid.Column="1"
+                                       Text="{Binding EndDate, StringFormat='End date: {0}'}"
                                        VerticalOptions="End" />
                             </Grid>
                         </ViewCell>

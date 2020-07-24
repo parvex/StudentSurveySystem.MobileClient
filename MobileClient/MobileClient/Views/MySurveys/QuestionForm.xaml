@@ -37,9 +37,9 @@
             <CheckBox IsChecked="{Binding ValidationConfig.Integer}" IsVisible="{Binding VisibleDictionary[Numeric]}"></CheckBox>
 
             <Label Text="Min value" IsVisible="{Binding VisibleDictionary[Numeric]}" Style="{StaticResource FormLabel}"></Label>
-            <Entry Keyboard="Numeric" Text="{Binding ValidationConfig.MinNumericValue}" IsVisible="{Binding VisibleDictionary[Numeric]}"></Entry>
+            <extensions:NumericTextBox Text="{Binding ValidationConfig.MinNumericValue}" IsVisible="{Binding VisibleDictionary[Numeric]}"></extensions:NumericTextBox>
             <Label Text="Max value" IsVisible="{Binding VisibleDictionary[Numeric]}" Style="{StaticResource FormLabel}"></Label>
-            <Entry Keyboard="Numeric" Text="{Binding ValidationConfig.MaxNumericValue}" IsVisible="{Binding VisibleDictionary[Numeric]}"></Entry>
+            <extensions:NumericTextBox Text="{Binding ValidationConfig.MaxNumericValue}" IsVisible="{Binding VisibleDictionary[Numeric]}"></extensions:NumericTextBox>
             <Label Text="{Binding ErrorDictionary[NumericRange]}" TextColor="Red" IsVisible="{Binding VisibleDictionary[Numeric]}"></Label>
 
             <Label Text="Min value" IsVisible="{Binding VisibleDictionary[Date]}" Style="{StaticResource FormLabel}"></Label>

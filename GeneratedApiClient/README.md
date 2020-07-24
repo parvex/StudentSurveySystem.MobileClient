@@ -90,7 +90,7 @@ namespace Example
 <a name="documentation-for-api-endpoints"></a>
 ## Documentation for API Endpoints
 
-All URIs are relative to *https://studentsurveysystemserver.azurewebsites.net*
+All URIs are relative to *https://localhost:5001*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
@@ -98,6 +98,7 @@ Class | Method | HTTP request | Description
 *SurveyResponsesApi* | [**SurveyResponsesGet**](docs/SurveyResponsesApi.md#surveyresponsesget) | **GET** /SurveyResponses | 
 *SurveyResponsesApi* | [**SurveyResponsesIdGet**](docs/SurveyResponsesApi.md#surveyresponsesidget) | **GET** /SurveyResponses/{id} | 
 *SurveyResponsesApi* | [**SurveyResponsesMyCompletedGet**](docs/SurveyResponsesApi.md#surveyresponsesmycompletedget) | **GET** /SurveyResponses/MyCompleted | 
+*SurveyResponsesApi* | [**SurveyResponsesMySurveyResultsGet**](docs/SurveyResponsesApi.md#surveyresponsesmysurveyresultsget) | **GET** /SurveyResponses/MySurveyResults | 
 *SurveyResponsesApi* | [**SurveyResponsesPost**](docs/SurveyResponsesApi.md#surveyresponsespost) | **POST** /SurveyResponses | 
 *SurveyResponsesApi* | [**SurveyResponsesSurveyResultsIdGet**](docs/SurveyResponsesApi.md#surveyresponsessurveyresultsidget) | **GET** /SurveyResponses/SurveyResults/{id} | 
 *SurveysApi* | [**SurveysGetSemestersAndMyCoursesGet**](docs/SurveysApi.md#surveysgetsemestersandmycoursesget) | **GET** /Surveys/GetSemestersAndMyCourses | 
@@ -139,6 +140,7 @@ Class | Method | HTTP request | Description
  - [Model.SurveyResponseDto](docs/SurveyResponseDto.md)
  - [Model.SurveyResponseListItemDto](docs/SurveyResponseListItemDto.md)
  - [Model.SurveyResultsDto](docs/SurveyResultsDto.md)
+ - [Model.SurveyStatus](docs/SurveyStatus.md)
  - [Model.User](docs/User.md)
  - [Model.UserRole](docs/UserRole.md)
  - [Model.UsosAuthDto](docs/UsosAuthDto.md)

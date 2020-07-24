@@ -8,6 +8,7 @@ using Acr.UserDialogs;
 using IO.Swagger.Api;
 using IO.Swagger.Client;
 using IO.Swagger.Model;
+using MobileClient.Extensions;
 using MobileClient.Services;
 using MobileClient.Views.MySurveys;
 using Xamarin.Forms;
@@ -25,6 +26,8 @@ namespace MobileClient.Views
         public List<SemesterDto> Semesters { get; set; }
         public SemesterDto SelectedSemester { get; set; }
         public CourseDto SelectedCourse { get; set; }
+
+        public DateTime MinimumDate => DateTime.Now.ChangeTime(0, 0 ,0, 0);
 
         public void Initialize(bool isNew = false)
         {
@@ -75,29 +78,7 @@ namespace MobileClient.Views
 
         private async void Save_OnClicked(object sender, EventArgs e)
         {
-            using (UserDialogs.Instance.Loading())
-            {
-                Survey.Questions = QuestionsList.Select(x =>
-                {
-                    var question = (QuestionDto) x;
-                    question.Index = x.Index;
-                    return (QuestionDto) x;
-                }).ToList();
-                Survey.CourseId = SelectedCourse?.Id;
-                try
-                {
-                    if (Survey.Id.HasValue)
-                        await SystemApi.SurveysClient.SurveysIdPutAsync(Survey.Id, Survey);
-                    else
-                        await SystemApi.SurveysClient.SurveysPostAsync(Survey);
-
-                    await Navigation.PopAsync();
-                }
-                catch (ApiException exception)
-                {
-                    SystemApi.HandleException(exception);
-                }
-            }
+            await Submit();
         }
 
         private async void StartActiveSurvey_OnClicked(object sender, EventArgs e)
@@ -138,6 +119,38 @@ namespace MobileClient.Views
                 {
                     SelectedSemester = Semesters.First(x => x.Courses != null && x.Courses.Any(c => c.Id == Survey.CourseId));
                     SelectedCourse = Semesters.SelectMany(x => x.Courses).First(x => x.Id == Survey.CourseId);
+                }
+            }
+        }
+
+        private async void Activate_OnClicked(object sender, EventArgs e)
+        {
+            await Submit(true);
+        }
+
+        private async Task Submit(bool activate = false)
+        {
+            using (UserDialogs.Instance.Loading())
+            {
+                Survey.Questions = QuestionsList.Select(x =>
+                {
+                    var question = (QuestionDto)x;
+                    question.Index = x.Index;
+                    return (QuestionDto)x;
+                }).ToList();
+                Survey.CourseId = SelectedCourse?.Id;
+                try
+                {
+                    if (Survey.Id.HasValue)
+                        await SystemApi.SurveysClient.SurveysIdPutAsync(Survey.Id, Survey, activate);
+                    else
+                        await SystemApi.SurveysClient.SurveysPostAsync(Survey, activate);
+
+                    await Navigation.PopAsync();
+                }
+                catch (ApiException exception)
+                {
+                    SystemApi.HandleException(exception);
                 }
             }
         }
