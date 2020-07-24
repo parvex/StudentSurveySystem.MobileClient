@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using IO.Swagger.Model;
 using Mapster;
@@ -10,8 +11,6 @@ namespace MobileClient.Views.MySurveys
 {
     public class ValidationConfigVm : ValidationConfig, INotifyPropertyChanged
     {
-        private double? _maxNumericValue;
-        private double? _minNumericValue;
         private DateTime? _minDateValue;
         private string _regex;
         private DateTime? _maxDateValue;
@@ -30,25 +29,9 @@ namespace MobileClient.Views.MySurveys
             }
         }
 
-        public new string MinNumericValue
-        {
-            get => _minNumericValue.ToString();
-            set
-            {
-                _minNumericValue = double.TryParse(value, out var tempVal) ? tempVal : (double?)null;
-                ErrorDictionary["NumericRange"] = _minNumericValue > _maxNumericValue ? "Min value must be lesser than max" : null;
-            }
-        }
+        public new string MinNumericValue { get; set; }
 
-        public new string MaxNumericValue
-        {
-            get => _maxNumericValue.ToString();
-            set
-            {
-                _maxNumericValue = double.TryParse(value, out var tempVal) ? tempVal : (double?)null;
-                ErrorDictionary["NumericRange"] = _minNumericValue > _maxNumericValue ? "Min value must be lesser than max" : null;
-            }
-        }
+        public new string MaxNumericValue { get; set; }
 
         public new DateTime? MinDateValue
         {
@@ -83,8 +66,8 @@ namespace MobileClient.Views.MySurveys
                 .Ignore(x => x.MaxNumericValue)
                 .Ignore(x => x.MinNumericValue);
             var dto = this.Adapt<ValidationConfig>(config);
-            dto.MaxNumericValue = _maxNumericValue;
-            dto.MinNumericValue = _minNumericValue;
+            dto.MaxNumericValue = double.TryParse(MaxNumericValue, out var tempValMax) ? tempValMax : (double?)null;
+            dto.MinNumericValue = double.TryParse(MinNumericValue, out var tempValMin) ? tempValMin : (double?)null;
             return dto;
         }
 

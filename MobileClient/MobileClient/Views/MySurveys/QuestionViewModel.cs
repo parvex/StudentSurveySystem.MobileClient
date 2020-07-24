@@ -27,8 +27,6 @@ namespace MobileClient.Views.MySurveys
             get => _questionText; 
             set
             {
-                //if (_questionList.Any(x => x.QuestionText == value && !x.Equals(_originalQuestion)))
-                //    ErrorDictionary["QuestionText"] = "Question named like this already exists.";
                 if (string.IsNullOrEmpty(value))
                     ErrorDictionary["QuestionText"] = "Please specify question text.";
                 else
@@ -118,6 +116,8 @@ namespace MobileClient.Views.MySurveys
             Values = copied.Values != null ? new ObservableCollection<string>(copied.Values) : Values; 
             Index = (copied.Index.Value+1).ToString();
             ValidationConfig = copied.ValidationConfig.Adapt<ValidationConfigVm>();
+            ValidationConfig.MinNumericValue = copied.ValidationConfig.MinNumericValue.ToString();
+            ValidationConfig.MaxNumericValue = copied.ValidationConfig.MaxNumericValue.ToString();            
             ValidationConfig.MinDateValue = copied.ValidationConfig.MinDateValue;
             ValidationConfig.MaxDateValue = copied.ValidationConfig.MaxDateValue;
             ValidationConfig.ErrorDictionary = ErrorDictionary;
@@ -125,6 +125,10 @@ namespace MobileClient.Views.MySurveys
 
         public bool Submit()
         {
+            var maxNumericValue = double.TryParse(ValidationConfig.MaxNumericValue, out var tempValMax) ? tempValMax : (double?)null;
+            var minNumericValue = double.TryParse(ValidationConfig.MinNumericValue, out var tempValMin) ? tempValMin : (double?)null;
+            ErrorDictionary["NumericRange"] = minNumericValue > maxNumericValue ? "Min value must be lesser than max" : null;
+
             if (ErrorDictionary.Any(x => !string.IsNullOrEmpty(x.Value)))
                 return false;
 
@@ -144,6 +148,8 @@ namespace MobileClient.Views.MySurveys
             question.QuestionType = QuestionType;
             question.Values = Values.ToList();
             question.ValidationConfig = ValidationConfig.ToDto();
+
+
             if (question.Index.Value > _questionList.Count)
                 _questionList.Add(question);
             else

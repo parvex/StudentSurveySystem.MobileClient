@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Acr.UserDialogs;
 using IO.Swagger.Model;
 using MobileClient.Extensions;
@@ -54,6 +55,7 @@ namespace MobileClient.Views
                     {
                         await SystemApi.UsersClient.UsersUpdateUserUsosDataPutAsync();
                         ListViewMenu.SelectedItem = LastSelectedMenuItem;
+                        UserDialogs.Instance.Toast("Usos data updated!");
                     }
                     return;
                 }

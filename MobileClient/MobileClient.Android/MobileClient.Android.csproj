@@ -69,7 +69,6 @@
   <ItemGroup>
     <Compile Include="Helpers\DroidKeyboardHelper.cs" />
     <Compile Include="MainActivity.cs" />
-    <Compile Include="Renderers\CustomNumericTextboxRenderer .cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -96,7 +95,9 @@
     <AndroidResource Include="Resources\mipmap-xxxhdpi\icon.png" />
     <AndroidResource Include="Resources\mipmap-xxxhdpi\launcher_foreground.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Renderers\" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MobileClient\MobileClient.csproj">
       <Project>{2DEAD71C-2510-4602-AD8E-95662C5C87FC}</Project>
