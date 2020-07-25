@@ -53,9 +53,17 @@ namespace MobileClient.Views
                 {
                     using (UserDialogs.Instance.Loading())
                     {
-                        await SystemApi.UsersClient.UsersUpdateUserUsosDataPutAsync();
-                        ListViewMenu.SelectedItem = LastSelectedMenuItem;
-                        UserDialogs.Instance.Toast("Usos data updated!");
+                        try
+                        {
+                            await SystemApi.UsersClient.UsersUpdateUserUsosDataPutAsync();
+                            ListViewMenu.SelectedItem = LastSelectedMenuItem;
+                            UserDialogs.Instance.Toast("Usos data updated!");
+                        }
+                        catch
+                        {
+                            Application.Current.MainPage = new AuthPage(true);
+                        }
+
                     }
                     return;
                 }

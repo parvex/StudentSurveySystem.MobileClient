@@ -13,12 +13,15 @@ namespace MobileClient.Views
     public partial class AuthPage : ContentPage
     {
         public UsosAuthDto usosAuth;
+        public bool UpdateUsosData { get; set; }
 
         public bool Busy { get; set; }
 
-        public AuthPage()
+        public AuthPage(bool updateUsosData = false)
         {
+            UpdateUsosData = updateUsosData;
             InitializeComponent();
+            BindingContext = this;
         }
 
 
@@ -44,6 +47,11 @@ namespace MobileClient.Views
                 try
                 {
                     var result = await SystemApi.UsosAuth(usosAuth);
+                    if (UpdateUsosData)
+                    {
+                        await SystemApi.UsersClient.UsersUpdateUserUsosDataPutAsync();
+                        UserDialogs.Instance.Toast("Usos data updated!");
+                    }
                     Application.Current.MainPage = new MainPage();
                 }
                 catch (ApiException e)
