@@ -40,6 +40,7 @@ namespace MobileClient.Services
             var result = await UsersClient.UsersAuthenticatePostAsync(new AuthenticateDto(username, password));
             ApiConfiguration.AddDefaultHeader("Authorization", "Bearer " + result.Token);
             UserHelper.User = result;
+            await UserHelper.SaveUser(result);
             return result;
         }
 
@@ -48,9 +49,14 @@ namespace MobileClient.Services
             var result = await UsersClient.UsersUsosPinAuthPostAsync(usosAuthDto);
             ApiConfiguration.AddDefaultHeader("Authorization", "Bearer " + result.Token);
             UserHelper.User = result;
+            await UserHelper.SaveUser(result);
             return result; 
         }
 
+        public static void AuthApi(string token)
+        {
+            ApiConfiguration.AddDefaultHeader("Authorization", "Bearer " + token);
+        }
 
         public static void Logout()
         {

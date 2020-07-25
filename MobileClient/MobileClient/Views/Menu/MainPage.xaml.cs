@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Acr.UserDialogs;
 using IO.Swagger.Client;
 using IO.Swagger.Model;
+using MobileClient.Helpers;
 using MobileClient.Models;
 using MobileClient.Services;
 using MobileClient.Views.MySurveys;
@@ -58,7 +59,7 @@ namespace MobileClient.Views
 
             if (id == MenuItemType.Logout)
             {
-                SystemApi.Logout();
+                await UserHelper.Logout();
                 Application.Current.MainPage = new AuthPage();
                 return;
             }

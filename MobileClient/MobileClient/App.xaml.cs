@@ -14,13 +14,19 @@ namespace MobileClient
         {
             InitializeComponent();
             MapsterConfig.Setup();
-            var navAuthPage = new AuthPage();
-            MainPage = navAuthPage;
         }
 
-        protected override void OnStart()
+        protected override async void OnStart()
         {
-            // Handle when your app starts
+            if (await UserHelper.AutoLogin())
+            {
+                MainPage = new MainPage();
+            }
+            else
+            {
+                var navAuthPage = new AuthPage();
+                MainPage = navAuthPage;
+            }
         }
 
         protected override void OnSleep()
