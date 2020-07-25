@@ -22,7 +22,12 @@ namespace MobileClient.Extensions
 
             if (!string.IsNullOrWhiteSpace(args.NewTextValue))
             {
-                bool isValid = args.NewTextValue.ToCharArray().All(x => char.IsDigit(x)); //Make sure all characters are numbers
+                if (args.NewTextValue == "-")
+                {
+                    ((Entry) sender).Text = args.NewTextValue;
+                    return;
+                }
+                bool isValid = args.NewTextValue.ToCharArray().All(x => char.IsDigit(x) || x == '-'); //Make sure all characters are numbers
 
                 ((Entry)sender).Text = isValid ? args.NewTextValue : args.NewTextValue.Remove(args.NewTextValue.Length - 1);
             }
