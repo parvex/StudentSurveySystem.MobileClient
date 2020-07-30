@@ -69,22 +69,22 @@ namespace MobileClient.Views
             return true;
         }
 
-        //private async void Button_Login(object sender, EventArgs e)
-        //{
-        //    using (UserDialogs.Instance.Loading("Loading"))
-        //    {
-        //        try
-        //        {
-        //            var result = await SystemApi.Auth(Username.Text, Password.Text);
-        //            Application.Current.MainPage = new MainPage();
-        //        }
-        //        catch (ApiException exception)
-        //        {
-        //            AuthErrorLabel.IsVisible = true;
-        //            Console.WriteLine(exception);
-        //        }
-        //    }
-        //}
+        private async void Button_Login(object sender, EventArgs e)
+        {
+            using (UserDialogs.Instance.Loading("Loading"))
+            {
+                try
+                {
+                    var result = await SystemApi.Auth(Username.Text, Password.Text);
+                    Application.Current.MainPage = new MainPage();
+                }
+                catch (ApiException exception)
+                {
+                    AuthErrorLabel.IsVisible = true;
+                    Console.WriteLine(exception);
+                }
+            }
+        }
 
         private async void Button_UsosPinAuth(object sender, EventArgs e)
         {
