@@ -102,9 +102,11 @@ Class | Method | HTTP request | Description
 *SurveyResponsesApi* | [**SurveyResponsesPost**](docs/SurveyResponsesApi.md#surveyresponsespost) | **POST** /SurveyResponses | 
 *SurveyResponsesApi* | [**SurveyResponsesSurveyResultsIdGet**](docs/SurveyResponsesApi.md#surveyresponsessurveyresultsidget) | **GET** /SurveyResponses/SurveyResults/{id} | 
 *SurveysApi* | [**SurveysGetSemestersAndMyCoursesGet**](docs/SurveysApi.md#surveysgetsemestersandmycoursesget) | **GET** /Surveys/GetSemestersAndMyCourses | 
+*SurveysApi* | [**SurveysGetSemsAndCoursesAsStudentGet**](docs/SurveysApi.md#surveysgetsemsandcoursesasstudentget) | **GET** /Surveys/GetSemsAndCoursesAsStudent | 
 *SurveysApi* | [**SurveysIdDelete**](docs/SurveysApi.md#surveysiddelete) | **DELETE** /Surveys/{id} | 
 *SurveysApi* | [**SurveysIdGet**](docs/SurveysApi.md#surveysidget) | **GET** /Surveys/{id} | 
 *SurveysApi* | [**SurveysIdPut**](docs/SurveysApi.md#surveysidput) | **PUT** /Surveys/{id} | 
+*SurveysApi* | [**SurveysMyActiveSurveyNamesGet**](docs/SurveysApi.md#surveysmyactivesurveynamesget) | **GET** /Surveys/MyActiveSurveyNames | 
 *SurveysApi* | [**SurveysMyNotFilledFormGet**](docs/SurveysApi.md#surveysmynotfilledformget) | **GET** /Surveys/MyNotFilledForm | 
 *SurveysApi* | [**SurveysMySurveyTemplatesGet**](docs/SurveysApi.md#surveysmysurveytemplatesget) | **GET** /Surveys/MySurveyTemplates | 
 *SurveysApi* | [**SurveysMySurveysGet**](docs/SurveysApi.md#surveysmysurveysget) | **GET** /Surveys/MySurveys | 

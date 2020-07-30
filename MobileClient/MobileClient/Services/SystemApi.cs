@@ -50,6 +50,7 @@ namespace MobileClient.Services
             ApiConfiguration.AddDefaultHeader("Authorization", "Bearer " + result.Token);
             UserHelper.User = result;
             await UserHelper.SaveUser(result);
+            await UserHelper.UpdateCourseNotificationSubscribtions();
             return result; 
         }
 

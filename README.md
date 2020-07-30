@@ -6,4 +6,7 @@ Things to configure:
 
 -local server has to be debugged with http not https
 
+For cloud messaging:
+-add google-services.json from firebase to Droid and iOS projects to enable cloud messaging
+
 ![Build](https://github.com/parvex/StudentSurveySystem.MobileClient/workflows/Build/badge.svg)

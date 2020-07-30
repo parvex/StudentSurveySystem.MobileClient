@@ -85,7 +85,7 @@ namespace MobileClient.Views
         {
             using (UserDialogs.Instance.Loading())
             {
-                Survey.EndDate = Survey.EndDate.Value.SetHours(23, 59, 59, 999);
+                if (Survey?.EndDate != null) Survey.EndDate = Survey.EndDate.Value.SetHours(23, 59, 59, 999);
                 Survey.Questions = QuestionsList.Select(x =>
                 {
                     var question = (QuestionDto)x;

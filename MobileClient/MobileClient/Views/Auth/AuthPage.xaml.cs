@@ -2,6 +2,7 @@
 using Acr.UserDialogs;
 using IO.Swagger.Client;
 using IO.Swagger.Model;
+using MobileClient.Helpers;
 using MobileClient.Services;
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -50,6 +51,7 @@ namespace MobileClient.Views
                     if (UpdateUsosData)
                     {
                         await SystemApi.UsersClient.UsersUpdateUserUsosDataPutAsync();
+                        await UserHelper.UpdateCourseNotificationSubscribtions();
                         UserDialogs.Instance.Toast("Usos data updated!");
                     }
                     Application.Current.MainPage = new MainPage();
@@ -67,22 +69,22 @@ namespace MobileClient.Views
             return true;
         }
 
-        private async void Button_Login(object sender, EventArgs e)
-        {
-            using (UserDialogs.Instance.Loading("Loading"))
-            {
-                try
-                {
-                    var result = await SystemApi.Auth(Username.Text, Password.Text);
-                    Application.Current.MainPage = new MainPage();
-                }
-                catch (ApiException exception)
-                {
-                    AuthErrorLabel.IsVisible = true;
-                    Console.WriteLine(exception);
-                }
-            }
-        }
+        //private async void Button_Login(object sender, EventArgs e)
+        //{
+        //    using (UserDialogs.Instance.Loading("Loading"))
+        //    {
+        //        try
+        //        {
+        //            var result = await SystemApi.Auth(Username.Text, Password.Text);
+        //            Application.Current.MainPage = new MainPage();
+        //        }
+        //        catch (ApiException exception)
+        //        {
+        //            AuthErrorLabel.IsVisible = true;
+        //            Console.WriteLine(exception);
+        //        }
+        //    }
+        //}
 
         private async void Button_UsosPinAuth(object sender, EventArgs e)
         {

@@ -1,6 +1,8 @@
 ﻿using System;
+using MobileClient.Extensions;
 using MobileClient.Helpers;
 using MobileClient.Views;
+using Plugin.FirebasePushNotification;
 using Xamarin.Forms;
 
 namespace MobileClient
@@ -14,6 +16,31 @@ namespace MobileClient
         {
             InitializeComponent();
             MapsterConfig.Setup();
+            DependencyService.Get<INotificationManager>().Initialize();
+
+            CrossFirebasePushNotification.Current.Subscribe("global");
+            CrossFirebasePushNotification.Current.OnTokenRefresh += (s, p) =>
+            {
+                System.Diagnostics.Debug.WriteLine($"TOKEN : {p.Token}");
+            };
+
+            CrossFirebasePushNotification.Current.OnNotificationReceived += (s, p) =>
+            {
+                var notificationManager = DependencyService.Get<INotificationManager>();
+                if (p.Data.ContainsKey("message") && p.Data.ContainsKey("title"))
+                    notificationManager.ScheduleNotification((string)p.Data["title"], (string) p.Data["message"]);
+            };
+
+            CrossFirebasePushNotification.Current.OnNotificationOpened += (s, p) =>
+            {
+                System.Diagnostics.Debug.WriteLine("Opened");
+                foreach (var data in p.Data)
+                {
+                    System.Diagnostics.Debug.WriteLine($"{data.Key} : {data.Value}");
+                }
+
+
+            };
         }
 
         protected override async void OnStart()
@@ -59,5 +86,6 @@ namespace MobileClient
 
             base.OnAppLinkRequestReceived(uri);
         }
+
     }
 }

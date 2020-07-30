@@ -338,3 +338,8 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+
+# Custom
+MobileClient/MobileClient.Android/google-services.json
+MobileClient/MobileClient.iOS/google-services.json
+/MobileClient/MobileClient.iOS/GoogleService-Info.plist

@@ -5,9 +5,11 @@ All URIs are relative to *https://localhost:5001*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**SurveysGetSemestersAndMyCoursesGet**](SurveysApi.md#surveysgetsemestersandmycoursesget) | **GET** /Surveys/GetSemestersAndMyCourses | 
+[**SurveysGetSemsAndCoursesAsStudentGet**](SurveysApi.md#surveysgetsemsandcoursesasstudentget) | **GET** /Surveys/GetSemsAndCoursesAsStudent | 
 [**SurveysIdDelete**](SurveysApi.md#surveysiddelete) | **DELETE** /Surveys/{id} | 
 [**SurveysIdGet**](SurveysApi.md#surveysidget) | **GET** /Surveys/{id} | 
 [**SurveysIdPut**](SurveysApi.md#surveysidput) | **PUT** /Surveys/{id} | 
+[**SurveysMyActiveSurveyNamesGet**](SurveysApi.md#surveysmyactivesurveynamesget) | **GET** /Surveys/MyActiveSurveyNames | 
 [**SurveysMyNotFilledFormGet**](SurveysApi.md#surveysmynotfilledformget) | **GET** /Surveys/MyNotFilledForm | 
 [**SurveysMySurveyTemplatesGet**](SurveysApi.md#surveysmysurveytemplatesget) | **GET** /Surveys/MySurveyTemplates | 
 [**SurveysMySurveysGet**](SurveysApi.md#surveysmysurveysget) | **GET** /Surveys/MySurveys | 
@@ -46,6 +48,60 @@ namespace Example
             catch (Exception e)
             {
                 Debug.Print("Exception when calling SurveysApi.SurveysGetSemestersAndMyCoursesGet: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**List<SemesterDto>**](SemesterDto.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: text/plain, application/json, text/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+<a name="surveysgetsemsandcoursesasstudentget"></a>
+# **SurveysGetSemsAndCoursesAsStudentGet**
+> List<SemesterDto> SurveysGetSemsAndCoursesAsStudentGet ()
+
+
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class SurveysGetSemsAndCoursesAsStudentGetExample
+    {
+        public void main()
+        {
+
+            var apiInstance = new SurveysApi();
+
+            try
+            {
+                List&lt;SemesterDto&gt; result = apiInstance.SurveysGetSemsAndCoursesAsStudentGet();
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling SurveysApi.SurveysGetSemsAndCoursesAsStudentGet: " + e.Message );
             }
         }
     }
@@ -243,6 +299,60 @@ void (empty response body)
 
  - **Content-Type**: application/json-patch+json, application/json, text/json, application/_*+json
  - **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+<a name="surveysmyactivesurveynamesget"></a>
+# **SurveysMyActiveSurveyNamesGet**
+> List<string> SurveysMyActiveSurveyNamesGet ()
+
+
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class SurveysMyActiveSurveyNamesGetExample
+    {
+        public void main()
+        {
+
+            var apiInstance = new SurveysApi();
+
+            try
+            {
+                List&lt;string&gt; result = apiInstance.SurveysMyActiveSurveyNamesGet();
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling SurveysApi.SurveysMyActiveSurveyNamesGet: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**List<string>**
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: text/plain, application/json, text/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="surveysmynotfilledformget"></a>

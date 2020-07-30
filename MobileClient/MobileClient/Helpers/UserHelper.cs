@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using IO.Swagger.Model;
+using MobileClient.Extensions;
 using MobileClient.Services;
 using Newtonsoft.Json;
+using Plugin.FirebasePushNotification;
 using Xamarin.Auth;
 using Xamarin.Essentials;
 namespace MobileClient.Helpers
@@ -77,7 +80,10 @@ namespace MobileClient.Helpers
             {
                 return JsonConvert.DeserializeObject<List<Account>>(json);
             }
-            catch { }
+            catch
+            {
+            }
+
             return new List<Account>();
         }
 
@@ -93,6 +99,29 @@ namespace MobileClient.Helpers
             accounts.RemoveAll(a => a.Username == User.Username);
             User = null;
             SystemApi.Logout();
+            CrossFirebasePushNotification.Current.UnsubscribeAll();
         }
+
+        public static async Task UpdateCourseNotificationSubscribtions()
+        {
+            CrossFirebasePushNotification.Current.UnsubscribeAll();
+            CrossFirebasePushNotification.Current.Subscribe("global");
+            if (User == null) return;
+            var semestersIParticipate = await SystemApi.SurveysClient.SurveysGetSemsAndCoursesAsStudentGetAsync();
+            var mySurveys = await SystemApi.SurveysClient.SurveysMyActiveSurveyNamesGetAsync();
+            foreach (var semester in semestersIParticipate)
+            {
+                foreach (var course in semester.Courses)
+                {
+                    CrossFirebasePushNotification.Current.Subscribe(semester.Name + course.Name);
+                }
+            }
+            foreach (var survey in mySurveys)
+            {
+                CrossFirebasePushNotification.Current.Subscribe(survey.RemoveDiactrics().RemoveWhiteSpaces());
+            }
+        }
+
+
     }
 }
