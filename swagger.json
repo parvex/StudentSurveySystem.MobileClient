@@ -1269,7 +1269,8 @@
           "MultipleSelect",
           "Numeric",
           "Date",
-          "Boolean"
+          "Boolean",
+          "ValuedSingleSelect"
         ],
         "type": "string"
       },
@@ -1404,6 +1405,47 @@
         },
         "additionalProperties": false
       },
+      "Statistics": {
+        "type": "object",
+        "properties": {
+          "mean": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "min": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "max": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "median": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "variance": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "standardDeviation": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "mode": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "QuestionResultsDto": {
         "type": "object",
         "properties": {
@@ -1436,9 +1478,8 @@
             },
             "nullable": true
           },
-          "mean": {
-            "type": "number",
-            "format": "double"
+          "statistics": {
+            "$ref": "#/components/schemas/Statistics"
           }
         },
         "additionalProperties": false
@@ -1501,6 +1542,21 @@
         },
         "additionalProperties": false
       },
+      "StringDoubleNullableValueTuple": {
+        "type": "object",
+        "properties": {
+          "item1": {
+            "type": "string",
+            "nullable": true
+          },
+          "item2": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "QuestionDto": {
         "required": [
           "index",
@@ -1530,7 +1586,7 @@
           "values": {
             "type": "array",
             "items": {
-              "type": "string"
+              "$ref": "#/components/schemas/StringDoubleNullableValueTuple"
             },
             "nullable": true
           }
@@ -1579,6 +1635,10 @@
             "type": "boolean"
           },
           "courseName": {
+            "type": "string",
+            "nullable": true
+          },
+          "courseSemesterName": {
             "type": "string",
             "nullable": true
           },

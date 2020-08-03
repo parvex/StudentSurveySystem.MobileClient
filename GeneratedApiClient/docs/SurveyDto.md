@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **IsTemplate** | **bool?** |  | [optional] 
 **Anonymous** | **bool?** |  | [optional] 
 **CourseName** | **string** |  | [optional] 
+**CourseSemesterName** | **string** |  | [optional] 
 **CreatorName** | **string** |  | [optional] 
 **EndDate** | **DateTime?** |  | [optional] 
 **Today** | **DateTime?** |  | [optional] 

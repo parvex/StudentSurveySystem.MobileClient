@@ -22,7 +22,7 @@ namespace MobileClient.Views.MySurveys
         /// <summary>
         /// Values for mutli or single select
         /// </summary>
-        public ObservableCollection<string> Values{ get; set; } = new ObservableCollection<string>();
+        public ObservableCollection<StringDoubleNullableValueTuple> Values{ get; set; } = new ObservableCollection<StringDoubleNullableValueTuple>();
         public string QuestionText {
             get => _questionText; 
             set
@@ -57,7 +57,11 @@ namespace MobileClient.Views.MySurveys
                         break;
                     case QuestionType.SingleSelect:
                     case QuestionType.MultipleSelect:
+                    case QuestionType.ValuedSingleSelect:
                         VisibleDictionary["MultipleSelect"] = true;
+
+                        if(value == QuestionType.ValuedSingleSelect)
+                            VisibleDictionary["ValuedSingleSelect"] = true;
                         break;
                     case QuestionType.Numeric:
                         VisibleDictionary["Numeric"] = true;
@@ -86,18 +90,20 @@ namespace MobileClient.Views.MySurveys
         public QuestionViewModel()
         {
             QuestionTypes.Insert(0, "Select type");
-            Commands["DeleteValue"] = new Command((object selectedItem) => { var item = (string) selectedItem; Values.Remove(item); });
+            Commands["DeleteValue"] = new Command((object selectedItem) => { var item = (StringDoubleNullableValueTuple) selectedItem;  Values.Remove(item); });
             ValidationConfig = new ValidationConfigVm {ErrorDictionary = ErrorDictionary};
             ErrorDictionary["QuestionType"] = "Please select question type.";
             ErrorDictionary["QuestionText"] = "Please specify question text.";
         }
 
-        public void AddOrUpdateValue(string value, int? index = null)
+        public void AddOrUpdateValue(string selectText, double? selectValue, int? index = null)
         {
+            if (QuestionType != QuestionType.ValuedSingleSelect)
+                selectValue = null;
             if(!index.HasValue)
-                Values.Add(value);
+                Values.Add(new StringDoubleNullableValueTuple(selectText, selectValue));
             else
-                Values[index.Value] = value;
+                Values[index.Value] = new StringDoubleNullableValueTuple(selectText, selectValue);
         }
 
         public QuestionViewModel(ObservableCollection<QuestionModel> questionList) : this()
@@ -113,7 +119,7 @@ namespace MobileClient.Views.MySurveys
             var copied = _originalQuestion.DeepClone();
             QuestionType = copied.QuestionType;
             QuestionText = copied.QuestionText;
-            Values = copied.Values != null ? new ObservableCollection<string>(copied.Values) : Values; 
+            Values = copied.Values != null ? new ObservableCollection<StringDoubleNullableValueTuple>(copied.Values) : Values; 
             Index = (copied.Index.Value+1).ToString();
             ValidationConfig = copied.ValidationConfig.Adapt<ValidationConfigVm>();
             ValidationConfig.MinNumericValue = copied.ValidationConfig.MinNumericValue.ToString();

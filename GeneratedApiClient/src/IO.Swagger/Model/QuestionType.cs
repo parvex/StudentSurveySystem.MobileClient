@@ -58,5 +58,10 @@ namespace IO.Swagger.Model
         /// Enum Boolean for value: Boolean
         /// </summary>
         [EnumMember(Value = "Boolean")]
-        Boolean = 6    }
+        Boolean = 6,
+        /// <summary>
+        /// Enum ValuedSingleSelect for value: ValuedSingleSelect
+        /// </summary>
+        [EnumMember(Value = "ValuedSingleSelect")]
+        ValuedSingleSelect = 7    }
 }

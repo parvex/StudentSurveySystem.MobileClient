@@ -43,7 +43,7 @@ namespace IO.Swagger.Model
         /// <param name="questionType">questionType (required).</param>
         /// <param name="validationConfig">validationConfig.</param>
         /// <param name="values">values.</param>
-        public QuestionDto(int? id = default(int?), int? index = default(int?), string questionText = default(string), QuestionType questionType = default(QuestionType), ValidationConfig validationConfig = default(ValidationConfig), List<string> values = default(List<string>))
+        public QuestionDto(int? id = default(int?), int? index = default(int?), string questionText = default(string), QuestionType questionType = default(QuestionType), ValidationConfig validationConfig = default(ValidationConfig), List<StringDoubleNullableValueTuple> values = default(List<StringDoubleNullableValueTuple>))
         {
             // to ensure "index" is required (not null)
             if (index == null)
@@ -106,7 +106,7 @@ namespace IO.Swagger.Model
         /// Gets or Sets Values
         /// </summary>
         [DataMember(Name="values", EmitDefaultValue=false)]
-        public List<string> Values { get; set; }
+        public List<StringDoubleNullableValueTuple> Values { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

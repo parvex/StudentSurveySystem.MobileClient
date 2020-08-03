@@ -46,10 +46,11 @@ namespace IO.Swagger.Model
         /// <param name="isTemplate">isTemplate.</param>
         /// <param name="anonymous">anonymous.</param>
         /// <param name="courseName">courseName.</param>
+        /// <param name="courseSemesterName">courseSemesterName.</param>
         /// <param name="creatorName">creatorName.</param>
         /// <param name="endDate">endDate.</param>
         /// <param name="status">status.</param>
-        public SurveyDto(int? id = default(int?), string name = default(string), int? creatorId = default(int?), int? courseId = default(int?), List<QuestionDto> questions = default(List<QuestionDto>), bool? active = default(bool?), bool? isTemplate = default(bool?), bool? anonymous = default(bool?), string courseName = default(string), string creatorName = default(string), DateTime? endDate = default(DateTime?), SurveyStatus? status = default(SurveyStatus?))
+        public SurveyDto(int? id = default(int?), string name = default(string), int? creatorId = default(int?), int? courseId = default(int?), List<QuestionDto> questions = default(List<QuestionDto>), bool? active = default(bool?), bool? isTemplate = default(bool?), bool? anonymous = default(bool?), string courseName = default(string), string courseSemesterName = default(string), string creatorName = default(string), DateTime? endDate = default(DateTime?), SurveyStatus? status = default(SurveyStatus?))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -84,6 +85,7 @@ namespace IO.Swagger.Model
             this.IsTemplate = isTemplate;
             this.Anonymous = anonymous;
             this.CourseName = courseName;
+            this.CourseSemesterName = courseSemesterName;
             this.CreatorName = creatorName;
             this.EndDate = endDate;
             this.Status = status;
@@ -144,6 +146,12 @@ namespace IO.Swagger.Model
         public string CourseName { get; set; }
 
         /// <summary>
+        /// Gets or Sets CourseSemesterName
+        /// </summary>
+        [DataMember(Name="courseSemesterName", EmitDefaultValue=false)]
+        public string CourseSemesterName { get; set; }
+
+        /// <summary>
         /// Gets or Sets CreatorName
         /// </summary>
         [DataMember(Name="creatorName", EmitDefaultValue=false)]
@@ -179,6 +187,7 @@ namespace IO.Swagger.Model
             sb.Append("  IsTemplate: ").Append(IsTemplate).Append("\n");
             sb.Append("  Anonymous: ").Append(Anonymous).Append("\n");
             sb.Append("  CourseName: ").Append(CourseName).Append("\n");
+            sb.Append("  CourseSemesterName: ").Append(CourseSemesterName).Append("\n");
             sb.Append("  CreatorName: ").Append(CreatorName).Append("\n");
             sb.Append("  EndDate: ").Append(EndDate).Append("\n");
             sb.Append("  Today: ").Append(Today).Append("\n");
@@ -264,6 +273,11 @@ namespace IO.Swagger.Model
                     this.CourseName.Equals(input.CourseName))
                 ) && 
                 (
+                    this.CourseSemesterName == input.CourseSemesterName ||
+                    (this.CourseSemesterName != null &&
+                    this.CourseSemesterName.Equals(input.CourseSemesterName))
+                ) && 
+                (
                     this.CreatorName == input.CreatorName ||
                     (this.CreatorName != null &&
                     this.CreatorName.Equals(input.CreatorName))
@@ -312,6 +326,8 @@ namespace IO.Swagger.Model
                     hashCode = hashCode * 59 + this.Anonymous.GetHashCode();
                 if (this.CourseName != null)
                     hashCode = hashCode * 59 + this.CourseName.GetHashCode();
+                if (this.CourseSemesterName != null)
+                    hashCode = hashCode * 59 + this.CourseSemesterName.GetHashCode();
                 if (this.CreatorName != null)
                     hashCode = hashCode * 59 + this.CreatorName.GetHashCode();
                 if (this.EndDate != null)

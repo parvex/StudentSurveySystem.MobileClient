@@ -136,6 +136,8 @@ Class | Method | HTTP request | Description
  - [Model.QuestionType](docs/QuestionType.md)
  - [Model.Semester](docs/Semester.md)
  - [Model.SemesterDto](docs/SemesterDto.md)
+ - [Model.Statistics](docs/Statistics.md)
+ - [Model.StringDoubleNullableValueTuple](docs/StringDoubleNullableValueTuple.md)
  - [Model.SurveyDto](docs/SurveyDto.md)
  - [Model.SurveyListItemDto](docs/SurveyListItemDto.md)
  - [Model.SurveyResponseDetailsDto](docs/SurveyResponseDetailsDto.md)

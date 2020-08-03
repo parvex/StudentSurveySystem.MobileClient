@@ -43,8 +43,8 @@ namespace IO.Swagger.Model
         /// <param name="questionType">questionType.</param>
         /// <param name="questionAnswers">questionAnswers.</param>
         /// <param name="answerPercentages">answerPercentages.</param>
-        /// <param name="mean">mean.</param>
-        public QuestionResultsDto(int? questionIndex = default(int?), int? questionId = default(int?), string questionText = default(string), QuestionType? questionType = default(QuestionType?), List<QuestionAnswerDto> questionAnswers = default(List<QuestionAnswerDto>), List<AnswerPercentage> answerPercentages = default(List<AnswerPercentage>), double? mean = default(double?))
+        /// <param name="statistics">statistics.</param>
+        public QuestionResultsDto(int? questionIndex = default(int?), int? questionId = default(int?), string questionText = default(string), QuestionType? questionType = default(QuestionType?), List<QuestionAnswerDto> questionAnswers = default(List<QuestionAnswerDto>), List<AnswerPercentage> answerPercentages = default(List<AnswerPercentage>), Statistics statistics = default(Statistics))
         {
             this.QuestionIndex = questionIndex;
             this.QuestionId = questionId;
@@ -52,7 +52,7 @@ namespace IO.Swagger.Model
             this.QuestionType = questionType;
             this.QuestionAnswers = questionAnswers;
             this.AnswerPercentages = answerPercentages;
-            this.Mean = mean;
+            this.Statistics = statistics;
         }
         
         /// <summary>
@@ -87,10 +87,10 @@ namespace IO.Swagger.Model
         public List<AnswerPercentage> AnswerPercentages { get; set; }
 
         /// <summary>
-        /// Gets or Sets Mean
+        /// Gets or Sets Statistics
         /// </summary>
-        [DataMember(Name="mean", EmitDefaultValue=false)]
-        public double? Mean { get; set; }
+        [DataMember(Name="statistics", EmitDefaultValue=false)]
+        public Statistics Statistics { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -106,7 +106,7 @@ namespace IO.Swagger.Model
             sb.Append("  QuestionType: ").Append(QuestionType).Append("\n");
             sb.Append("  QuestionAnswers: ").Append(QuestionAnswers).Append("\n");
             sb.Append("  AnswerPercentages: ").Append(AnswerPercentages).Append("\n");
-            sb.Append("  Mean: ").Append(Mean).Append("\n");
+            sb.Append("  Statistics: ").Append(Statistics).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -174,9 +174,9 @@ namespace IO.Swagger.Model
                     this.AnswerPercentages.SequenceEqual(input.AnswerPercentages)
                 ) && 
                 (
-                    this.Mean == input.Mean ||
-                    (this.Mean != null &&
-                    this.Mean.Equals(input.Mean))
+                    this.Statistics == input.Statistics ||
+                    (this.Statistics != null &&
+                    this.Statistics.Equals(input.Statistics))
                 );
         }
 
@@ -201,8 +201,8 @@ namespace IO.Swagger.Model
                     hashCode = hashCode * 59 + this.QuestionAnswers.GetHashCode();
                 if (this.AnswerPercentages != null)
                     hashCode = hashCode * 59 + this.AnswerPercentages.GetHashCode();
-                if (this.Mean != null)
-                    hashCode = hashCode * 59 + this.Mean.GetHashCode();
+                if (this.Statistics != null)
+                    hashCode = hashCode * 59 + this.Statistics.GetHashCode();
                 return hashCode;
             }
         }

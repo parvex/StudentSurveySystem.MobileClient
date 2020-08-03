@@ -69,16 +69,17 @@ namespace MobileClient.Views.FillSurveys
                     control = boolean;
                     break;
                 case QuestionType.SingleSelect:
+                case QuestionType.ValuedSingleSelect:
                     var singleSelect = new Picker()
                     {
-                        ItemsSource = question.Values, 
+                        ItemsSource = question.Values.Select(x => x.Item1).ToList(), 
                     };
                     control = singleSelect;
                     break;
                 case QuestionType.MultipleSelect:
                     var multiSelect = new MultiSelectPicker()
                     {
-                        ItemsSource = question.Values
+                        ItemsSource = question.Values.Select(x => x.Item1).ToList()
                     };
                     control = multiSelect;
                     break;
@@ -161,9 +162,9 @@ namespace MobileClient.Views.FillSurveys
             else if (question.QuestionType == QuestionType.Date)
                 answer.Value = ((NullableDateView)control).NullableDate?.SetHours(0, 0, 0, 0).ToString(CultureInfo.InvariantCulture);
             else if (question.QuestionType == QuestionType.MultipleSelect)
-                answer.Value = JsonConvert.SerializeObject(((MultiSelectPicker)control).SelectedValues);
-            else if (question.QuestionType == QuestionType.SingleSelect)
-                answer.Value = (string) ((Picker)control).SelectedItem;
+                answer.Value = JsonConvert.SerializeObject(question.Values.Where(x => ((MultiSelectPicker)control).SelectedValues.Any(y => y == x.Item1)));
+            else if (question.QuestionType == QuestionType.SingleSelect || question.QuestionType == QuestionType.ValuedSingleSelect)
+                answer.Value = JsonConvert.SerializeObject(question.Values.FirstOrDefault(x => x.Item1 == (string) ((Picker)control).SelectedItem));
 
             return answer;
         }

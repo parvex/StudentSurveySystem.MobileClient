@@ -66,7 +66,20 @@
                                                        IconImageSource="{extensions:ImageResource MobileClient.Resources.delete.png}"/>
                                         </SwipeItems>
                                     </SwipeView.RightItems>
-                                    <Label VerticalTextAlignment="Center" Text="{Binding .}"></Label>
+                                    <Grid Padding="5">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <Label Grid.Column="0"
+                                               Text="{Binding Item1}"
+                                               FontAttributes="Bold" />
+                                        <Label IsVisible="{Binding VisibleDictionary[ValuedSingleSelect]}"  Grid.Column="1"
+                                               Text="{Binding Item2}"/>
+                                    </Grid>
                                 </SwipeView>
                         </ViewCell>
                     </DataTemplate>

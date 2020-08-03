@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using Acr.UserDialogs;
+using IO.Swagger.Model;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -30,16 +32,42 @@ namespace MobileClient.Views.MySurveys
 
         private async void AddValue_OnClicked(object sender, EventArgs e)
         { 
-            string result = await DisplayPromptAsync("Add value", "Type new value:");
-            if(!string.IsNullOrEmpty(result))
-                QuestionViewModel.AddOrUpdateValue(result);
+            var selectText = await DisplayPromptAsync("Add select option", "Type new select text:");
+            var questionType = QuestionViewModel.QuestionType;
+            PromptResult selectValue = new PromptResult(false, "");
+            if (questionType == QuestionType.ValuedSingleSelect)
+            {
+                selectValue = await UserDialogs.Instance.PromptAsync(new PromptConfig()
+                {
+                    Title = "Add select option",
+                    Message = "Type select value",
+                    InputType = InputType.DecimalNumber
+                });
+            }
+
+            double selValueDouble = 0;
+            if(!string.IsNullOrEmpty(selectText) && (questionType != QuestionType.ValuedSingleSelect || double.TryParse(selectValue.Text, out selValueDouble)))
+                QuestionViewModel.AddOrUpdateValue(selectText, selValueDouble);
         }
 
         private async void ValuesListView_OnItemTapped(object sender, ItemTappedEventArgs e)
         {
             string result = await DisplayPromptAsync("Change value", "Type new value:");
-            if (!string.IsNullOrEmpty(result))
-                QuestionViewModel.AddOrUpdateValue(result, e.ItemIndex);
+
+            var questionType = QuestionViewModel.QuestionType;
+            PromptResult selectValue = new PromptResult(false, "");
+            if (questionType == QuestionType.ValuedSingleSelect)
+            {
+                selectValue = await UserDialogs.Instance.PromptAsync(new PromptConfig()
+                {
+                    Title = "Add select option",
+                    Message = "Type select value",
+                    InputType = InputType.DecimalNumber
+                });
+            }
+            double selValueDouble = 0;
+            if (!string.IsNullOrEmpty(result) && (questionType != QuestionType.ValuedSingleSelect || double.TryParse(selectValue.Text, out selValueDouble)))
+                QuestionViewModel.AddOrUpdateValue(result, selValueDouble, e.ItemIndex);
         }
     }
 }
