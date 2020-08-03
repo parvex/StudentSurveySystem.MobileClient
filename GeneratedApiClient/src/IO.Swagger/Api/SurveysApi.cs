@@ -276,8 +276,8 @@ namespace IO.Swagger.Api
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
-        /// <returns></returns>
-        void SurveysStartSurveyFromTemplatePost (SurveyDto body = null);
+        /// <returns>SurveyDto</returns>
+        SurveyDto SurveysStartSurveyFromTemplatePost (SurveyDto body = null);
 
         /// <summary>
         /// 
@@ -287,8 +287,8 @@ namespace IO.Swagger.Api
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> SurveysStartSurveyFromTemplatePostWithHttpInfo (SurveyDto body = null);
+        /// <returns>ApiResponse of SurveyDto</returns>
+        ApiResponse<SurveyDto> SurveysStartSurveyFromTemplatePostWithHttpInfo (SurveyDto body = null);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -544,8 +544,8 @@ namespace IO.Swagger.Api
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task SurveysStartSurveyFromTemplatePostAsync (SurveyDto body = null);
+        /// <returns>Task of SurveyDto</returns>
+        System.Threading.Tasks.Task<SurveyDto> SurveysStartSurveyFromTemplatePostAsync (SurveyDto body = null);
 
         /// <summary>
         /// 
@@ -555,8 +555,8 @@ namespace IO.Swagger.Api
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> SurveysStartSurveyFromTemplatePostAsyncWithHttpInfo (SurveyDto body = null);
+        /// <returns>Task of ApiResponse (SurveyDto)</returns>
+        System.Threading.Tasks.Task<ApiResponse<SurveyDto>> SurveysStartSurveyFromTemplatePostAsyncWithHttpInfo (SurveyDto body = null);
         #endregion Asynchronous Operations
     }
 
@@ -2334,10 +2334,11 @@ namespace IO.Swagger.Api
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
-        /// <returns></returns>
-        public void SurveysStartSurveyFromTemplatePost (SurveyDto body = null)
+        /// <returns>SurveyDto</returns>
+        public SurveyDto SurveysStartSurveyFromTemplatePost (SurveyDto body = null)
         {
-             SurveysStartSurveyFromTemplatePostWithHttpInfo(body);
+             ApiResponse<SurveyDto> localVarResponse = SurveysStartSurveyFromTemplatePostWithHttpInfo(body);
+             return localVarResponse.Data;
         }
 
         /// <summary>
@@ -2345,8 +2346,8 @@ namespace IO.Swagger.Api
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> SurveysStartSurveyFromTemplatePostWithHttpInfo (SurveyDto body = null)
+        /// <returns>ApiResponse of SurveyDto</returns>
+        public ApiResponse< SurveyDto > SurveysStartSurveyFromTemplatePostWithHttpInfo (SurveyDto body = null)
         {
 
             var localVarPath = "/Surveys/StartSurveyFromTemplate";
@@ -2368,6 +2369,9 @@ namespace IO.Swagger.Api
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
+                "text/plain",
+                "application/json",
+                "text/json"
             };
             String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
@@ -2401,9 +2405,9 @@ namespace IO.Swagger.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<SurveyDto>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                null);
+                (SurveyDto) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SurveyDto)));
         }
 
         /// <summary>
@@ -2411,10 +2415,11 @@ namespace IO.Swagger.Api
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task SurveysStartSurveyFromTemplatePostAsync (SurveyDto body = null)
+        /// <returns>Task of SurveyDto</returns>
+        public async System.Threading.Tasks.Task<SurveyDto> SurveysStartSurveyFromTemplatePostAsync (SurveyDto body = null)
         {
-             await SurveysStartSurveyFromTemplatePostAsyncWithHttpInfo(body);
+             ApiResponse<SurveyDto> localVarResponse = await SurveysStartSurveyFromTemplatePostAsyncWithHttpInfo(body);
+             return localVarResponse.Data;
 
         }
 
@@ -2423,8 +2428,8 @@ namespace IO.Swagger.Api
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> SurveysStartSurveyFromTemplatePostAsyncWithHttpInfo (SurveyDto body = null)
+        /// <returns>Task of ApiResponse (SurveyDto)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<SurveyDto>> SurveysStartSurveyFromTemplatePostAsyncWithHttpInfo (SurveyDto body = null)
         {
 
             var localVarPath = "/Surveys/StartSurveyFromTemplate";
@@ -2446,6 +2451,9 @@ namespace IO.Swagger.Api
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
+                "text/plain",
+                "application/json",
+                "text/json"
             };
             String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
@@ -2479,9 +2487,9 @@ namespace IO.Swagger.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<SurveyDto>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                null);
+                (SurveyDto) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SurveyDto)));
         }
 
     }

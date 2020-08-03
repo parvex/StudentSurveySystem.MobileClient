@@ -57,6 +57,7 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
+                <Button Clicked="Test_OnClicked" Text="Test"></Button>
                 <Button Clicked="Save_OnClicked" Text="Save"></Button>
                 <Button IsVisible="{Binding Survey.IsTemplate, Converter={extensions:InverseBoolConverter}}" Clicked="Activate_OnClicked" Text="Activate survey"></Button>
                 <Button IsVisible="{Binding Survey.IsTemplate}" Clicked="StartActiveSurvey_OnClicked" Text="Create survey from template"></Button>

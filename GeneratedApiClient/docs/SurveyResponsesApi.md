@@ -11,6 +11,7 @@ Method | HTTP request | Description
 [**SurveyResponsesMySurveyResultsGet**](SurveyResponsesApi.md#surveyresponsesmysurveyresultsget) | **GET** /SurveyResponses/MySurveyResults | 
 [**SurveyResponsesPost**](SurveyResponsesApi.md#surveyresponsespost) | **POST** /SurveyResponses | 
 [**SurveyResponsesSurveyResultsIdGet**](SurveyResponsesApi.md#surveyresponsessurveyresultsidget) | **GET** /SurveyResponses/SurveyResults/{id} | 
+[**SurveyResponsesTestAddResponsePost**](SurveyResponsesApi.md#surveyresponsestestaddresponsepost) | **POST** /SurveyResponses/TestAddResponse | 
 
 <a name="surveyresponsesdetailsidget"></a>
 # **SurveyResponsesDetailsIdGet**
@@ -430,5 +431,62 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: text/plain, application/json, text/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+<a name="surveyresponsestestaddresponsepost"></a>
+# **SurveyResponsesTestAddResponsePost**
+> void SurveyResponsesTestAddResponsePost (SurveyResponseDto body = null)
+
+
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class SurveyResponsesTestAddResponsePostExample
+    {
+        public void main()
+        {
+
+            var apiInstance = new SurveyResponsesApi();
+            var body = new SurveyResponseDto(); // SurveyResponseDto |  (optional) 
+
+            try
+            {
+                apiInstance.SurveyResponsesTestAddResponsePost(body);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling SurveyResponsesApi.SurveyResponsesTestAddResponsePost: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**SurveyResponseDto**](SurveyResponseDto.md)|  | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json-patch+json, application/json, text/json, application/_*+json
+ - **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

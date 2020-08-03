@@ -663,7 +663,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="surveysstartsurveyfromtemplatepost"></a>
 # **SurveysStartSurveyFromTemplatePost**
-> void SurveysStartSurveyFromTemplatePost (SurveyDto body = null)
+> SurveyDto SurveysStartSurveyFromTemplatePost (SurveyDto body = null)
 
 
 
@@ -687,7 +687,8 @@ namespace Example
 
             try
             {
-                apiInstance.SurveysStartSurveyFromTemplatePost(body);
+                SurveyDto result = apiInstance.SurveysStartSurveyFromTemplatePost(body);
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -706,7 +707,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**SurveyDto**](SurveyDto.md)
 
 ### Authorization
 
@@ -715,6 +716,6 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: application/json-patch+json, application/json, text/json, application/_*+json
- - **Accept**: Not defined
+ - **Accept**: text/plain, application/json, text/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

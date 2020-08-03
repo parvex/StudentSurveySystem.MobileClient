@@ -10,6 +10,7 @@ using IO.Swagger.Client;
 using IO.Swagger.Model;
 using MobileClient.Extensions;
 using MobileClient.Services;
+using MobileClient.Views.FillSurveys;
 using MobileClient.Views.MySurveys;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -85,14 +86,7 @@ namespace MobileClient.Views
         {
             using (UserDialogs.Instance.Loading())
             {
-                if (Survey?.EndDate != null) Survey.EndDate = Survey.EndDate.Value.SetHours(23, 59, 59, 999);
-                Survey.Questions = QuestionsList.Select(x =>
-                {
-                    var question = (QuestionDto)x;
-                    question.Index = x.Index;
-                    return (QuestionDto)x;
-                }).ToList();
-                Survey.CourseId = SelectedCourse?.Id;
+                FillSurveyObject();
                 try
                 {
                     await SystemApi.SurveysClient.SurveysStartSurveyFromTemplatePostAsync(Survey);
@@ -127,14 +121,7 @@ namespace MobileClient.Views
         {
             using (UserDialogs.Instance.Loading())
             {
-                if (Survey?.EndDate != null) Survey.EndDate = Survey.EndDate.Value.SetHours(23, 59, 59, 999);
-                Survey.Questions = QuestionsList.Select(x =>
-                {
-                    var question = (QuestionDto)x;
-                    question.Index = x.Index;
-                    return (QuestionDto)x;
-                }).ToList();
-                Survey.CourseId = SelectedCourse?.Id;
+                FillSurveyObject();
                 try
                 {
                     if (Survey.Id.HasValue)
@@ -149,6 +136,24 @@ namespace MobileClient.Views
                     SystemApi.HandleException(exception);
                 }
             }
+        }
+
+        private void FillSurveyObject()
+        {
+            if (Survey?.EndDate != null) Survey.EndDate = Survey.EndDate.Value.SetHours(23, 59, 59, 999);
+            Survey.Questions = QuestionsList.Select(x =>
+            {
+                var question = (QuestionDto) x;
+                question.Index = x.Index;
+                return (QuestionDto) x;
+            }).ToList();
+            Survey.CourseId = SelectedCourse?.Id;
+        }
+
+        private void Test_OnClicked(object sender, EventArgs e)
+        {
+            FillSurveyObject();
+            Navigation.PushAsync(new SurveyForm(Survey));
         }
     }
 }

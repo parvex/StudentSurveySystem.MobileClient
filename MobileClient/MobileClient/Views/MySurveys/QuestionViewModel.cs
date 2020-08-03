@@ -126,6 +126,7 @@ namespace MobileClient.Views.MySurveys
             ValidationConfig.MaxNumericValue = copied.ValidationConfig.MaxNumericValue.ToString();            
             ValidationConfig.MinDateValue = copied.ValidationConfig.MinDateValue;
             ValidationConfig.MaxDateValue = copied.ValidationConfig.MaxDateValue;
+            ValidationConfig.Regex = copied.ValidationConfig.Regex;
             ValidationConfig.ErrorDictionary = ErrorDictionary;
         }
 

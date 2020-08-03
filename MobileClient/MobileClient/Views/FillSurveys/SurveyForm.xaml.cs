@@ -18,8 +18,28 @@ namespace MobileClient.Views.FillSurveys
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SurveyForm : ContentPage
     {
+        public bool Test { get; set; } = false;
         private SurveyDto Survey { get; set; }
         private readonly List<(Label, View, QuestionDto, Label)> _controlList = new List<(Label, View, QuestionDto, Label)>();
+
+
+        public SurveyForm(SurveyDto survey)
+        {
+            InitializeComponent();
+            Test = true;
+            BindingContext = this;
+            Survey = survey;
+            SurveyNameLabel.Text = Survey.Name;
+            Survey.Questions = Survey.Questions.OrderBy(x => x.Index).ToList();
+            foreach (var question in Survey.Questions)
+            {
+                var controls = CreateControlAndLabelForQuestion(question);
+                _controlList.Add(controls);
+                FormControlsLayout.Children.Add(controls.Item1);
+                FormControlsLayout.Children.Add(controls.Item2);
+                FormControlsLayout.Children.Add(controls.Item4);
+            }
+        }
 
         public SurveyForm(int surveyId)
         {
@@ -153,7 +173,7 @@ namespace MobileClient.Views.FillSurveys
 
         private AnswerDto CreateAnswerDto(View control, QuestionDto question)
         {
-            var answer = new AnswerDto {QuestionId = question.Id.Value};
+            var answer = new AnswerDto {QuestionId = question.Id.Value, QuestionType = question.QuestionType};
 
             if (question.QuestionType == QuestionType.Boolean)
                 answer.Value = ((CheckBox) control).IsChecked.ToString();
@@ -162,9 +182,16 @@ namespace MobileClient.Views.FillSurveys
             else if (question.QuestionType == QuestionType.Date)
                 answer.Value = ((NullableDateView)control).NullableDate?.SetHours(0, 0, 0, 0).ToString(CultureInfo.InvariantCulture);
             else if (question.QuestionType == QuestionType.MultipleSelect)
-                answer.Value = JsonConvert.SerializeObject(question.Values.Where(x => ((MultiSelectPicker)control).SelectedValues.Any(y => y == x.Item1)));
-            else if (question.QuestionType == QuestionType.SingleSelect || question.QuestionType == QuestionType.ValuedSingleSelect)
-                answer.Value = JsonConvert.SerializeObject(question.Values.FirstOrDefault(x => x.Item1 == (string) ((Picker)control).SelectedItem));
+            {
+                if (((MultiSelectPicker)control).SelectedValues.Any())
+                    answer.Value = JsonConvert.SerializeObject(question.Values.Where(x => ((MultiSelectPicker)control).SelectedValues.Any(y => y == x.Item1)));
+            }
+            else if (question.QuestionType == QuestionType.SingleSelect ||
+                     question.QuestionType == QuestionType.ValuedSingleSelect)
+            {
+                if(((Picker)control).SelectedItem != null)
+                    answer.Value = JsonConvert.SerializeObject(question.Values.FirstOrDefault(x => x.Item1 == (string)((Picker)control).SelectedItem));
+            }
 
             return answer;
         }
@@ -193,7 +220,9 @@ namespace MobileClient.Views.FillSurveys
             {
                 using (UserDialogs.Instance.Loading())
                 {
-                    await SystemApi.SurveyResponsesClient.SurveyResponsesPostAsync(CreateSurveyResponseDtoFromData());
+                    if (!Test)
+                        await SystemApi.SurveyResponsesClient.SurveyResponsesPostAsync(
+                            CreateSurveyResponseDtoFromData());
                 }
 
                 UserDialogs.Instance.Toast("Survey sent!", TimeSpan.FromSeconds(2));

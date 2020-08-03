@@ -101,6 +101,7 @@ Class | Method | HTTP request | Description
 *SurveyResponsesApi* | [**SurveyResponsesMySurveyResultsGet**](docs/SurveyResponsesApi.md#surveyresponsesmysurveyresultsget) | **GET** /SurveyResponses/MySurveyResults | 
 *SurveyResponsesApi* | [**SurveyResponsesPost**](docs/SurveyResponsesApi.md#surveyresponsespost) | **POST** /SurveyResponses | 
 *SurveyResponsesApi* | [**SurveyResponsesSurveyResultsIdGet**](docs/SurveyResponsesApi.md#surveyresponsessurveyresultsidget) | **GET** /SurveyResponses/SurveyResults/{id} | 
+*SurveyResponsesApi* | [**SurveyResponsesTestAddResponsePost**](docs/SurveyResponsesApi.md#surveyresponsestestaddresponsepost) | **POST** /SurveyResponses/TestAddResponse | 
 *SurveysApi* | [**SurveysGetSemestersAndMyCoursesGet**](docs/SurveysApi.md#surveysgetsemestersandmycoursesget) | **GET** /Surveys/GetSemestersAndMyCourses | 
 *SurveysApi* | [**SurveysGetSemsAndCoursesAsStudentGet**](docs/SurveysApi.md#surveysgetsemsandcoursesasstudentget) | **GET** /Surveys/GetSemsAndCoursesAsStudent | 
 *SurveysApi* | [**SurveysIdDelete**](docs/SurveysApi.md#surveysiddelete) | **DELETE** /Surveys/{id} | 

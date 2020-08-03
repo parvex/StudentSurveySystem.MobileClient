@@ -34,20 +34,10 @@ namespace MobileClient.Views
             {
                 foreach (var answer in SurveyResponse.Answers)
                 {
-                    if (answer.QuestionType == QuestionType.MultipleSelect)
-                        answer.Value = string.Join(", ", JsonConvert.DeserializeObject<List<StringDoubleNullableValueTuple>>(answer.Value).Select(x => x.Item1).ToList());
-                    else if (answer.QuestionType == QuestionType.Date && answer.Value != null)
+                    if (answer.QuestionType == QuestionType.Date && answer.Value != null)
                         answer.Value = DateTime.ParseExact(answer.Value, "MM/dd/yyyy hh:mm:ss", CultureInfo.InvariantCulture).ToString("dd/MM/yyyy");
                     else if (answer.QuestionType == QuestionType.Boolean)
                         answer.Value = answer.Value == "True" ? "yes" : "no";
-                    else if (answer.QuestionType == QuestionType.SingleSelect)
-                        answer.Value = JsonConvert.DeserializeObject<StringDoubleNullableValueTuple>(answer.Value).Item1;
-                    else if (answer.QuestionType == QuestionType.ValuedSingleSelect)
-                    {
-                        var tuple = JsonConvert.DeserializeObject<StringDoubleNullableValueTuple>(answer.Value);
-                        answer.Value = tuple.Item1;
-                    }
-                       
                 }
             }
         }
