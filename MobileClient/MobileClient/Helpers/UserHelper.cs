@@ -66,7 +66,7 @@ namespace MobileClient.Helpers
         private static async Task SaveAsync(Account account)
         {
             var accounts = await FindAccountsForServiceAsync();
-            accounts.RemoveAll(a => a.Username == account.Username);
+            accounts.RemoveAll(x => true);
             accounts.Add(account);
             var json = JsonConvert.SerializeObject(accounts);
             await SecureStorage.SetAsync(App.AppName, json);
