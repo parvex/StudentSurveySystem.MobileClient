@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "788251907448",
+    "firebase_url": "https://studentsurveysystem.firebaseio.com",
+    "project_id": "studentsurveysystem",
+    "storage_bucket": "studentsurveysystem.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:788251907448:android:c03728074eb0c70317648d",
+        "android_client_info": {
+          "package_name": "com.studentsurveysystem.mobileclient"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "788251907448-54bnh8as2orgli32j8sovvcpjs048p9l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDtv-sQrxkIbbd82fT1VuNXl2U6eUtr-7Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "788251907448-54bnh8as2orgli32j8sovvcpjs048p9l.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "788251907448-m46vdkjcsuoi6gduf2lpdecsds4fji25.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.studentsurveysystem.mobileclient"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
