@@ -74,10 +74,10 @@
                                             <ColumnDefinition Width="Auto" />
                                             <ColumnDefinition Width="Auto" />
                                         </Grid.ColumnDefinitions>
-                                        <Label Grid.Column="0"
-                                               Text="{Binding Item1}"
-                                               FontAttributes="Bold" />
-                                        <Label IsVisible="{Binding VisibleDictionary[ValuedSingleSelect]}"  Grid.Column="1"
+                                    <Label VerticalTextAlignment="Center" Grid.Column="0"
+                                           Text="{Binding Item1}"
+                                           FontAttributes="Bold" />
+                                        <Label VerticalTextAlignment="Center" IsVisible="{Binding VisibleDictionary[ValuedSingleSelect]}"  Grid.Column="1"
                                                Text="{Binding Item2}"/>
                                     </Grid>
                                 </SwipeView>

@@ -18,6 +18,8 @@ namespace MobileClient.Helpers
 
         public static async Task SaveUser(CurrentUserDto user)
         {
+#if __ANDROID__
+
             if (user == null) return;
             var account = new Account()
             {
@@ -34,6 +36,7 @@ namespace MobileClient.Helpers
                 }
             };
             await SaveAsync(account);
+#endif
         }
 
         public static async Task<CurrentUserDto> GetUser()
@@ -56,11 +59,14 @@ namespace MobileClient.Helpers
 
         public static async Task<bool> AutoLogin()
         {
+#if __ANDROID__
             var user = await GetUser();
             if (user == null || user.TokenExpirationDate < DateTime.Now) return false;
             User = user;
             SystemApi.AuthApi(user.Token);
             return true;
+#endif
+            return false;
         }
 
         private static async Task SaveAsync(Account account)
