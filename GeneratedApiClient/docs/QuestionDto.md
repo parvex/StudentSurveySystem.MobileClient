@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Index** | **int?** |  | 
 **QuestionText** | **string** |  | 
 **QuestionType** | **QuestionType** |  | 
+**Required** | **bool?** |  | [optional] 
 **ValidationConfig** | [**ValidationConfig**](ValidationConfig.md) |  | [optional] 
 **Values** | [**List&lt;StringDoubleNullableValueTuple&gt;**](StringDoubleNullableValueTuple.md) |  | [optional] 
 

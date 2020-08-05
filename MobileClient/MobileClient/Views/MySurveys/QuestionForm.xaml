@@ -7,6 +7,7 @@
              xmlns:controllers="clr-namespace:MobileClient.Controllers;assembly=MobileClient"
              xmlns:templates="clr-namespace:MobileClient.Templates;assembly=MobileClient"
              mc:Ignorable="d"
+             x:Name="QuestionFormPage"
              x:Class="MobileClient.Views.MySurveys.QuestionForm"
              Title="Question form">
     <ContentPage.Resources>
@@ -28,7 +29,8 @@
             <Label Text="Question" Style="{StaticResource FormLabel}"></Label>
             <Entry Text="{Binding QuestionText}"></Entry>
             <Label Text="{Binding ErrorDictionary[QuestionText]}" TextColor="Red" IsVisible="{Binding ErrorDictionary[QuestionText], Converter={StaticResource NullToVisibility}}"></Label>
-
+            <Label Text="Required" FontAttributes="Bold" Style="{StaticResource FormLabel}"></Label>
+            <CheckBox IsChecked="{Binding Required}"/>
             <Label Text="Type" Style="{StaticResource FormLabel}"></Label>
             <Picker Title="Question type" ItemsSource="{Binding QuestionTypes}" SelectedIndex="{Binding QuestionType, Converter={StaticResource IntEnum}}"/>
             <Label Text="{Binding ErrorDictionary[QuestionType]}" TextColor="Red" IsVisible="{Binding ErrorDictionary[QuestionType], Converter={StaticResource NullToVisibility}}"></Label>
@@ -48,7 +50,7 @@
             <templates:NullableDateView NullableDate="{Binding ValidationConfig.MaxDateValue}" IsVisible="{Binding VisibleDictionary[Date]}"></templates:NullableDateView>
             <Label Text="{Binding ErrorDictionary[DateRange]}" TextColor="Red"></Label>
 
-            <Label Text="Regex" IsVisible="{Binding VisibleDictionary[Text]}" Style="{StaticResource FormLabel}"></Label>
+            <Label Text="Regular expression" IsVisible="{Binding VisibleDictionary[Text]}" Style="{StaticResource FormLabel}"></Label>
             <Entry Text="{Binding ValidationConfig.Regex}" IsVisible="{Binding VisibleDictionary[Text]}"></Entry>
             <Label Text="{Binding ErrorDictionary[Regex]}" TextColor="Red" IsVisible="{Binding VisibleDictionary[Text]}"></Label>
 
@@ -77,8 +79,9 @@
                                     <Label VerticalTextAlignment="Center" Grid.Column="0"
                                            Text="{Binding Item1}"
                                            FontAttributes="Bold" />
-                                        <Label VerticalTextAlignment="Center" IsVisible="{Binding VisibleDictionary[ValuedSingleSelect]}"  Grid.Column="1"
-                                               Text="{Binding Item2}"/>
+                                    <Label VerticalTextAlignment="Center" 
+                                           Grid.Column="1"
+                                           Text="{Binding Item2}"/>
                                     </Grid>
                                 </SwipeView>
                         </ViewCell>

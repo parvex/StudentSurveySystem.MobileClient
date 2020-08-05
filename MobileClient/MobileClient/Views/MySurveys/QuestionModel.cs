@@ -13,7 +13,7 @@ namespace MobileClient.Views.MySurveys
         {
         }
 
-        public QuestionModel(QuestionDto question) : base(question.Id, question.Index, question.QuestionText, question.QuestionType, question.ValidationConfig, question.Values)
+        public QuestionModel(QuestionDto question) : base(question.Id, question.Index, question.QuestionText, question.QuestionType,  question.Required, question.ValidationConfig, question.Values)
         {
         }
 

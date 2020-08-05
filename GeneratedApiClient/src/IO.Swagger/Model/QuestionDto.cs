@@ -41,9 +41,10 @@ namespace IO.Swagger.Model
         /// <param name="index">index (required).</param>
         /// <param name="questionText">questionText (required).</param>
         /// <param name="questionType">questionType (required).</param>
+        /// <param name="required">required.</param>
         /// <param name="validationConfig">validationConfig.</param>
         /// <param name="values">values.</param>
-        public QuestionDto(int? id = default(int?), int? index = default(int?), string questionText = default(string), QuestionType questionType = default(QuestionType), ValidationConfig validationConfig = default(ValidationConfig), List<StringDoubleNullableValueTuple> values = default(List<StringDoubleNullableValueTuple>))
+        public QuestionDto(int? id = default(int?), int? index = default(int?), string questionText = default(string), QuestionType questionType = default(QuestionType), bool? required = default(bool?), ValidationConfig validationConfig = default(ValidationConfig), List<StringDoubleNullableValueTuple> values = default(List<StringDoubleNullableValueTuple>))
         {
             // to ensure "index" is required (not null)
             if (index == null)
@@ -73,6 +74,7 @@ namespace IO.Swagger.Model
                 this.QuestionType = questionType;
             }
             this.Id = id;
+            this.Required = required;
             this.ValidationConfig = validationConfig;
             this.Values = values;
         }
@@ -95,6 +97,12 @@ namespace IO.Swagger.Model
         [DataMember(Name="questionText", EmitDefaultValue=false)]
         public string QuestionText { get; set; }
 
+
+        /// <summary>
+        /// Gets or Sets Required
+        /// </summary>
+        [DataMember(Name="required", EmitDefaultValue=false)]
+        public bool? Required { get; set; }
 
         /// <summary>
         /// Gets or Sets ValidationConfig
@@ -120,6 +128,7 @@ namespace IO.Swagger.Model
             sb.Append("  Index: ").Append(Index).Append("\n");
             sb.Append("  QuestionText: ").Append(QuestionText).Append("\n");
             sb.Append("  QuestionType: ").Append(QuestionType).Append("\n");
+            sb.Append("  Required: ").Append(Required).Append("\n");
             sb.Append("  ValidationConfig: ").Append(ValidationConfig).Append("\n");
             sb.Append("  Values: ").Append(Values).Append("\n");
             sb.Append("}\n");
@@ -177,6 +186,11 @@ namespace IO.Swagger.Model
                     this.QuestionType.Equals(input.QuestionType))
                 ) && 
                 (
+                    this.Required == input.Required ||
+                    (this.Required != null &&
+                    this.Required.Equals(input.Required))
+                ) && 
+                (
                     this.ValidationConfig == input.ValidationConfig ||
                     (this.ValidationConfig != null &&
                     this.ValidationConfig.Equals(input.ValidationConfig))
@@ -206,6 +220,8 @@ namespace IO.Swagger.Model
                     hashCode = hashCode * 59 + this.QuestionText.GetHashCode();
                 if (this.QuestionType != null)
                     hashCode = hashCode * 59 + this.QuestionType.GetHashCode();
+                if (this.Required != null)
+                    hashCode = hashCode * 59 + this.Required.GetHashCode();
                 if (this.ValidationConfig != null)
                     hashCode = hashCode * 59 + this.ValidationConfig.GetHashCode();
                 if (this.Values != null)

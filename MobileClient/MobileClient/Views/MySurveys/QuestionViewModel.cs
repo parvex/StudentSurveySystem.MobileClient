@@ -81,6 +81,8 @@ namespace MobileClient.Views.MySurveys
             }
         }
 
+        public bool Required { get; set; }
+
         public AutoObsDictionary<string, bool> VisibleDictionary { get; set; } = new AutoObsDictionary<string, bool>();
 
         public ValidationConfigVm ValidationConfig { get; set; }
@@ -118,9 +120,10 @@ namespace MobileClient.Views.MySurveys
             _originalQuestion = question;
             var copied = _originalQuestion.DeepClone();
             QuestionType = copied.QuestionType;
+            Required = copied.Required.Value;
             QuestionText = copied.QuestionText;
             Values = copied.Values != null ? new ObservableCollection<StringDoubleNullableValueTuple>(copied.Values) : Values; 
-            Index = (copied.Index.Value+1).ToString();
+            Index = (copied.Index.Value).ToString();
             ValidationConfig = copied.ValidationConfig.Adapt<ValidationConfigVm>();
             ValidationConfig.MinNumericValue = copied.ValidationConfig.MinNumericValue.ToString();
             ValidationConfig.MaxNumericValue = copied.ValidationConfig.MaxNumericValue.ToString();            
@@ -142,7 +145,7 @@ namespace MobileClient.Views.MySurveys
             QuestionModel question;
             if (_originalQuestion != null)
             {
-                _questionList.Remove(_originalQuestion);
+                _questionList.RemoveAt(_originalQuestion.Index.Value-1);
                 question = _originalQuestion;
             }
             else
@@ -153,14 +156,14 @@ namespace MobileClient.Views.MySurveys
             question.Index = string.IsNullOrEmpty(Index) ? _questionList.Count : int.Parse(Index);
             question.QuestionText = QuestionText;
             question.QuestionType = QuestionType;
+            question.Required = Required;
             question.Values = Values.ToList();
             question.ValidationConfig = ValidationConfig.ToDto();
-
 
             if (question.Index.Value > _questionList.Count)
                 _questionList.Add(question);
             else
-                _questionList.Insert(question.Index.Value, question);
+                _questionList.Insert(question.Index.Value - 1, question);
             for (int i = 0; i < _questionList.Count; ++i)
             {
                 _questionList[i].Index = i + 1;

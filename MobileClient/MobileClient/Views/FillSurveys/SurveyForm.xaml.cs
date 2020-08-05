@@ -196,10 +196,57 @@ namespace MobileClient.Views.FillSurveys
             return answer;
         }
 
+        private bool ValidateRequired(View control, QuestionDto question, Label validationLabel)
+        {
+            if (!question.Required.Value)
+                return true;
+
+            bool valid = true;
+            switch (question.QuestionType)
+            {
+                case QuestionType.Text:
+                case QuestionType.Numeric:
+                    if (string.IsNullOrWhiteSpace(((Entry) control).Text))
+                        valid = false;
+                    break;
+                case QuestionType.Date:
+                    if (((NullableDateView)control).NullableDate == null)
+                        valid = false;
+                    break;
+                case QuestionType.ValuedSingleSelect:
+                case QuestionType.SingleSelect:
+                    if (((Picker)control).SelectedItem == null)
+                        valid = false;
+                    break;
+                case QuestionType.MultipleSelect:
+                    var selectedValues = ((MultiSelectPicker) control).SelectedValues;
+                    if (selectedValues == null || selectedValues.Count() == 0)
+                        valid = false;
+                    break;
+                case QuestionType.Boolean:
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+
+            if (valid)
+            {
+                validationLabel.Text = null;
+                validationLabel.IsVisible = false;
+            }
+            else
+            {
+                validationLabel.Text = "Field is required";
+                validationLabel.IsVisible = true;
+            }
+            return valid;
+        }
+
         private async void Button_Submit(object sender, EventArgs e)
         {
-            foreach (var (_, control, questionDto, _) in _controlList)
+            foreach (var (_, control, questionDto, validationLabel) in _controlList)
             {
+                ValidateRequired(control, questionDto, validationLabel);
                 switch (questionDto.QuestionType)
                 {
                     case QuestionType.Text:
