@@ -103,7 +103,7 @@ namespace MobileClient.Views
         {
             using (UserDialogs.Instance.Loading())
             {
-                Semesters = await SystemApi.SurveysClient.SurveysGetSemestersAndMyCoursesGetAsync();
+                Semesters = await SystemApi.UsersClient.UsersGetSemestersAndMyCoursesGetAsync();
                 if (!isNew)
                 {
                     SelectedSemester = Semesters.First(x => x.Courses != null && x.Courses.Any(c => c.Id == Survey.CourseId));

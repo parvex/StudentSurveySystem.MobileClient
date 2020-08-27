@@ -5,6 +5,8 @@ All URIs are relative to *https://localhost:5001*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**UsersAuthenticatePost**](UsersApi.md#usersauthenticatepost) | **POST** /Users/Authenticate | 
+[**UsersGetSemestersAndMyCoursesGet**](UsersApi.md#usersgetsemestersandmycoursesget) | **GET** /Users/GetSemestersAndMyCourses | 
+[**UsersGetSemsAndCoursesAsStudentGet**](UsersApi.md#usersgetsemsandcoursesasstudentget) | **GET** /Users/GetSemsAndCoursesAsStudent | 
 [**UsersIdGet**](UsersApi.md#usersidget) | **GET** /Users/{id} | 
 [**UsersUpdateUserUsosDataPut**](UsersApi.md#usersupdateuserusosdataput) | **PUT** /Users/UpdateUserUsosData | 
 [**UsersUsosAuthDataGet**](UsersApi.md#usersusosauthdataget) | **GET** /Users/UsosAuthData | 
@@ -65,6 +67,114 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json-patch+json, application/json, text/json, application/_*+json
+ - **Accept**: text/plain, application/json, text/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+<a name="usersgetsemestersandmycoursesget"></a>
+# **UsersGetSemestersAndMyCoursesGet**
+> List<SemesterDto> UsersGetSemestersAndMyCoursesGet ()
+
+
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class UsersGetSemestersAndMyCoursesGetExample
+    {
+        public void main()
+        {
+
+            var apiInstance = new UsersApi();
+
+            try
+            {
+                List&lt;SemesterDto&gt; result = apiInstance.UsersGetSemestersAndMyCoursesGet();
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling UsersApi.UsersGetSemestersAndMyCoursesGet: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**List<SemesterDto>**](SemesterDto.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: text/plain, application/json, text/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+<a name="usersgetsemsandcoursesasstudentget"></a>
+# **UsersGetSemsAndCoursesAsStudentGet**
+> List<SemesterDto> UsersGetSemsAndCoursesAsStudentGet ()
+
+
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class UsersGetSemsAndCoursesAsStudentGetExample
+    {
+        public void main()
+        {
+
+            var apiInstance = new UsersApi();
+
+            try
+            {
+                List&lt;SemesterDto&gt; result = apiInstance.UsersGetSemsAndCoursesAsStudentGet();
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling UsersApi.UsersGetSemsAndCoursesAsStudentGet: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**List<SemesterDto>**](SemesterDto.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
  - **Accept**: text/plain, application/json, text/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

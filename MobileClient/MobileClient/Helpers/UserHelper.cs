@@ -113,7 +113,7 @@ namespace MobileClient.Helpers
             CrossFirebasePushNotification.Current.UnsubscribeAll();
             CrossFirebasePushNotification.Current.Subscribe("global");
             if (User == null) return;
-            var semestersIParticipate = await SystemApi.SurveysClient.SurveysGetSemsAndCoursesAsStudentGetAsync();
+            var semestersIParticipate = await SystemApi.UsersClient.UsersGetSemsAndCoursesAsStudentGetAsync();
             var mySurveys = await SystemApi.SurveysClient.SurveysMyActiveSurveyNamesGetAsync();
             foreach (var semester in semestersIParticipate)
             {

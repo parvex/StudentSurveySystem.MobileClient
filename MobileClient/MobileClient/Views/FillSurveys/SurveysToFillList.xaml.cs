@@ -19,7 +19,7 @@ namespace MobileClient.Views
         {
             InitializeComponent();
             BindingContext = this;
-            ListViewController = new ListViewController<SurveyListItemDto>(SystemApi.SurveysClient.SurveysMyNotFilledFormGetAsync, ListView, SearchBar);
+            ListViewController = new ListViewController<SurveyListItemDto>(SystemApi.SurveysClient.SurveysMyNotFilledFormsGetAsync, ListView, SearchBar);
         }
 
         protected override void OnAppearing()

@@ -30,44 +30,6 @@ namespace IO.Swagger.Api
         /// 
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>List&lt;SemesterDto&gt;</returns>
-        List<SemesterDto> SurveysGetSemestersAndMyCoursesGet ();
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of List&lt;SemesterDto&gt;</returns>
-        ApiResponse<List<SemesterDto>> SurveysGetSemestersAndMyCoursesGetWithHttpInfo ();
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>List&lt;SemesterDto&gt;</returns>
-        List<SemesterDto> SurveysGetSemsAndCoursesAsStudentGet ();
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of List&lt;SemesterDto&gt;</returns>
-        ApiResponse<List<SemesterDto>> SurveysGetSemsAndCoursesAsStudentGetWithHttpInfo ();
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns></returns>
         void SurveysIdDelete (int? id);
@@ -158,7 +120,7 @@ namespace IO.Swagger.Api
         /// <param name="page"> (optional, default to 0)</param>
         /// <param name="count"> (optional, default to 20)</param>
         /// <returns>List&lt;SurveyListItemDto&gt;</returns>
-        List<SurveyListItemDto> SurveysMyNotFilledFormGet (string name = null, int? page = null, int? count = null);
+        List<SurveyListItemDto> SurveysMyNotFilledFormsGet (string name = null, int? page = null, int? count = null);
 
         /// <summary>
         /// 
@@ -171,7 +133,7 @@ namespace IO.Swagger.Api
         /// <param name="page"> (optional, default to 0)</param>
         /// <param name="count"> (optional, default to 20)</param>
         /// <returns>ApiResponse of List&lt;SurveyListItemDto&gt;</returns>
-        ApiResponse<List<SurveyListItemDto>> SurveysMyNotFilledFormGetWithHttpInfo (string name = null, int? page = null, int? count = null);
+        ApiResponse<List<SurveyListItemDto>> SurveysMyNotFilledFormsGetWithHttpInfo (string name = null, int? page = null, int? count = null);
         /// <summary>
         /// 
         /// </summary>
@@ -298,44 +260,6 @@ namespace IO.Swagger.Api
         /// 
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of List&lt;SemesterDto&gt;</returns>
-        System.Threading.Tasks.Task<List<SemesterDto>> SurveysGetSemestersAndMyCoursesGetAsync ();
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse (List&lt;SemesterDto&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<SemesterDto>>> SurveysGetSemestersAndMyCoursesGetAsyncWithHttpInfo ();
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of List&lt;SemesterDto&gt;</returns>
-        System.Threading.Tasks.Task<List<SemesterDto>> SurveysGetSemsAndCoursesAsStudentGetAsync ();
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse (List&lt;SemesterDto&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<SemesterDto>>> SurveysGetSemsAndCoursesAsStudentGetAsyncWithHttpInfo ();
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>Task of void</returns>
         System.Threading.Tasks.Task SurveysIdDeleteAsync (int? id);
@@ -426,7 +350,7 @@ namespace IO.Swagger.Api
         /// <param name="page"> (optional, default to 0)</param>
         /// <param name="count"> (optional, default to 20)</param>
         /// <returns>Task of List&lt;SurveyListItemDto&gt;</returns>
-        System.Threading.Tasks.Task<List<SurveyListItemDto>> SurveysMyNotFilledFormGetAsync (string name = null, int? page = null, int? count = null);
+        System.Threading.Tasks.Task<List<SurveyListItemDto>> SurveysMyNotFilledFormsGetAsync (string name = null, int? page = null, int? count = null);
 
         /// <summary>
         /// 
@@ -439,7 +363,7 @@ namespace IO.Swagger.Api
         /// <param name="page"> (optional, default to 0)</param>
         /// <param name="count"> (optional, default to 20)</param>
         /// <returns>Task of ApiResponse (List&lt;SurveyListItemDto&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<SurveyListItemDto>>> SurveysMyNotFilledFormGetAsyncWithHttpInfo (string name = null, int? page = null, int? count = null);
+        System.Threading.Tasks.Task<ApiResponse<List<SurveyListItemDto>>> SurveysMyNotFilledFormsGetAsyncWithHttpInfo (string name = null, int? page = null, int? count = null);
         /// <summary>
         /// 
         /// </summary>
@@ -666,276 +590,6 @@ namespace IO.Swagger.Api
         public void AddDefaultHeader(string key, string value)
         {
             this.Configuration.AddDefaultHeader(key, value);
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>List&lt;SemesterDto&gt;</returns>
-        public List<SemesterDto> SurveysGetSemestersAndMyCoursesGet ()
-        {
-             ApiResponse<List<SemesterDto>> localVarResponse = SurveysGetSemestersAndMyCoursesGetWithHttpInfo();
-             return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of List&lt;SemesterDto&gt;</returns>
-        public ApiResponse< List<SemesterDto> > SurveysGetSemestersAndMyCoursesGetWithHttpInfo ()
-        {
-
-            var localVarPath = "/Surveys/GetSemestersAndMyCourses";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-            };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            // authentication (Bearer) required
-            // bearer required
-            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
-            {
-                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
-            }
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("SurveysGetSemestersAndMyCoursesGet", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<List<SemesterDto>>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (List<SemesterDto>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<SemesterDto>)));
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of List&lt;SemesterDto&gt;</returns>
-        public async System.Threading.Tasks.Task<List<SemesterDto>> SurveysGetSemestersAndMyCoursesGetAsync ()
-        {
-             ApiResponse<List<SemesterDto>> localVarResponse = await SurveysGetSemestersAndMyCoursesGetAsyncWithHttpInfo();
-             return localVarResponse.Data;
-
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse (List&lt;SemesterDto&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<SemesterDto>>> SurveysGetSemestersAndMyCoursesGetAsyncWithHttpInfo ()
-        {
-
-            var localVarPath = "/Surveys/GetSemestersAndMyCourses";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-            };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            // authentication (Bearer) required
-            // bearer required
-            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
-            {
-                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
-            }
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("SurveysGetSemestersAndMyCoursesGet", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<List<SemesterDto>>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (List<SemesterDto>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<SemesterDto>)));
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>List&lt;SemesterDto&gt;</returns>
-        public List<SemesterDto> SurveysGetSemsAndCoursesAsStudentGet ()
-        {
-             ApiResponse<List<SemesterDto>> localVarResponse = SurveysGetSemsAndCoursesAsStudentGetWithHttpInfo();
-             return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of List&lt;SemesterDto&gt;</returns>
-        public ApiResponse< List<SemesterDto> > SurveysGetSemsAndCoursesAsStudentGetWithHttpInfo ()
-        {
-
-            var localVarPath = "/Surveys/GetSemsAndCoursesAsStudent";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-            };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            // authentication (Bearer) required
-            // bearer required
-            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
-            {
-                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
-            }
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("SurveysGetSemsAndCoursesAsStudentGet", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<List<SemesterDto>>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (List<SemesterDto>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<SemesterDto>)));
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of List&lt;SemesterDto&gt;</returns>
-        public async System.Threading.Tasks.Task<List<SemesterDto>> SurveysGetSemsAndCoursesAsStudentGetAsync ()
-        {
-             ApiResponse<List<SemesterDto>> localVarResponse = await SurveysGetSemsAndCoursesAsStudentGetAsyncWithHttpInfo();
-             return localVarResponse.Data;
-
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse (List&lt;SemesterDto&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<SemesterDto>>> SurveysGetSemsAndCoursesAsStudentGetAsyncWithHttpInfo ()
-        {
-
-            var localVarPath = "/Surveys/GetSemsAndCoursesAsStudent";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-            };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            // authentication (Bearer) required
-            // bearer required
-            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
-            {
-                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
-            }
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("SurveysGetSemsAndCoursesAsStudentGet", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<List<SemesterDto>>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (List<SemesterDto>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<SemesterDto>)));
         }
 
         /// <summary>
@@ -1540,9 +1194,9 @@ namespace IO.Swagger.Api
         /// <param name="page"> (optional, default to 0)</param>
         /// <param name="count"> (optional, default to 20)</param>
         /// <returns>List&lt;SurveyListItemDto&gt;</returns>
-        public List<SurveyListItemDto> SurveysMyNotFilledFormGet (string name = null, int? page = null, int? count = null)
+        public List<SurveyListItemDto> SurveysMyNotFilledFormsGet (string name = null, int? page = null, int? count = null)
         {
-             ApiResponse<List<SurveyListItemDto>> localVarResponse = SurveysMyNotFilledFormGetWithHttpInfo(name, page, count);
+             ApiResponse<List<SurveyListItemDto>> localVarResponse = SurveysMyNotFilledFormsGetWithHttpInfo(name, page, count);
              return localVarResponse.Data;
         }
 
@@ -1554,10 +1208,10 @@ namespace IO.Swagger.Api
         /// <param name="page"> (optional, default to 0)</param>
         /// <param name="count"> (optional, default to 20)</param>
         /// <returns>ApiResponse of List&lt;SurveyListItemDto&gt;</returns>
-        public ApiResponse< List<SurveyListItemDto> > SurveysMyNotFilledFormGetWithHttpInfo (string name = null, int? page = null, int? count = null)
+        public ApiResponse< List<SurveyListItemDto> > SurveysMyNotFilledFormsGetWithHttpInfo (string name = null, int? page = null, int? count = null)
         {
 
-            var localVarPath = "/Surveys/MyNotFilledForm";
+            var localVarPath = "/Surveys/MyNotFilledForms";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1599,7 +1253,7 @@ namespace IO.Swagger.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("SurveysMyNotFilledFormGet", localVarResponse);
+                Exception exception = ExceptionFactory("SurveysMyNotFilledFormsGet", localVarResponse);
                 if (exception != null) throw exception;
             }
 
@@ -1616,9 +1270,9 @@ namespace IO.Swagger.Api
         /// <param name="page"> (optional, default to 0)</param>
         /// <param name="count"> (optional, default to 20)</param>
         /// <returns>Task of List&lt;SurveyListItemDto&gt;</returns>
-        public async System.Threading.Tasks.Task<List<SurveyListItemDto>> SurveysMyNotFilledFormGetAsync (string name = null, int? page = null, int? count = null)
+        public async System.Threading.Tasks.Task<List<SurveyListItemDto>> SurveysMyNotFilledFormsGetAsync (string name = null, int? page = null, int? count = null)
         {
-             ApiResponse<List<SurveyListItemDto>> localVarResponse = await SurveysMyNotFilledFormGetAsyncWithHttpInfo(name, page, count);
+             ApiResponse<List<SurveyListItemDto>> localVarResponse = await SurveysMyNotFilledFormsGetAsyncWithHttpInfo(name, page, count);
              return localVarResponse.Data;
 
         }
@@ -1631,10 +1285,10 @@ namespace IO.Swagger.Api
         /// <param name="page"> (optional, default to 0)</param>
         /// <param name="count"> (optional, default to 20)</param>
         /// <returns>Task of ApiResponse (List&lt;SurveyListItemDto&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<SurveyListItemDto>>> SurveysMyNotFilledFormGetAsyncWithHttpInfo (string name = null, int? page = null, int? count = null)
+        public async System.Threading.Tasks.Task<ApiResponse<List<SurveyListItemDto>>> SurveysMyNotFilledFormsGetAsyncWithHttpInfo (string name = null, int? page = null, int? count = null)
         {
 
-            var localVarPath = "/Surveys/MyNotFilledForm";
+            var localVarPath = "/Surveys/MyNotFilledForms";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1676,7 +1330,7 @@ namespace IO.Swagger.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("SurveysMyNotFilledFormGet", localVarResponse);
+                Exception exception = ExceptionFactory("SurveysMyNotFilledFormsGet", localVarResponse);
                 if (exception != null) throw exception;
             }
 
