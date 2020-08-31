@@ -18,77 +18,79 @@
     </ContentPage.Resources>
 
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Index" Style="{StaticResource FormLabel}"></Label>
-            <Entry Keyboard="Numeric" Text="{Binding Index}">
-                <Entry.Behaviors>
-                    <extensions:IntegerValidationBehavior />
-                </Entry.Behaviors>
-            </Entry>
+        <ScrollView>
+            <StackLayout>
+                <Label Text="Index" Style="{StaticResource FormLabel}"></Label>
+                <Entry Keyboard="Numeric" Text="{Binding Index}">
+                    <Entry.Behaviors>
+                        <extensions:IntegerValidationBehavior />
+                    </Entry.Behaviors>
+                </Entry>
 
-            <Label Text="Question" Style="{StaticResource FormLabel}"></Label>
-            <Entry Text="{Binding QuestionText}"></Entry>
-            <Label Text="{Binding ErrorDictionary[QuestionText]}" TextColor="Red" IsVisible="{Binding ErrorDictionary[QuestionText], Converter={StaticResource NullToVisibility}}"></Label>
-            <Label Text="Required" FontAttributes="Bold" Style="{StaticResource FormLabel}"></Label>
-            <CheckBox IsChecked="{Binding Required}"/>
-            <Label Text="Type" Style="{StaticResource FormLabel}"></Label>
-            <Picker Title="Question type" ItemsSource="{Binding QuestionTypes}" SelectedIndex="{Binding QuestionType, Converter={StaticResource IntEnum}}"/>
-            <Label Text="{Binding ErrorDictionary[QuestionType]}" TextColor="Red" IsVisible="{Binding ErrorDictionary[QuestionType], Converter={StaticResource NullToVisibility}}"></Label>
+                <Label Text="Question" Style="{StaticResource FormLabel}"></Label>
+                <Entry Text="{Binding QuestionText}"></Entry>
+                <Label Text="{Binding ErrorDictionary[QuestionText]}" TextColor="Red" IsVisible="{Binding ErrorDictionary[QuestionText], Converter={StaticResource NullToVisibility}}"></Label>
+                <Label Text="Required" FontAttributes="Bold" Style="{StaticResource FormLabel}"></Label>
+                <CheckBox IsChecked="{Binding Required}"/>
+                <Label Text="Type" Style="{StaticResource FormLabel}"></Label>
+                <Picker Title="Question type" ItemsSource="{Binding QuestionTypes}" SelectedIndex="{Binding QuestionType, Converter={StaticResource IntEnum}}"/>
+                <Label Text="{Binding ErrorDictionary[QuestionType]}" TextColor="Red" IsVisible="{Binding ErrorDictionary[QuestionType], Converter={StaticResource NullToVisibility}}"></Label>
 
-            <Label Text="Integer" IsVisible="{Binding VisibleDictionary[Numeric]}" Style="{StaticResource FormLabel}"></Label>
-            <CheckBox IsChecked="{Binding ValidationConfig.Integer}" IsVisible="{Binding VisibleDictionary[Numeric]}"></CheckBox>
+                <Label Text="Integer" IsVisible="{Binding VisibleDictionary[Numeric]}" Style="{StaticResource FormLabel}"></Label>
+                <CheckBox IsChecked="{Binding ValidationConfig.Integer}" IsVisible="{Binding VisibleDictionary[Numeric]}"></CheckBox>
 
-            <Label Text="Min value" IsVisible="{Binding VisibleDictionary[Numeric]}" Style="{StaticResource FormLabel}"></Label>
-            <Entry Text="{Binding ValidationConfig.MinNumericValue}" Keyboard="Numeric" IsVisible="{Binding VisibleDictionary[Numeric]}"></Entry>
-            <Label Text="Max value" IsVisible="{Binding VisibleDictionary[Numeric]}" Style="{StaticResource FormLabel}"></Label>
-            <Entry Text="{Binding ValidationConfig.MaxNumericValue}" Keyboard="Numeric" IsVisible="{Binding VisibleDictionary[Numeric]}"></Entry>
-            <Label Text="{Binding ErrorDictionary[NumericRange]}" TextColor="Red" IsVisible="{Binding VisibleDictionary[Numeric]}"></Label>
+                <Label Text="Min value" IsVisible="{Binding VisibleDictionary[Numeric]}" Style="{StaticResource FormLabel}"></Label>
+                <Entry Text="{Binding ValidationConfig.MinNumericValue}" Keyboard="Numeric" IsVisible="{Binding VisibleDictionary[Numeric]}"></Entry>
+                <Label Text="Max value" IsVisible="{Binding VisibleDictionary[Numeric]}" Style="{StaticResource FormLabel}"></Label>
+                <Entry Text="{Binding ValidationConfig.MaxNumericValue}" Keyboard="Numeric" IsVisible="{Binding VisibleDictionary[Numeric]}"></Entry>
+                <Label Text="{Binding ErrorDictionary[NumericRange]}" TextColor="Red" IsVisible="{Binding VisibleDictionary[Numeric]}"></Label>
 
-            <Label Text="Min value" IsVisible="{Binding VisibleDictionary[Date]}" Style="{StaticResource FormLabel}"></Label>
-            <templates:NullableDateView NullableDate="{Binding ValidationConfig.MinDateValue}" IsVisible="{Binding VisibleDictionary[Date]}"></templates:NullableDateView>
-            <Label Text="Max value" IsVisible="{Binding VisibleDictionary[Date]}" Style="{StaticResource FormLabel}"></Label>
-            <templates:NullableDateView NullableDate="{Binding ValidationConfig.MaxDateValue}" IsVisible="{Binding VisibleDictionary[Date]}"></templates:NullableDateView>
-            <Label Text="{Binding ErrorDictionary[DateRange]}" TextColor="Red"></Label>
+                <Label Text="Min value" IsVisible="{Binding VisibleDictionary[Date]}" Style="{StaticResource FormLabel}"></Label>
+                <templates:NullableDateView NullableDate="{Binding ValidationConfig.MinDateValue}" IsVisible="{Binding VisibleDictionary[Date]}"></templates:NullableDateView>
+                <Label Text="Max value" IsVisible="{Binding VisibleDictionary[Date]}" Style="{StaticResource FormLabel}"></Label>
+                <templates:NullableDateView NullableDate="{Binding ValidationConfig.MaxDateValue}" IsVisible="{Binding VisibleDictionary[Date]}"></templates:NullableDateView>
+                <Label Text="{Binding ErrorDictionary[DateRange]}" TextColor="Red"></Label>
 
-            <Label Text="Regular expression" IsVisible="{Binding VisibleDictionary[Text]}" Style="{StaticResource FormLabel}"></Label>
-            <Entry Text="{Binding ValidationConfig.Regex}" IsVisible="{Binding VisibleDictionary[Text]}"></Entry>
-            <Label Text="{Binding ErrorDictionary[Regex]}" TextColor="Red" IsVisible="{Binding VisibleDictionary[Text]}"></Label>
+                <Label Text="Regular expression" IsVisible="{Binding VisibleDictionary[Text]}" Style="{StaticResource FormLabel}"></Label>
+                <Entry Text="{Binding ValidationConfig.Regex}" IsVisible="{Binding VisibleDictionary[Text]}"></Entry>
+                <Label Text="{Binding ErrorDictionary[Regex]}" TextColor="Red" IsVisible="{Binding VisibleDictionary[Text]}"></Label>
 
-            <Button Text="Add value" IsVisible="{Binding VisibleDictionary[MultipleSelect]}" Clicked="AddValue_OnClicked"></Button>
-            <Label Text="Values to select" IsVisible="{Binding VisibleDictionary[MultipleSelect]}"></Label>
-            <ListView x:Name="ListView" ItemsSource="{Binding Values}" IsVisible="{Binding VisibleDictionary[MultipleSelect]}" ItemTapped="ValuesListView_OnItemTapped">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <SwipeView>
-                                    <SwipeView.RightItems>
-                                        <SwipeItems>
-                                            <SwipeItem BackgroundColor="LightPink"
-                                                       Command="{Binding Path=BindingContext.Commands[DeleteValue], Source={x:Reference ListView}}" CommandParameter="{Binding .}"
-                                                       IconImageSource="{extensions:ImageResource MobileClient.Resources.delete.png}"/>
-                                        </SwipeItems>
-                                    </SwipeView.RightItems>
-                                    <Grid Padding="5">
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="Auto" />
-                                        </Grid.RowDefinitions>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="Auto" />
-                                            <ColumnDefinition Width="Auto" />
-                                        </Grid.ColumnDefinitions>
-                                    <Label VerticalTextAlignment="Center" Grid.Column="0"
-                                           Text="{Binding Item1}"
-                                           FontAttributes="Bold" />
-                                    <Label VerticalTextAlignment="Center" 
-                                           Grid.Column="1"
-                                           Text="{Binding Item2}"/>
-                                    </Grid>
-                                </SwipeView>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-            <Button Text="Submit" Clicked="Submit_OnClicked"></Button>
-        </StackLayout>
+                <Button Text="Add value" IsVisible="{Binding VisibleDictionary[MultipleSelect]}" Clicked="AddValue_OnClicked"></Button>
+                <Label Text="Values to select" IsVisible="{Binding VisibleDictionary[MultipleSelect]}"></Label>
+                <ListView x:Name="ListView" ItemsSource="{Binding Values}" IsVisible="{Binding VisibleDictionary[MultipleSelect]}" HeightRequest="200" ItemTapped="ValuesListView_OnItemTapped">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <SwipeView>
+                                        <SwipeView.RightItems>
+                                            <SwipeItems>
+                                                <SwipeItem BackgroundColor="LightPink"
+                                                           Command="{Binding Path=BindingContext.Commands[DeleteValue], Source={x:Reference ListView}}" CommandParameter="{Binding .}"
+                                                           IconImageSource="{extensions:ImageResource MobileClient.Resources.delete.png}"/>
+                                            </SwipeItems>
+                                        </SwipeView.RightItems>
+                                        <Grid Padding="5">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="Auto" />
+                                            </Grid.ColumnDefinitions>
+                                        <Label VerticalTextAlignment="Center" Grid.Column="0"
+                                               Text="{Binding Item1}"
+                                               FontAttributes="Bold" />
+                                        <Label VerticalTextAlignment="Center" 
+                                               Grid.Column="1"
+                                               Text="{Binding Item2}"/>
+                                        </Grid>
+                                    </SwipeView>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <Button Text="Submit" Clicked="Submit_OnClicked"></Button>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
