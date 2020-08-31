@@ -114,7 +114,6 @@ namespace MobileClient.Helpers
             CrossFirebasePushNotification.Current.Subscribe("global");
             if (User == null) return;
             var semestersIParticipate = await SystemApi.UsersClient.UsersGetSemsAndCoursesAsStudentGetAsync();
-            var mySurveys = await SystemApi.SurveysClient.SurveysMyActiveSurveyNamesGetAsync();
             foreach (var semester in semestersIParticipate)
             {
                 foreach (var course in semester.Courses)
@@ -122,10 +121,17 @@ namespace MobileClient.Helpers
                     CrossFirebasePushNotification.Current.Subscribe(semester.Name + course.Name);
                 }
             }
-            foreach (var survey in mySurveys)
-            {
-                CrossFirebasePushNotification.Current.Subscribe(survey.RemoveDiactrics().RemoveWhiteSpaces());
-            }
+
+            //byl  blad tez jakis
+            //if (User.UserRole == UserRole.Lecturer)
+            //{
+            //    var mySurveys = await SystemApi.SurveysClient.SurveysMyActiveSurveyNamesGetAsync();
+
+            //    foreach (var survey in mySurveys)
+            //    {
+            //        CrossFirebasePushNotification.Current.Subscribe(survey.RemoveDiactrics().RemoveWhiteSpaces());
+            //    }
+            //}
         }
 
 
