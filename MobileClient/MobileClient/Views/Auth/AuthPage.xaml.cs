@@ -84,7 +84,7 @@ namespace MobileClient.Views
                     Console.WriteLine(exception);
                 }
             }
-        }
+        }   
 
         private async void Button_UsosPinAuth(object sender, EventArgs e)
         {

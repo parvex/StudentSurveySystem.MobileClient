@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Runtime.Serialization;
-using Force.DeepCloner;
 using IO.Swagger.Model;
 using Mapster;
 using MobileClient.Extensions;
@@ -118,7 +117,7 @@ namespace MobileClient.Views.MySurveys
         {
             _questionList = questionList;
             _originalQuestion = question;
-            var copied = _originalQuestion.DeepClone();
+            var copied = _originalQuestion.Clone();
             QuestionType = copied.QuestionType;
             Required = copied.Required.Value;
             QuestionText = copied.QuestionText;
@@ -150,7 +149,7 @@ namespace MobileClient.Views.MySurveys
             }
             else
             {
-                question = (QuestionModel) FormatterServices.GetUninitializedObject(typeof(QuestionModel));
+                question = new QuestionModel();
             }
 
             question.Index = string.IsNullOrEmpty(Index) ? _questionList.Count : int.Parse(Index);

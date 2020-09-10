@@ -26,15 +26,15 @@ namespace MobileClient.Views.MySurveys
             base.OnAppearing();
         }
 
-        private void AddItem_Clicked(object sender, EventArgs e)
+        private async void AddItem_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new CreateSurvey());
+            await Navigation.PushAsync(new CreateSurvey());
         }
 
-        private void ListView_OnItemTapped(object sender, ItemTappedEventArgs e)
+        private async void ListView_OnItemTapped(object sender, ItemTappedEventArgs e)
         {
             if(((SurveyListItemDto) e.Item).Status == SurveyStatus.Draft)
-                Navigation.PushAsync(new CreateSurvey(((SurveyListItemDto)e.Item).Id.Value));
+                await Navigation.PushAsync(new CreateSurvey(((SurveyListItemDto)e.Item).Id.Value));
         }
     }
 }

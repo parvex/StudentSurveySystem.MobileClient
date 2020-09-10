@@ -37,7 +37,6 @@
 
   <ItemGroup>
     <PackageReference Include="Acr.UserDialogs" Version="7.1.0.442" />
-    <PackageReference Include="DeepCloner" Version="0.10.2" />
     <PackageReference Include="Fody" Version="6.1.1">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

@@ -24,10 +24,10 @@ namespace MobileClient.Views.MySurveys
             BindingContext = new QuestionViewModel(question ,questionList);
         }
 
-        private void Submit_OnClicked(object sender, EventArgs e)
+        private async void Submit_OnClicked(object sender, EventArgs e)
         {
             if(((QuestionViewModel) BindingContext).Submit())
-                Navigation.PopAsync();
+                await Navigation.PopAsync();
         }
 
         private async void AddValue_OnClicked(object sender, EventArgs e)

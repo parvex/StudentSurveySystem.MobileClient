@@ -8,6 +8,7 @@ using Acr.UserDialogs;
 using IO.Swagger.Api;
 using IO.Swagger.Client;
 using IO.Swagger.Model;
+using Mapster;
 using MobileClient.Extensions;
 using MobileClient.Services;
 using MobileClient.Views.FillSurveys;
@@ -56,15 +57,14 @@ namespace MobileClient.Views
             Initialize(false);
         }
 
-        private void AddQuestion_OnClicked(object sender, EventArgs e)
+        private async void AddQuestion_OnClicked(object sender, EventArgs e)
         {
-            var question = (QuestionDto) FormatterServices.GetUninitializedObject(typeof(QuestionDto));
-            Navigation.PushAsync(new QuestionForm(QuestionsList));
+            await Navigation.PushAsync(new QuestionForm(QuestionsList));
         }
 
-        private void ListView_OnItemTapped(object sender, ItemTappedEventArgs e)
+        private async void ListView_OnItemTapped(object sender, ItemTappedEventArgs e)
         {
-            Navigation.PushAsync(new QuestionForm((QuestionModel)e.Item, QuestionsList));
+            await Navigation.PushAsync(new QuestionForm((QuestionModel)e.Item, QuestionsList));
         }
 
         private void DeleteQuestion(object obj)
@@ -143,9 +143,9 @@ namespace MobileClient.Views
             if (Survey?.EndDate != null) Survey.EndDate = Survey.EndDate.Value.SetHours(23, 59, 59, 999);
             Survey.Questions = QuestionsList.Select(x =>
             {
-                var question = (QuestionDto) x;
+                var question = x.Adapt<QuestionDto>();
                 question.Index = x.Index;
-                return (QuestionDto) x;
+                return x.Adapt<QuestionDto>();
             }).ToList();
             Survey.CourseId = SelectedCourse?.Id;
         }
