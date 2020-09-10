@@ -35,8 +35,7 @@ namespace MobileClient.Views.MySurveys
 
         public QuestionDto ToDto()
         {
-            var dto = this.Adapt<QuestionDto>();
-            return dto;
+            return new QuestionDto(Id, Index, QuestionText, QuestionType, Required, ValidationConfig, Values);
         }
 
         public QuestionModel Clone()

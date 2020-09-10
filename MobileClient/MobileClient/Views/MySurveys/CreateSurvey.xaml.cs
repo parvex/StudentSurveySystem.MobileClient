@@ -41,7 +41,9 @@ namespace MobileClient.Views
         public CreateSurvey(bool isTemplate = false)
         {
             InitializeComponent();
-            Survey = (SurveyDto) FormatterServices.GetUninitializedObject(typeof(SurveyDto));
+            Survey = new SurveyDto(null, "", null, 0, new List<QuestionDto>());
+            Survey.CourseId = null;
+            Survey.Name = null;
             Survey.IsTemplate = isTemplate;
             QuestionsList = new ObservableCollection<QuestionModel>();
             Initialize(true);
@@ -141,12 +143,7 @@ namespace MobileClient.Views
         private void FillSurveyObject()
         {
             if (Survey?.EndDate != null) Survey.EndDate = Survey.EndDate.Value.SetHours(23, 59, 59, 999);
-            Survey.Questions = QuestionsList.Select(x =>
-            {
-                var question = x.Adapt<QuestionDto>();
-                question.Index = x.Index;
-                return x.Adapt<QuestionDto>();
-            }).ToList();
+            Survey.Questions = QuestionsList.Select(x => x.ToDto()).ToList();
             Survey.CourseId = SelectedCourse?.Id;
         }
 
